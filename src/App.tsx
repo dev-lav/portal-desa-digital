@@ -2,8 +2,18 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
+import Beranda from "./pages/Beranda";
+import ProfilRW from "./pages/ProfilRW";
+import DataWarga from "./pages/DataWarga";
+import LayananSurat from "./pages/LayananSurat";
+import Kegiatan from "./pages/Kegiatan";
+import Keuangan from "./pages/Keuangan";
+import UMKM from "./pages/UMKM";
+import Pengaduan from "./pages/Pengaduan";
+import KebijakanPrivasi from "./pages/KebijakanPrivasi";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -13,13 +23,26 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <HashRouter>
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Beranda />} />
+              <Route path="/profil" element={<ProfilRW />} />
+              <Route path="/data-warga" element={<DataWarga />} />
+              <Route path="/layanan-surat" element={<LayananSurat />} />
+              <Route path="/kegiatan" element={<Kegiatan />} />
+              <Route path="/keuangan" element={<Keuangan />} />
+              <Route path="/umkm" element={<UMKM />} />
+              <Route path="/pengaduan" element={<Pengaduan />} />
+              <Route path="/kebijakan-privasi" element={<KebijakanPrivasi />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
