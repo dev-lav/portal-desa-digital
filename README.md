@@ -1,73 +1,144 @@
-# Welcome to your Lovable project
+# Portal RW 05 - Desa Digital
 
-## Project info
+Portal digital untuk warga RW 05, Desa Sukamaju. Website statis yang menyediakan informasi, layanan, dan akses mudah untuk warga.
 
-**URL**: https://lovable.dev/projects/aacb5a17-81cb-4a13-a8ad-dfb01591eb78
+## 🌟 Fitur
 
-## How can I edit this code?
+- **Beranda**: Ringkasan statistik warga dan agenda terdekat
+- **Profil RW**: Struktur pengurus dan kontak RT
+- **Data Warga**: Statistik agregat penduduk (tanpa data pribadi)
+- **Layanan Surat**: Informasi pengajuan berbagai surat pengantar
+- **Kegiatan & Berita**: Agenda kegiatan dan dokumentasi
+- **Keuangan**: Transparansi laporan kas dan pengeluaran RW
+- **UMKM Warga**: Direktori usaha dan jasa lokal
+- **Pengaduan**: Form pengaduan dan aspirasi warga
 
-There are several ways of editing your application.
+## 🚀 Teknologi
 
-**Use Lovable**
+- **React** - Library UI
+- **Vite** - Build tool
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Shadcn/ui** - Komponen UI
+- **React Router (HashRouter)** - Routing untuk GitHub Pages
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/aacb5a17-81cb-4a13-a8ad-dfb01591eb78) and start prompting.
+## 📦 Instalasi
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
+# Clone repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Masuk ke direktori project
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Jalankan development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Server akan berjalan di `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🔨 Build
 
-**Use GitHub Codespaces**
+```bash
+# Build untuk production
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+File hasil build akan ada di folder `dist/`
 
-## What technologies are used for this project?
+## 🌐 Deploy ke GitHub Pages
 
-This project is built with:
+### Opsi 1: Manual
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. Build project:
+   ```bash
+   npm run build
+   ```
 
-## How can I deploy this project?
+2. Deploy folder `dist/` ke branch `gh-pages`:
+   ```bash
+   git subtree push --prefix dist origin gh-pages
+   ```
 
-Simply open [Lovable](https://lovable.dev/projects/aacb5a17-81cb-4a13-a8ad-dfb01591eb78) and click on Share -> Publish.
+3. Aktifkan GitHub Pages di repository settings, pilih branch `gh-pages`
 
-## Can I connect a custom domain to my Lovable project?
+### Opsi 2: GitHub Actions (Otomatis)
 
-Yes, you can!
+Buat file `.github/workflows/deploy.yml`:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```yaml
+name: Deploy to GitHub Pages
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: npm install
+      
+    - name: Build
+      run: npm run build
+      
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+```
+
+Setiap push ke branch `main` akan otomatis build dan deploy.
+
+## 📝 Catatan Penting
+
+- **Data Dummy**: Semua data di portal ini adalah contoh (dummy data) untuk demonstrasi
+- **No Backend**: Aplikasi ini sepenuhnya statis, tidak ada backend atau database
+- **HashRouter**: Menggunakan HashRouter untuk kompatibilitas dengan GitHub Pages
+- **WhatsApp Integration**: Komunikasi dengan pengurus RW melalui link WhatsApp
+- **Privacy**: Tidak ada data pribadi yang dikumpulkan atau disimpan
+
+## 🎨 Customisasi
+
+### Mengubah Data
+
+Edit file di folder `src/data/`:
+- `mockData.ts` - Data dummy untuk semua konten
+- `types.ts` - Tipe data TypeScript
+
+### Mengubah Warna/Theme
+
+Edit file `src/index.css` untuk mengubah color variables dan theme.
+
+### Menambah Halaman
+
+1. Buat component baru di `src/pages/`
+2. Import dan tambahkan route di `src/App.tsx`
+3. Update navigation di `src/components/Navbar.tsx`
+
+## 📄 Lisensi
+
+Portal ini dibuat untuk keperluan RW 05, Desa Sukamaju.
+
+## 📞 Kontak
+
+Untuk pertanyaan atau masukan, hubungi pengurus RW 05 melalui:
+- WhatsApp: 081234567890
+- Email: rw05sukamaju@gmail.com
+
+---
+
+Dibuat dengan ❤️ untuk warga RW 05
