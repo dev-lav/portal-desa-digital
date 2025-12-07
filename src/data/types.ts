@@ -1,4 +1,4 @@
-// Data types untuk Portal RW 05
+// Data types untuk Portal RW 12
 
 export interface PengurusRW {
   id: string;

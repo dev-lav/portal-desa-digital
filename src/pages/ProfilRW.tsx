@@ -9,9 +9,9 @@ const ProfilRW = () => {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
-        <SectionTitle 
-          title="Profil RW 05" 
-          subtitle="Informasi lengkap tentang RW 05"
+        <SectionTitle
+          title="Profil RW 12"
+          subtitle="Informasi lengkap tentang RW 12"
         />
 
         {/* Informasi Dasar */}
@@ -149,7 +149,7 @@ const ProfilRW = () => {
         {/* Kontak RW */}
         <Card>
           <CardHeader>
-            <CardTitle>Hubungi RW 05</CardTitle>
+            <CardTitle>Hubungi RW 12</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-col md:flex-row gap-4">

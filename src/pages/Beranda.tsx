@@ -27,7 +27,7 @@ const Beranda = () => {
               {rwInfo.desa}, {rwInfo.kecamatan}
             </p>
             <p className="text-base md:text-lg opacity-80">
-              Portal digital untuk kemudahan akses informasi, layanan, dan kegiatan warga. 
+              Portal digital untuk kemudahan akses informasi, layanan, dan kegiatan warga.
               Mari bersama membangun lingkungan yang lebih baik dan terhubung.
             </p>
           </div>
@@ -41,27 +41,27 @@ const Beranda = () => {
             icon={Users}
             label="Total Kepala Keluarga"
             value={statistikPenduduk.totalKK}
-            description="Terdaftar di RW 05"
+            description="Terdaftar di RW 12"
           />
           <StatCard
             icon={Users}
             label="Total Penduduk"
             value={statistikPenduduk.totalJiwa}
-            description="Jiwa di RW 05"
+            description="Jiwa di RW 12"
           />
           <StatCard
             icon={HomeIcon}
             label="Jumlah RT"
             value={totalRT}
-            description="RT 01 s.d. RT 05"
+            description="RT 01 s.d. RT 08"
           />
         </div>
       </section>
 
       {/* Quick Access */}
       <section className="container mx-auto px-4 mt-16">
-        <SectionTitle 
-          title="Akses Cepat" 
+        <SectionTitle
+          title="Akses Cepat"
           subtitle="Temukan informasi dan layanan yang Anda butuhkan"
         />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -126,8 +126,8 @@ const Beranda = () => {
       {/* Upcoming Events */}
       <section className="container mx-auto px-4 mt-16">
         <div className="flex items-center justify-between mb-6">
-          <SectionTitle 
-            title="Agenda Terdekat" 
+          <SectionTitle
+            title="Agenda Terdekat"
             subtitle="Kegiatan yang akan datang"
           />
           <Link to="/kegiatan">

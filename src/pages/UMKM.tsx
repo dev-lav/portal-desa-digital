@@ -20,9 +20,9 @@ const UMKM = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <SectionTitle 
-          title="UMKM & Jasa Warga" 
-          subtitle="Dukung usaha dan jasa lokal RW 05"
+        <SectionTitle
+          title="UMKM & Jasa Warga"
+          subtitle="Dukung usaha dan jasa lokal RW 12"
         />
 
         {/* Info Banner */}
@@ -35,7 +35,7 @@ const UMKM = () => {
               <div>
                 <h3 className="font-semibold mb-2">Dukung Ekonomi Lokal</h3>
                 <p className="text-sm text-muted-foreground">
-                  Halaman ini menampilkan daftar UMKM dan jasa yang dikelola warga RW 05. Mari saling mendukung
+                  Halaman ini menampilkan daftar UMKM dan jasa yang dikelola warga RW 12. Mari saling mendukung
                   dan mengembangkan ekonomi lokal dengan memilih produk dan jasa dari warga sekitar.
                 </p>
               </div>

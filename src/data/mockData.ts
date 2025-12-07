@@ -11,17 +11,20 @@ import {
 } from "./types";
 
 export const pengurusRW: PengurusRW[] = [
-  { id: "1", jabatan: "Ketua RW", nama: "Bapak Suryanto", kontak: "081234567890" },
-  { id: "2", jabatan: "Sekretaris", nama: "Ibu Ratna Sari", kontak: "081234567891" },
-  { id: "3", jabatan: "Bendahara", nama: "Bapak Hendra Wijaya", kontak: "081234567892" },
+  { id: "1", jabatan: "Ketua RW", nama: "Ahmad Fadillah, SE., M.M.B.", kontak: "..." },
+  { id: "2", jabatan: "Sekretaris", nama: "...", kontak: "..." },
+  { id: "3", jabatan: "Bendahara", nama: "...", kontak: "..." },
 ];
 
 export const dataRT: RTInfo[] = [
-  { nomor: 1, ketua: "Bapak Ahmad Fauzi", kontak: "081234567801", jumlahKK: 85, jumlahJiwa: 320, jumlahLansia: 28 },
-  { nomor: 2, ketua: "Ibu Siti Aminah", kontak: "081234567802", jumlahKK: 92, jumlahJiwa: 348, jumlahLansia: 35 },
-  { nomor: 3, ketua: "Bapak Bambang Eko", kontak: "081234567803", jumlahKK: 78, jumlahJiwa: 295, jumlahLansia: 22 },
-  { nomor: 4, ketua: "Ibu Desi Kartika", kontak: "081234567804", jumlahKK: 88, jumlahJiwa: 334, jumlahLansia: 30 },
-  { nomor: 5, ketua: "Bapak Eko Prasetyo", kontak: "081234567805", jumlahKK: 95, jumlahJiwa: 360, jumlahLansia: 38 },
+  { nomor: 1, ketua: "-", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 2, ketua: "Fathur Rohim", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 3, ketua: "Farris Adi Putra", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 4, ketua: "Rudy Widiarto(Pak Ghocir)", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 5, ketua: "-", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 6, ketua: "Akhmad Mawardi", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 7, ketua: "-", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 8, ketua: "Eko Mudjiono", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
 ];
 
 export const statistikPenduduk: StatistikPenduduk = {
@@ -45,7 +48,7 @@ export const jenisSurat: JenisSurat[] = [
   {
     id: "1",
     nama: "Surat Pengantar Domisili",
-    deskripsi: "Surat keterangan untuk membuktikan tempat tinggal warga di wilayah RW 05.",
+    deskripsi: "Surat keterangan untuk membuktikan tempat tinggal warga di wilayah RW 12.",
     dokumenDiperlukan: ["KTP asli & fotokopi", "Kartu Keluarga asli & fotokopi", "Bukti pembayaran PBB (jika ada)"],
     estimasiProses: "1-2 hari kerja",
   },
@@ -73,7 +76,7 @@ export const jenisSurat: JenisSurat[] = [
   {
     id: "5",
     nama: "Surat Pengantar Keterangan Usaha",
-    deskripsi: "Surat keterangan untuk membuktikan keberadaan usaha di wilayah RW 05.",
+    deskripsi: "Surat keterangan untuk membuktikan keberadaan usaha di wilayah RW 12.",
     dokumenDiperlukan: ["KTP pemilik usaha", "Kartu Keluarga", "Foto lokasi usaha", "Surat pernyataan bermeterai"],
     estimasiProses: "2-3 hari kerja",
   },
@@ -82,58 +85,31 @@ export const jenisSurat: JenisSurat[] = [
 export const kegiatanList: Kegiatan[] = [
   {
     id: "1",
-    nama: "Posyandu Balita & Lansia",
-    tanggal: new Date("2025-12-05"),
-    waktu: "08.00 - 11.00 WIB",
-    lokasi: "Balai RW 05",
-    tag: "Posyandu",
-    deskripsi: "Pemeriksaan kesehatan rutin untuk balita dan lansia",
+    nama: "Latihan Voli Anak",
+    tanggal: new Date("2025-12-14"),
+    waktu: "07.00 - 09.00 WIB",
+    lokasi: "Lapangan Voli RW 12",
+    tag: "Rutin",
+    deskripsi: "Latihan rutin voli khusus anak-anak",
   },
   {
     id: "2",
-    nama: "Rapat Koordinasi RT & RW",
-    tanggal: new Date("2025-12-10"),
-    waktu: "19.30 - 21.30 WIB",
-    lokasi: "Balai RW 05",
-    tag: "Rapat",
-    deskripsi: "Evaluasi program bulan November dan rencana Desember",
+    nama: "Latihan Voli Dewasa",
+    tanggal: new Date("2025-12-13"),
+    waktu: "15.00 - 17.00 WIB",
+    lokasi: "Lapangan Voli RW 12",
+    tag: "Rutin",
+    deskripsi: "Latihan rutin voli khusus dewasa",
   },
   {
     id: "3",
-    nama: "Kerja Bakti Bersih Lingkungan",
-    tanggal: new Date("2025-12-15"),
-    waktu: "06.00 - 09.00 WIB",
-    lokasi: "Seluruh wilayah RW 05",
-    tag: "Kerja Bakti",
-    deskripsi: "Gotong royong membersihkan selokan dan area umum",
-  },
-  {
-    id: "4",
-    nama: "Senam Sehat Warga",
-    tanggal: new Date("2025-12-08"),
-    waktu: "06.30 - 07.30 WIB",
-    lokasi: "Lapangan RT 03",
+    nama: "Rutinan Khodmil Qur'an",
+    tanggal: new Date("2025-12-07"),
+    waktu: "04.00 - 10.00 WIB",
+    lokasi: "Masjid An Nur RW 12",
     tag: "Rutin",
-    deskripsi: "Senam pagi bersama instruktur",
-  },
-  {
-    id: "5",
-    nama: "Pengajian Rutin Ibu-Ibu",
-    tanggal: new Date("2025-12-12"),
-    waktu: "14.00 - 16.00 WIB",
-    lokasi: "Balai RW 05",
-    tag: "Rutin",
-    deskripsi: "Kajian agama dan arisan ibu-ibu",
-  },
-  {
-    id: "6",
-    nama: "Bakti Sosial untuk Lansia",
-    tanggal: new Date("2025-12-20"),
-    waktu: "09.00 - 12.00 WIB",
-    lokasi: "Balai RW 05",
-    tag: "Sosial",
-    deskripsi: "Pembagian sembako dan pemeriksaan kesehatan gratis",
-  },
+    deskripsi: "Rutinan khodmil Qur'an Ahad Pon",
+  }
 ];
 
 export const laporanKasBulanan: LaporanKas[] = [
@@ -259,34 +235,27 @@ export const umkmList: UMKM[] = [
 export const beritaList: Berita[] = [
   {
     id: "1",
-    judul: "Kerja Bakti Membersihkan Selokan Berhasil Dilaksanakan",
-    tanggal: new Date("2025-11-15"),
+    judul: "Acara pembukaan sekolah sahabat lansia tangguh RW 12",
+    tanggal: new Date("2025-11-17"),
     ringkasan:
-      "Warga RW 05 bergotong-royong membersihkan selokan di seluruh wilayah. Kegiatan berjalan lancar dan diikuti lebih dari 100 warga.",
+      "Acara pembukaan sekolah sahabat lansia tangguh RW 12 berhasil dilaksanakan dengan lancar dan penuh semangat oleh warga lansia RW 12.",
   },
   {
     id: "2",
-    judul: "Posyandu Balita Bulan November Dihadiri 45 Balita",
-    tanggal: new Date("2025-11-08"),
+    judul: "Latihan rutin voli anak RW 12",
+    tanggal: new Date("2025-11-30"),
     ringkasan:
-      "Kegiatan posyandu rutin berjalan lancar dengan pelayanan imunisasi, penimbangan, dan pemberian vitamin.",
-  },
-  {
-    id: "3",
-    judul: "Penanaman 50 Pohon dalam Rangka Penghijauan",
-    tanggal: new Date("2025-11-20"),
-    ringkasan:
-      "RW 05 bekerja sama dengan dinas lingkungan hidup menanam 50 pohon di area taman dan sepanjang jalan lingkungan.",
-  },
+      "Latihan rutin voli anak RW 12 berhasil dilaksanakan dengan lancar dan penuh semangat oleh anak-anak RW 12.",
+  }
 ];
 
 export const rwInfo = {
-  nomor: "05",
-  desa: "Desa Sukamaju",
-  kecamatan: "Kecamatan Sejahtera",
-  kabupaten: "Kabupaten Makmur",
-  alamatPosko: "Jl. Mawar No. 12, RT 03 RW 05",
-  jamLayanan: "Senin - Jumat, 19.00 - 21.00 WIB",
-  whatsapp: "081234567890",
-  email: "rw05sukamaju@gmail.com",
+  nomor: "12",
+  desa: "Desa Ngijo",
+  kecamatan: "Kecamatan Karangploso",
+  kabupaten: "Kabupaten Malang",
+  alamatPosko: "Balai RW 12",
+  jamLayanan: "Senin - Jumat, 08.00 - 16.00 WIB",
+  whatsapp: "081255556991",
+  email: "rolasunited@gmail.com",
 };

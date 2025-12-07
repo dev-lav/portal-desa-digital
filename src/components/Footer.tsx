@@ -11,7 +11,7 @@ export const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold">
-                05
+                12
               </div>
               <div>
                 <div className="font-bold text-foreground">RW {rwInfo.nomor}</div>
@@ -19,7 +19,7 @@ export const Footer = () => {
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
-              Portal digital untuk kemudahan akses informasi dan layanan warga RW 05.
+              Portal digital untuk kemudahan akses informasi dan layanan warga RW 12.
             </p>
           </div>
 
@@ -65,7 +65,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-border mt-8 pt-6 text-center text-sm text-muted-foreground">
-          <p>&copy; 2025 Portal RW 05 - Desa Sukamaju. Semua hak dilindungi.</p>
+          <p>&copy; 2025 Portal RW 12 - Desa Ngijo. Semua hak dilindungi.</p>
         </div>
       </div>
     </footer>

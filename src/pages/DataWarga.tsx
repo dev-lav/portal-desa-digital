@@ -10,9 +10,9 @@ const DataWarga = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <SectionTitle 
-          title="Data & Statistik Warga" 
-          subtitle="Data agregat penduduk RW 05 (data dummy untuk demo)"
+        <SectionTitle
+          title="Data & Statistik Warga"
+          subtitle="Data agregat penduduk RW 12 (data dummy untuk demo)"
         />
 
         {/* Ringkasan Utama */}
@@ -27,7 +27,7 @@ const DataWarga = () => {
             icon={UserCheck}
             label="Total Penduduk"
             value={totalJiwa}
-            description="Jiwa di RW 05"
+            description="Jiwa di RW 12"
           />
         </div>
 
@@ -89,7 +89,7 @@ const DataWarga = () => {
                       </span>
                     </div>
                     <div className="h-3 bg-muted rounded-full overflow-hidden">
-                      <div 
+                      <div
                         className={`h-full ${item.color} transition-all`}
                         style={{ width: `${percentage}%` }}
                       />

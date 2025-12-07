@@ -6,9 +6,9 @@ const KebijakanPrivasi = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <SectionTitle 
-          title="Kebijakan Privasi" 
-          subtitle="Portal RW 05 - Desa Sukamaju"
+        <SectionTitle
+          title="Kebijakan Privasi"
+          subtitle="Portal RW 12 - Desa Ngijo"
         />
 
         <div className="max-w-4xl mx-auto">
@@ -21,7 +21,7 @@ const KebijakanPrivasi = () => {
                 <div>
                   <h3 className="font-semibold mb-2">Perlindungan Data Warga</h3>
                   <p className="text-sm text-muted-foreground">
-                    Portal ini berkomitmen untuk melindungi privasi dan data pribadi warga RW 05 sesuai dengan
+                    Portal ini berkomitmen untuk melindungi privasi dan data pribadi warga RW 12 sesuai dengan
                     peraturan perundang-undangan yang berlaku.
                   </p>
                 </div>
@@ -34,7 +34,7 @@ const KebijakanPrivasi = () => {
               <section className="mb-8">
                 <h2 className="text-xl font-bold mb-4">1. Pengumpulan Informasi</h2>
                 <p className="text-muted-foreground">
-                  Portal RW 05 adalah situs statis yang tidak mengumpulkan, menyimpan, atau memproses data pribadi
+                  Portal RW 12 adalah situs statis yang tidak mengumpulkan, menyimpan, atau memproses data pribadi
                   warga secara otomatis. Semua data yang ditampilkan di portal ini adalah data agregat dan tidak
                   mengandung informasi pribadi yang dapat mengidentifikasi individu tertentu.
                 </p>
@@ -46,7 +46,7 @@ const KebijakanPrivasi = () => {
                   Data statistik yang ditampilkan di portal ini digunakan hanya untuk tujuan:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground space-y-2 ml-4">
-                  <li>Memberikan informasi umum tentang RW 05 kepada warga</li>
+                  <li>Memberikan informasi umum tentang RW 12 kepada warga</li>
                   <li>Transparansi kegiatan dan keuangan RW</li>
                   <li>Memudahkan akses informasi layanan RW</li>
                   <li>Promosi UMKM dan jasa warga lokal</li>
@@ -93,7 +93,7 @@ const KebijakanPrivasi = () => {
                 <h2 className="text-xl font-bold mb-4">7. Kontak</h2>
                 <p className="text-muted-foreground">
                   Jika Anda memiliki pertanyaan atau kekhawatiran tentang kebijakan privasi ini, silakan hubungi
-                  pengurus RW 05 melalui kontak yang tersedia di halaman Profil RW.
+                  pengurus RW 12 melalui kontak yang tersedia di halaman Profil RW.
                 </p>
               </section>
 

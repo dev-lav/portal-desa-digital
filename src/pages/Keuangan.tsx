@@ -17,9 +17,9 @@ const Keuangan = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <SectionTitle 
-          title="Keuangan & Iuran RW" 
-          subtitle="Transparansi laporan keuangan RW 05 (data contoh untuk demo)"
+        <SectionTitle
+          title="Keuangan & Iuran RW"
+          subtitle="Transparansi laporan keuangan RW 12 (data contoh untuk demo)"
         />
 
         {/* Info Banner */}

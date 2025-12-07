@@ -10,9 +10,9 @@ const LayananSurat = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <SectionTitle 
-          title="Layanan Surat Pengantar" 
-          subtitle="Informasi cara mengurus berbagai jenis surat di RW 05"
+        <SectionTitle
+          title="Layanan Surat Pengantar"
+          subtitle="Informasi cara mengurus berbagai jenis surat di RW 12"
         />
 
         {/* Info */}
@@ -47,7 +47,7 @@ const LayananSurat = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">{surat.deskripsi}</p>
-                
+
                 <div className="space-y-4">
                   {/* Dokumen Diperlukan */}
                   <div>
@@ -84,7 +84,7 @@ const LayananSurat = () => {
                         Ajukan via WhatsApp
                       </Button>
                     </a>
-                    
+
                     <Dialog>
                       <DialogTrigger asChild>
                         <Button variant="outline" size="sm" className="gap-2">
