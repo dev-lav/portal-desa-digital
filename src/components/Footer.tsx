@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { rwInfo } from "@/data/mockData";
+import { Home, Info, Users, FileText, Calendar, DollarSign, Store, MessageSquare, Menu, X } from "lucide-react";
+import logoImg from "@/images/logo.jpeg";
 
 export const Footer = () => {
   return (
@@ -11,7 +13,11 @@ export const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold">
-                12
+                <img
+                  src={logoImg}
+                  alt="Logo RW 12"
+                  className="w-10 h-10 rounded-lg object-cover"
+                />
               </div>
               <div>
                 <div className="font-bold text-foreground">RW {rwInfo.nomor}</div>

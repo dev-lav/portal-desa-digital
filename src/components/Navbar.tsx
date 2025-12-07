@@ -1,6 +1,8 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Home, Users, FileText, Calendar, DollarSign, Store, MessageSquare, Info } from "lucide-react";
+import { Home, Info, Users, FileText, Calendar, DollarSign, Store, MessageSquare, Menu, X } from "lucide-react";
+import logoImg from "@/images/logo.jpeg";
 import { Button } from "@/components/ui/button";
 
 const menuItems = [
@@ -9,8 +11,8 @@ const menuItems = [
   // { label: "Data Warga", path: "/data-warga", icon: Users },
   // { label: "Layanan Surat", path: "/layanan-surat", icon: FileText },
   { label: "Kegiatan & Berita", path: "/kegiatan", icon: Calendar },
-  // { label: "Keuangan", path: "/keuangan", icon: DollarSign },
-  // { label: "UMKM Warga", path: "/umkm", icon: Store },
+  { label: "Keuangan", path: "/keuangan", icon: DollarSign },
+  { label: "UMKM Warga", path: "/umkm", icon: Store },
   { label: "Pengaduan", path: "/pengaduan", icon: MessageSquare },
 ];
 
@@ -23,9 +25,11 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold text-lg">
-              12
-            </div>
+            <img
+              src={logoImg}
+              alt="Logo RW 12"
+              className="w-10 h-10 rounded-lg object-cover"
+            />
             <div className="hidden sm:block">
               <div className="font-bold text-foreground">Portal RW 12</div>
               <div className="text-xs text-muted-foreground">Desa Ngijo</div>

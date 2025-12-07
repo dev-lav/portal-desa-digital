@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
-import { Users, Home as HomeIcon, FileText, Calendar, DollarSign, Store } from "lucide-react";
+import { Users, Home as HomeIcon, FileText, Calendar, DollarSign, Store, MessageSquare } from "lucide-react";
 import { StatCard } from "@/components/StatCard";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { statistikPenduduk, dataRT, kegiatanList, rwInfo } from "@/data/mockData";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { statistikPenduduk, dataRT, kegiatanList, rwInfo, lembagaList } from "@/data/mockData";
 
 const Beranda = () => {
   const upcomingEvents = kegiatanList
@@ -79,20 +86,6 @@ const Beranda = () => {
             </Card>
           </Link>
 
-          <Link to="/layanan-surat">
-            <Card className="hover:shadow-lg transition-all hover:scale-105 cursor-pointer h-full">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <FileText className="h-8 w-8 text-secondary" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2">Layanan Surat</h3>
-                <p className="text-sm text-muted-foreground">
-                  Informasi pengajuan surat
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
           <Link to="/kegiatan">
             <Card className="hover:shadow-lg transition-all hover:scale-105 cursor-pointer h-full">
               <CardContent className="p-6 text-center">
@@ -116,6 +109,20 @@ const Beranda = () => {
                 <h3 className="font-semibold text-lg mb-2">UMKM Warga</h3>
                 <p className="text-sm text-muted-foreground">
                   Dukung usaha lokal
+                </p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          <Link to="/pengaduan">
+            <Card className="hover:shadow-lg transition-all hover:scale-105 cursor-pointer h-full">
+              <CardContent className="p-6 text-center">
+                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MessageSquare className="h-8 w-8 text-secondary" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">Pengaduan</h3>
+                <p className="text-sm text-muted-foreground">
+                  Formulir pengaduan
                 </p>
               </CardContent>
             </Card>
@@ -172,6 +179,48 @@ const Beranda = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+      </section>
+
+      {/* Lembaga Section */}
+      <section className="container mx-auto px-4 mt-16 mb-16">
+        <SectionTitle
+          title="Lembaga Desa"
+          subtitle="Mitra strategis pembangunan lingkungan RW 12"
+        />
+        <div className="px-12">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {lembagaList.map((lembaga) => (
+                <CarouselItem key={lembaga.id} className="basis-1/2 md:basis-1/4 lg:basis-1/5">
+                  <div className="p-1">
+                    <Card className="border-0 shadow-none bg-transparent">
+                      <CardContent className="flex flex-col items-center justify-center p-4">
+                        <div className="w-24 h-24 md:w-32 md:h-32 mb-4 relative flex items-center justify-center transition-transform hover:scale-110 duration-300">
+                          <img
+                            src={lembaga.logo}
+                            alt={lembaga.nama}
+                            className="object-contain w-full h-full drop-shadow-sm"
+                          />
+                        </div>
+                        <h3 className="font-medium text-center text-sm md:text-base text-muted-foreground">
+                          {lembaga.nama}
+                        </h3>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </section>
     </div>

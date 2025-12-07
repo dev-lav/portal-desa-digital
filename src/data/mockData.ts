@@ -8,7 +8,11 @@ import {
   RincianPengeluaran,
   UMKM,
   Berita,
+  Lembaga,
 } from "./types";
+import lansiaTangguhImg from "@/images/lansia-tangguh.jpeg";
+import tabunganAmalImg from "@/images/tabungan-amal-sosial.jpeg";
+import voliRW12Img from "@/images/voli-rw-12.jpeg";
 
 export const pengurusRW: PengurusRW[] = [
   { id: "1", jabatan: "Ketua RW", nama: "Ahmad Fadillah, SE., M.M.B.", kontak: "..." },
@@ -21,7 +25,7 @@ export const dataRT: RTInfo[] = [
   { nomor: 2, ketua: "Fathur Rohim", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 3, ketua: "Farris Adi Putra", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 4, ketua: "Rudy Widiarto(Pak Ghocir)", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
-  { nomor: 5, ketua: "-", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 5, ketua: "Eko Suyono", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 6, ketua: "Akhmad Mawardi", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 7, ketua: "-", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 8, ketua: "Eko Mudjiono", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
@@ -113,123 +117,127 @@ export const kegiatanList: Kegiatan[] = [
 ];
 
 export const laporanKasBulanan: LaporanKas[] = [
-  { bulan: "Agustus 2025", saldoAwal: 3500000, pemasukan: 2190000, pengeluaran: 1850000, saldoAkhir: 3840000 },
-  { bulan: "September 2025", saldoAwal: 3840000, pemasukan: 2190000, pengeluaran: 2100000, saldoAkhir: 3930000 },
-  { bulan: "Oktober 2025", saldoAwal: 3930000, pemasukan: 2190000, pengeluaran: 1650000, saldoAkhir: 4470000 },
-  { bulan: "November 2025", saldoAwal: 4470000, pemasukan: 2190000, pengeluaran: 1920000, saldoAkhir: 4740000 },
+  { bulan: "November 2025", saldoAwal: 23839917, pemasukan: 16166000, pengeluaran: 18008000, saldoAkhir: 21997917 },
 ];
 
 export const rincianPengeluaran: RincianPengeluaran[] = [
   {
     id: "1",
-    namaKegiatan: "Posyandu Bulanan",
-    tanggal: new Date("2025-11-05"),
-    keterangan: "Snack, vitamin, dan bahan habis pakai",
-    nominal: 450000,
+    namaKegiatan: "KAS RW",
+    tanggal: new Date("2025-11-30"),
+    keterangan: "Bulanan",
+    nominal: 165000,
   },
   {
     id: "2",
-    namaKegiatan: "Kerja Bakti Lingkungan",
-    tanggal: new Date("2025-11-12"),
-    keterangan: "Peralatan kebersihan dan konsumsi",
-    nominal: 380000,
+    namaKegiatan: "Keamanan",
+    tanggal: new Date("2025-11-30"),
+    keterangan: "Bulanan",
+    nominal: 6850000,
   },
   {
     id: "3",
-    namaKegiatan: "Listrik dan Air Balai RW",
-    tanggal: new Date("2025-11-01"),
-    keterangan: "Tagihan bulanan",
-    nominal: 420000,
+    namaKegiatan: "Pengambilan Sampah",
+    tanggal: new Date("2025-11-30"),
+    keterangan: "Bulanan",
+    nominal: 3550000,
   },
   {
     id: "4",
-    namaKegiatan: "Perawatan Taman RW",
-    tanggal: new Date("2025-11-18"),
-    keterangan: "Pupuk, tanaman hias, jasa tukang",
-    nominal: 350000,
+    namaKegiatan: "TPS ‐ GPA",
+    tanggal: new Date("2025-11-30"),
+    keterangan: "Bulanan",
+    nominal: 6075000,
   },
   {
     id: "5",
-    namaKegiatan: "Rapat Koordinasi",
-    tanggal: new Date("2025-11-10"),
-    keterangan: "Konsumsi rapat RT & RW",
-    nominal: 320000,
+    namaKegiatan: "Iuran Makam",
+    tanggal: new Date("2025-11-30"),
+    keterangan: "Bulanan",
+    nominal: 418000,
   },
+  {
+    id: "6",
+    namaKegiatan: "Pemuda dan Olahraga",
+    tanggal: new Date("2025-11-30"),
+    keterangan: "Bulanan",
+    nominal: 650000,
+  }
 ];
 
 export const umkmList: UMKM[] = [
   {
     id: "1",
-    namaUsaha: "Warung Makan Sederhana",
+    namaUsaha: "Nasdo Ayaje",
     jenisUsaha: "Makanan & Minuman",
-    pemilik: "Ibu Sari",
-    rt: 2,
-    nomorWA: "081234560001",
-    deskripsi: "Nasi uduk, soto ayam, dan aneka gorengan",
+    pemilik: "-",
+    rt: 0,
+    nomorWA: "082257869294",
+    deskripsi: "Ayam Geprek, Ayam Katsu. Buka jam 8 pagi - 8 malam. Free delivery minimal 2 porsi",
   },
   {
     id: "2",
-    namaUsaha: "Laundry Bersih Cepat",
+    namaUsaha: "Hadhila Laundry",
     jenisUsaha: "Jasa Laundry",
-    pemilik: "Bapak Joko",
-    rt: 1,
-    nomorWA: "081234560002",
-    deskripsi: "Cuci setrika kiloan dan satuan, antar jemput gratis",
-  },
-  {
-    id: "3",
-    namaUsaha: "Bengkel Motor Maju",
-    jenisUsaha: "Bengkel",
-    pemilik: "Bapak Andi",
+    pemilik: "Hadhila",
     rt: 3,
-    nomorWA: "081234560003",
-    deskripsi: "Service motor, ganti oli, ban, dan spare part",
+    nomorWA: "085282365820",
+    deskripsi: "Solusi tumpukan cucian Anda. Free ambil antar untuk daerah Karangploso",
   },
-  {
-    id: "4",
-    namaUsaha: "Les Privat Cerdas",
-    jenisUsaha: "Jasa Les",
-    pemilik: "Ibu Dina",
-    rt: 4,
-    nomorWA: "081234560004",
-    deskripsi: "Les matematika, bahasa Inggris, dan IPA untuk SD-SMP",
-  },
-  {
-    id: "5",
-    namaUsaha: "Toko Kelontong Berkah",
-    jenisUsaha: "Toko Kelontong",
-    pemilik: "Bapak Hasan",
-    rt: 5,
-    nomorWA: "081234560005",
-    deskripsi: "Kebutuhan sehari-hari, pulsa, dan gas LPG",
-  },
-  {
-    id: "6",
-    namaUsaha: "Catering Ibu Yuni",
-    jenisUsaha: "Makanan & Minuman",
-    pemilik: "Ibu Yuni",
-    rt: 2,
-    nomorWA: "081234560006",
-    deskripsi: "Nasi kotak, tumpeng, dan snack untuk acara",
-  },
-  {
-    id: "7",
-    namaUsaha: "Sablon Kaos Express",
-    jenisUsaha: "Jasa Sablon",
-    pemilik: "Bapak Rudi",
-    rt: 3,
-    nomorWA: "081234560007",
-    deskripsi: "Sablon kaos, mug, dan totebag untuk event",
-  },
-  {
-    id: "8",
-    namaUsaha: "Salon Cantik Jelita",
-    jenisUsaha: "Salon",
-    pemilik: "Ibu Fitri",
-    rt: 1,
-    nomorWA: "081234560008",
-    deskripsi: "Potong rambut, creambath, dan treatment wajah",
-  },
+  // {
+  //   id: "3",
+  //   namaUsaha: "Bengkel Motor Maju",
+  //   jenisUsaha: "Bengkel",
+  //   pemilik: "Bapak Andi",
+  //   rt: 3,
+  //   nomorWA: "081234560003",
+  //   deskripsi: "Service motor, ganti oli, ban, dan spare part",
+  // },
+  // {
+  //   id: "4",
+  //   namaUsaha: "Les Privat Cerdas",
+  //   jenisUsaha: "Jasa Les",
+  //   pemilik: "Ibu Dina",
+  //   rt: 4,
+  //   nomorWA: "081234560004",
+  //   deskripsi: "Les matematika, bahasa Inggris, dan IPA untuk SD-SMP",
+  // },
+  // {
+  //   id: "5",
+  //   namaUsaha: "Toko Kelontong Berkah",
+  //   jenisUsaha: "Toko Kelontong",
+  //   pemilik: "Bapak Hasan",
+  //   rt: 5,
+  //   nomorWA: "081234560005",
+  //   deskripsi: "Kebutuhan sehari-hari, pulsa, dan gas LPG",
+  // },
+  // {
+  //   id: "6",
+  //   namaUsaha: "Catering Ibu Yuni",
+  //   jenisUsaha: "Makanan & Minuman",
+  //   pemilik: "Ibu Yuni",
+  //   rt: 2,
+  //   nomorWA: "081234560006",
+  //   deskripsi: "Nasi kotak, tumpeng, dan snack untuk acara",
+  // },
+  // {
+  //   id: "7",
+  //   namaUsaha: "Sablon Kaos Express",
+  //   jenisUsaha: "Jasa Sablon",
+  //   pemilik: "Bapak Rudi",
+  //   rt: 3,
+  //   nomorWA: "081234560007",
+  //   deskripsi: "Sablon kaos, mug, dan totebag untuk event",
+  // },
+  // {
+  //   id: "8",
+  //   namaUsaha: "Salon Cantik Jelita",
+  //   jenisUsaha: "Salon",
+  //   pemilik: "Ibu Fitri",
+  //   rt: 1,
+  //   nomorWA: "081234560008",
+  //   deskripsi: "Potong rambut, creambath, dan treatment wajah",
+  // },
 ];
 
 export const beritaList: Berita[] = [
@@ -246,6 +254,24 @@ export const beritaList: Berita[] = [
     tanggal: new Date("2025-11-30"),
     ringkasan:
       "Latihan rutin voli anak RW 12 berhasil dilaksanakan dengan lancar dan penuh semangat oleh anak-anak RW 12.",
+  }
+];
+
+export const lembagaList: Lembaga[] = [
+  {
+    id: "1",
+    nama: "Tabungan Amal Sosial",
+    logo: tabunganAmalImg,
+  },
+  {
+    id: "2",
+    nama: "Lansia Tangguh",
+    logo: lansiaTangguhImg,
+  },
+  {
+    id: "3",
+    nama: "Voli RW 12",
+    logo: voliRW12Img,
   }
 ];
 

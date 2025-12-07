@@ -84,3 +84,9 @@ export interface Berita {
   ringkasan: string;
   gambar?: string;
 }
+
+export interface Lembaga {
+  id: string;
+  nama: string;
+  logo: string;
+}

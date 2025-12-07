@@ -75,8 +75,8 @@ Terima kasih atas perhatiannya.`;
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <SectionTitle 
-          title="Pengaduan & Aspirasi" 
+        <SectionTitle
+          title="Pengaduan & Aspirasi"
           subtitle="Sampaikan masukan dan keluhan Anda"
         />
 
@@ -132,7 +132,7 @@ Terima kasih atas perhatiannya.`;
                       <SelectValue placeholder="Pilih RT" />
                     </SelectTrigger>
                     <SelectContent>
-                      {[1, 2, 3, 4, 5].map((rt) => (
+                      {[1, 2, 3, 4, 5, 6, 7, 8].map((rt) => (
                         <SelectItem key={rt} value={String(rt)}>
                           RT {String(rt).padStart(2, "0")}
                         </SelectItem>

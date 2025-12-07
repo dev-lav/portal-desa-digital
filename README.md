@@ -1,6 +1,6 @@
-# Portal RW 05 - Desa Digital
+# Portal RW 12 - Desa Digital
 
-Portal digital untuk warga RW 05, Desa Sukamaju. Website statis yang menyediakan informasi, layanan, dan akses mudah untuk warga.
+Portal digital untuk warga RW 12, Desa Ngijo. Website statis yang menyediakan informasi, layanan, dan akses mudah untuk warga.
 
 ## 🌟 Fitur
 
@@ -105,7 +105,6 @@ Setiap push ke branch `main` akan otomatis build dan deploy.
 
 ## 📝 Catatan Penting
 
-- **Data Dummy**: Semua data di portal ini adalah contoh (dummy data) untuk demonstrasi
 - **No Backend**: Aplikasi ini sepenuhnya statis, tidak ada backend atau database
 - **HashRouter**: Menggunakan HashRouter untuk kompatibilitas dengan GitHub Pages
 - **WhatsApp Integration**: Komunikasi dengan pengurus RW melalui link WhatsApp
@@ -131,14 +130,12 @@ Edit file `src/index.css` untuk mengubah color variables dan theme.
 
 ## 📄 Lisensi
 
-Portal ini dibuat untuk keperluan RW 05, Desa Sukamaju.
+Portal ini dibuat untuk keperluan RW 12, Desa Ngijo.
 
 ## 📞 Kontak
 
-Untuk pertanyaan atau masukan, hubungi pengurus RW 05 melalui:
-- WhatsApp: 081234567890
-- Email: rw05sukamaju@gmail.com
+Untuk pertanyaan atau masukan, hubungi pengurus RW 12 melalui: rolasunited@gmail.com
 
 ---
 
-Dibuat dengan ❤️ untuk warga RW 05
+Dibuat dengan ❤️ untuk warga RW 12

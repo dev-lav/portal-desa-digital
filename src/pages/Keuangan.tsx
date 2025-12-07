@@ -19,7 +19,7 @@ const Keuangan = () => {
       <div className="container mx-auto px-4 py-8">
         <SectionTitle
           title="Keuangan & Iuran RW"
-          subtitle="Transparansi laporan keuangan RW 12 (data contoh untuk demo)"
+          subtitle="Transparansi laporan keuangan RW 12"
         />
 
         {/* Info Banner */}
@@ -32,9 +32,8 @@ const Keuangan = () => {
               <div>
                 <h3 className="font-semibold mb-2">Tentang Transparansi Keuangan</h3>
                 <p className="text-sm text-muted-foreground">
-                  Data keuangan berikut adalah contoh format laporan kas RW. Transparansi keuangan penting untuk
-                  membangun kepercayaan dan akuntabilitas pengelolaan dana warga. Semua data di halaman ini adalah
-                  data dummy untuk keperluan demonstrasi portal.
+                  Data keuangan berikut adalah laporan kas RW. Transparansi keuangan penting untuk
+                  membangun kepercayaan dan akuntabilitas pengelolaan dana warga.
                 </p>
               </div>
             </div>

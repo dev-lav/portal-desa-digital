@@ -154,7 +154,7 @@ const ProfilRW = () => {
           <CardContent>
             <div className="flex flex-col md:flex-row gap-4">
               <a
-                href={`https://wa.me/${rwInfo.whatsapp}?text=Halo%20RW%2005,%20saya%20ingin%20bertanya`}
+                href={`https://wa.me/${rwInfo.whatsapp}?text=Halo%20RW%2012,%20saya%20ingin%20bertanya`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1"
