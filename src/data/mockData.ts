@@ -13,11 +13,12 @@ import {
 import lansiaTangguhImg from "@/images/lansia-tangguh.jpeg";
 import tabunganAmalImg from "@/images/tabungan-amal-sosial.jpeg";
 import voliRW12Img from "@/images/voli-rw-12.jpeg";
+import masjidAnNurImg from "@/images/masjid-an-nur.jpeg";
 
 export const pengurusRW: PengurusRW[] = [
   { id: "1", jabatan: "Ketua RW", nama: "Ahmad Fadillah, SE., M.M.B.", kontak: "..." },
-  { id: "2", jabatan: "Sekretaris", nama: "...", kontak: "..." },
-  { id: "3", jabatan: "Bendahara", nama: "...", kontak: "..." },
+  { id: "2", jabatan: "Sekretaris", nama: "Khanif Ilmiyawan", kontak: "..." },
+  { id: "3", jabatan: "Bendahara", nama: "Khairul Saleh", kontak: "..." },
 ];
 
 export const dataRT: RTInfo[] = [
@@ -27,7 +28,7 @@ export const dataRT: RTInfo[] = [
   { nomor: 4, ketua: "Rudy Widiarto(Pak Ghocir)", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 5, ketua: "Eko Suyono", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 6, ketua: "Akhmad Mawardi", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
-  { nomor: 7, ketua: "-", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 7, ketua: "Hadi Nurwanto", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 8, ketua: "Eko Mudjiono", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
 ];
 
@@ -126,7 +127,7 @@ export const rincianPengeluaran: RincianPengeluaran[] = [
     namaKegiatan: "KAS RW",
     tanggal: new Date("2025-11-30"),
     keterangan: "Bulanan",
-    nominal: 165000,
+    nominal: 465000,
   },
   {
     id: "2",
@@ -172,7 +173,7 @@ export const umkmList: UMKM[] = [
     jenisUsaha: "Makanan & Minuman",
     pemilik: "-",
     rt: 0,
-    nomorWA: "082257869294",
+    nomorWA: "+6282257869294",
     deskripsi: "Ayam Geprek, Ayam Katsu. Buka jam 8 pagi - 8 malam. Free delivery minimal 2 porsi",
   },
   {
@@ -181,7 +182,7 @@ export const umkmList: UMKM[] = [
     jenisUsaha: "Jasa Laundry",
     pemilik: "Hadhila",
     rt: 3,
-    nomorWA: "085282365820",
+    nomorWA: "+6285282365820",
     deskripsi: "Solusi tumpukan cucian Anda. Free ambil antar untuk daerah Karangploso",
   },
   // {
@@ -272,6 +273,11 @@ export const lembagaList: Lembaga[] = [
     id: "3",
     nama: "Voli RW 12",
     logo: voliRW12Img,
+  },
+  {
+    id: "4",
+    nama: "Masjid An-Nur",
+    logo: masjidAnNurImg,
   }
 ];
 
@@ -280,8 +286,9 @@ export const rwInfo = {
   desa: "Desa Ngijo",
   kecamatan: "Kecamatan Karangploso",
   kabupaten: "Kabupaten Malang",
+  provinsi: "Provinsi Jawa Timur",
   alamatPosko: "Balai RW 12",
   jamLayanan: "Senin - Jumat, 08.00 - 16.00 WIB",
-  whatsapp: "081255556991",
+  whatsapp: "+6281255556991",
   email: "rolasunited@gmail.com",
 };

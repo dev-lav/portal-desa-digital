@@ -84,7 +84,7 @@ const ProfilRW = () => {
                       </div>
                       <p className="text-xs text-primary font-semibold mb-1">{pengurus.jabatan}</p>
                       <p className="font-semibold mb-2">{pengurus.nama}</p>
-                      {pengurus.kontak && (
+                      {/* {pengurus.kontak && (
                         <a
                           href={`https://wa.me/${pengurus.kontak}`}
                           target="_blank"
@@ -93,7 +93,7 @@ const ProfilRW = () => {
                         >
                           {pengurus.kontak}
                         </a>
-                      )}
+                      )} */}
                     </div>
                   </CardContent>
                 </Card>
@@ -114,8 +114,8 @@ const ProfilRW = () => {
                   <tr className="border-b border-border">
                     <th className="text-left py-3 px-4 font-semibold text-sm">RT</th>
                     <th className="text-left py-3 px-4 font-semibold text-sm">Ketua RT</th>
-                    <th className="text-left py-3 px-4 font-semibold text-sm">Kontak</th>
-                    <th className="text-right py-3 px-4 font-semibold text-sm">Aksi</th>
+                    {/* <th className="text-left py-3 px-4 font-semibold text-sm">Kontak</th>
+                    <th className="text-right py-3 px-4 font-semibold text-sm">Aksi</th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -125,7 +125,7 @@ const ProfilRW = () => {
                         <span className="font-semibold">RT {String(rt.nomor).padStart(2, "0")}</span>
                       </td>
                       <td className="py-3 px-4">{rt.ketua}</td>
-                      <td className="py-3 px-4 text-sm text-muted-foreground">{rt.kontak}</td>
+                      {/* <td className="py-3 px-4 text-sm text-muted-foreground">{rt.kontak}</td>
                       <td className="py-3 px-4 text-right">
                         <a
                           href={`https://wa.me/${rt.kontak}`}
@@ -137,7 +137,7 @@ const ProfilRW = () => {
                             Hubungi
                           </Button>
                         </a>
-                      </td>
+                      </td> */}
                     </tr>
                   ))}
                 </tbody>

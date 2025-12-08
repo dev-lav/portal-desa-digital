@@ -31,7 +31,7 @@ const Beranda = () => {
               Selamat Datang di Portal RW {rwInfo.nomor}
             </h1>
             <p className="text-lg md:text-xl opacity-90 mb-6">
-              {rwInfo.desa}, {rwInfo.kecamatan}
+              {rwInfo.desa}, {rwInfo.kecamatan}, {rwInfo.kabupaten}, {rwInfo.provinsi}
             </p>
             <p className="text-base md:text-lg opacity-80">
               Portal digital untuk kemudahan akses informasi, layanan, dan kegiatan warga.
@@ -185,7 +185,7 @@ const Beranda = () => {
       {/* Lembaga Section */}
       <section className="container mx-auto px-4 mt-16 mb-16">
         <SectionTitle
-          title="Lembaga Desa"
+          title="Lembaga"
           subtitle="Mitra strategis pembangunan lingkungan RW 12"
         />
         <div className="px-12">
