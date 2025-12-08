@@ -14,15 +14,18 @@ import lansiaTangguhImg from "@/images/lansia-tangguh.jpeg";
 import tabunganAmalImg from "@/images/tabungan-amal-sosial.jpeg";
 import voliRW12Img from "@/images/voli-rw-12.jpeg";
 import masjidAnNurImg from "@/images/masjid-an-nur.jpeg";
+import pembukaanLansiaTangguhImg from "@/images/pembukaan-lansia-tangguh.jpeg";
+import voliAnakRutinImg from "@/images/voli-anak-rutin.png";
 
 export const pengurusRW: PengurusRW[] = [
   { id: "1", jabatan: "Ketua RW", nama: "Ahmad Fadillah, SE., M.M.B.", kontak: "..." },
-  { id: "2", jabatan: "Sekretaris", nama: "Khanif Ilmiyawan", kontak: "..." },
-  { id: "3", jabatan: "Bendahara", nama: "Khairul Saleh", kontak: "..." },
+  { id: "2", jabatan: "Wakil Ketua", nama: "Sutomo", kontak: "..." },
+  { id: "3", jabatan: "Sekretaris", nama: "Khanif Ilmiyawan", kontak: "..." },
+  { id: "4", jabatan: "Bendahara", nama: "Khairul Saleh", kontak: "..." },
 ];
 
 export const dataRT: RTInfo[] = [
-  { nomor: 1, ketua: "-", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 1, ketua: "Febri Tunggal", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 2, ketua: "Fathur Rohim", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 3, ketua: "Farris Adi Putra", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 4, ketua: "Rudy Widiarto(Pak Ghocir)", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
@@ -33,7 +36,7 @@ export const dataRT: RTInfo[] = [
 ];
 
 export const statistikPenduduk: StatistikPenduduk = {
-  totalKK: 438,
+  totalKK: 470,
   totalJiwa: 1657,
   komposisiUsia: {
     balita: 145,
@@ -248,6 +251,7 @@ export const beritaList: Berita[] = [
     tanggal: new Date("2025-11-17"),
     ringkasan:
       "Acara pembukaan sekolah sahabat lansia tangguh RW 12 berhasil dilaksanakan dengan lancar dan penuh semangat oleh warga lansia RW 12.",
+    gambar: pembukaanLansiaTangguhImg,
   },
   {
     id: "2",
@@ -255,6 +259,7 @@ export const beritaList: Berita[] = [
     tanggal: new Date("2025-11-30"),
     ringkasan:
       "Latihan rutin voli anak RW 12 berhasil dilaksanakan dengan lancar dan penuh semangat oleh anak-anak RW 12.",
+    gambar: voliAnakRutinImg,
   }
 ];
 

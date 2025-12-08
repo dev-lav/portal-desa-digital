@@ -27,8 +27,8 @@ const Kegiatan = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8">
-        <SectionTitle 
-          title="Kegiatan & Berita RW" 
+        <SectionTitle
+          title="Kegiatan & Berita RW"
           subtitle="Informasi agenda dan dokumentasi kegiatan"
         />
 
@@ -132,8 +132,16 @@ const Kegiatan = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {beritaList.map((berita) => (
               <Card key={berita.id} className="hover:shadow-lg transition-shadow">
-                <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                  <Calendar className="h-12 w-12 text-primary/40" />
+                <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden">
+                  {berita.gambar ? (
+                    <img
+                      src={berita.gambar}
+                      alt={berita.judul}
+                      className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
+                    />
+                  ) : (
+                    <Calendar className="h-12 w-12 text-primary/40" />
+                  )}
                 </div>
                 <CardHeader>
                   <CardTitle className="text-lg">{berita.judul}</CardTitle>
