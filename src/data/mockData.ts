@@ -16,6 +16,16 @@ import voliRW12Img from "@/images/voli-rw-12.jpeg";
 import masjidAnNurImg from "@/images/masjid-an-nur.jpeg";
 import pembukaanLansiaTangguhImg from "@/images/pembukaan-lansia-tangguh.jpeg";
 import voliAnakRutinImg from "@/images/voli-anak-rutin.png";
+import rt02SquareImg from "@/images/rt-02-square.jpeg";
+import rt03SquareImg from "@/images/rt-03-square.jpeg";
+import rt04SquareImg from "@/images/rt-04-square.jpeg";
+import rt05SquareImg from "@/images/rt-05-square.jpeg";
+import rt06SquareImg from "@/images/rt-06-square.jpeg";
+import kerjaBaktiLingkunganRt3Img from "@/images/kerjaBaktiLingkunganRt3Img.jpeg";
+import kerjaBaktiLingkunganRt8Img from "@/images/kerjaBaktiLingkunganRt8Img.png";
+import kerjaBaktiLingkunganRt5Img from "@/images/kerjaBaktiLingkunganRt5Img.jpeg";
+import sekolahLansiaImg from "@/images/lansia-tangguh-02-2026.jpeg";
+import gotongRoyongRt2Img from "@/images/gotong-royong-rt-02.jpeg";
 
 export const pengurusRW: PengurusRW[] = [
   { id: "1", jabatan: "Ketua RW", nama: "Ahmad Fadillah, SE., M.M.B.", kontak: "..." },
@@ -26,11 +36,11 @@ export const pengurusRW: PengurusRW[] = [
 
 export const dataRT: RTInfo[] = [
   { nomor: 1, ketua: "Febri Tunggal", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
-  { nomor: 2, ketua: "Fathur Rohim", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
-  { nomor: 3, ketua: "Farris Adi Putra", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
-  { nomor: 4, ketua: "Rudy Widiarto(Pak Ghocir)", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
-  { nomor: 5, ketua: "Eko Suyono", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
-  { nomor: 6, ketua: "Akhmad Mawardi", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 2, ketua: "Fathur Rohim", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt02SquareImg },
+  { nomor: 3, ketua: "Farris Adi Putra", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt03SquareImg },
+  { nomor: 4, ketua: "Rudy Widiarto(Pak Ghocir)", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt04SquareImg },
+  { nomor: 5, ketua: "Eko Suyono", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt05SquareImg },
+  { nomor: 6, ketua: "Akhmad Mawardi", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt06SquareImg },
   { nomor: 7, ketua: "Hadi Nurwanto", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
   { nomor: 8, ketua: "Eko Mudjiono", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
 ];
@@ -188,15 +198,15 @@ export const umkmList: UMKM[] = [
     nomorWA: "+6285282365820",
     deskripsi: "Solusi tumpukan cucian Anda. Free ambil antar untuk daerah Karangploso",
   },
-  // {
-  //   id: "3",
-  //   namaUsaha: "Bengkel Motor Maju",
-  //   jenisUsaha: "Bengkel",
-  //   pemilik: "Bapak Andi",
-  //   rt: 3,
-  //   nomorWA: "081234560003",
-  //   deskripsi: "Service motor, ganti oli, ban, dan spare part",
-  // },
+  {
+    id: "3",
+    namaUsaha: "Bakoelan Mama",
+    jenisUsaha: "Makanan & Minuman",
+    pemilik: "Lailatul Illa F.J",
+    rt: 4,
+    nomorWA: "+6285649007151",
+    deskripsi: "Aneka Olahan Frozen Food Homemade",
+  },
   // {
   //   id: "4",
   //   namaUsaha: "Les Privat Cerdas",
@@ -260,7 +270,47 @@ export const beritaList: Berita[] = [
     ringkasan:
       "Latihan rutin voli anak RW 12 berhasil dilaksanakan dengan lancar dan penuh semangat oleh anak-anak RW 12.",
     gambar: voliAnakRutinImg,
-  }
+  },
+  {
+    id: "3",
+    judul: "Kerja bakti lingkungan RT 3 RW 12",
+    tanggal: new Date("2026-02-08"),
+    ringkasan:
+      "Kegiatan pemangkasan pohon sebagai antisipasi cuaca ektrim di lingkungan RT 3 RW 12 ",
+    gambar: kerjaBaktiLingkunganRt3Img,
+  },
+  {
+    id: "4",
+    judul: "Kerja bakti lingkungan RT 8 RW 12",
+    tanggal: new Date("2026-02-08"),
+    ringkasan:
+      "Kegiatan pemangkasan pohon sebagai antisipasi cuaca ektrim di lingkungan RT 8 RW 12 ",
+    gambar: kerjaBaktiLingkunganRt8Img,
+  },
+  {
+    id: "5",
+    judul: "Kerja bakti lingkungan RT 5 RW 12",
+    tanggal: new Date("2026-02-08"),
+    ringkasan:
+      "Kegiatan pemangkasan pohon sebagai antisipasi cuaca ektrim di lingkungan RT 5 RW 12 ",
+    gambar: kerjaBaktiLingkunganRt5Img,
+  },
+  {
+    id: "6",
+    judul: "Sekolah lansia tangguh",
+    tanggal: new Date("2026-02-08"),
+    ringkasan:
+      "kegiatan sekolah lansia tangguh ( Selantang) RW 12 hari ini. Jumlah peserta 29 lansia. ",
+    gambar: sekolahLansiaImg,
+  },
+  {
+    id: "7",
+    judul: "Kerja bakti lingkungan RT 2 RW 12",
+    tanggal: new Date("2026-02-08"),
+    ringkasan:
+      "Gotong royong benahi lingkungan dalam memyambut Ramadhan di RT 2 RW 12 ",
+    gambar: gotongRoyongRt2Img,
+  },
 ];
 
 export const lembagaList: Lembaga[] = [

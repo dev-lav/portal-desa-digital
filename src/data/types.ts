@@ -14,6 +14,7 @@ export interface RTInfo {
   jumlahKK: number;
   jumlahJiwa: number;
   jumlahLansia: number;
+  foto?: string;
 }
 
 export interface StatistikPenduduk {

@@ -11,12 +11,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { statistikPenduduk, dataRT, kegiatanList, rwInfo, lembagaList } from "@/data/mockData";
+import { statistikPenduduk, dataRT, kegiatanList, rwInfo, lembagaList, beritaList } from "@/data/mockData";
 
 const Beranda = () => {
   const upcomingEvents = kegiatanList
     .filter((k) => k.tanggal >= new Date())
     .sort((a, b) => a.tanggal.getTime() - b.tanggal.getTime())
+    .slice(0, 3);
+
+  const latestNews = beritaList
+    .sort((a, b) => b.tanggal.getTime() - a.tanggal.getTime())
     .slice(0, 3);
 
   const totalRT = dataRT.length;
@@ -127,6 +131,73 @@ const Beranda = () => {
               </CardContent>
             </Card>
           </Link>
+        </div>
+      </section>
+
+      {/* Berita & Dokumentasi */}
+      <section className="container mx-auto px-4 mt-16">
+        <div className="flex items-center justify-between mb-6">
+          <SectionTitle
+            title="Berita & Dokumentasi"
+            subtitle="Kabar terbaru dan dokumentasi kegiatan RW 12"
+          />
+          <Link to="/kegiatan">
+            <Button variant="outline" size="sm">Lihat Semua</Button>
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {latestNews.map((news) => (
+            <Link key={news.id} to="/kegiatan">
+              <Card className="hover:shadow-lg transition-all hover:scale-105 cursor-pointer h-full overflow-hidden flex flex-col">
+                <div className="aspect-video w-full bg-muted relative">
+                  {news.gambar ? (
+                    <img
+                      src={news.gambar}
+                      alt={news.judul}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-muted text-muted-foreground">
+                      <FileText className="h-10 w-10" />
+                    </div>
+                  )}
+                  <div className="absolute top-2 right-2 bg-background/80 backdrop-blur-sm px-2 py-1 rounded text-xs font-medium">
+                    {news.tanggal.toLocaleDateString("id-ID", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </div>
+                </div>
+                <CardContent className="p-4 flex-1 flex flex-col">
+                  <h3 className="font-semibold text-lg mb-2 line-clamp-2 hover:text-primary transition-colors">
+                    {news.judul}
+                  </h3>
+                  <p className="text-sm text-muted-foreground line-clamp-3 mb-4 flex-1">
+                    {news.ringkasan}
+                  </p>
+                  <div className="text-xs text-primary font-medium mt-auto flex items-center">
+                    Baca selengkapnya
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="ml-1 h-3 w-3"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
         </div>
       </section>
 

@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Home, Users, User } from "lucide-react";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -108,40 +108,60 @@ const ProfilRW = () => {
             <CardTitle>Daftar Rukun Tetangga (RT)</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-3 px-4 font-semibold text-sm">RT</th>
-                    <th className="text-left py-3 px-4 font-semibold text-sm">Ketua RT</th>
-                    {/* <th className="text-left py-3 px-4 font-semibold text-sm">Kontak</th>
-                    <th className="text-right py-3 px-4 font-semibold text-sm">Aksi</th> */}
-                  </tr>
-                </thead>
-                <tbody>
-                  {dataRT.map((rt) => (
-                    <tr key={rt.nomor} className="border-b border-border hover:bg-muted/30 transition-colors">
-                      <td className="py-3 px-4">
-                        <span className="font-semibold">RT {String(rt.nomor).padStart(2, "0")}</span>
-                      </td>
-                      <td className="py-3 px-4">{rt.ketua}</td>
-                      {/* <td className="py-3 px-4 text-sm text-muted-foreground">{rt.kontak}</td>
-                      <td className="py-3 px-4 text-right">
-                        <a
-                          href={`https://wa.me/${rt.kontak}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Button size="sm" variant="outline">
-                            <Phone className="h-3 w-3 mr-1" />
-                            Hubungi
-                          </Button>
-                        </a>
-                      </td> */}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {dataRT.map((rt) => (
+                <Card key={rt.nomor} className="bg-muted/30 overflow-hidden hover:shadow-md transition-shadow border-muted flex flex-col">
+                  <div className="aspect-square w-full bg-background flex items-center justify-center relative border-b">
+                    {rt.foto ? (
+                      <img
+                        src={rt.foto}
+                        alt={`RT ${rt.nomor}`}
+                        className="w-full h-full object-contain p-2"
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center justify-center text-muted-foreground/50">
+                        <MapPin className="h-10 w-10 mb-2" />
+                        <span className="text-xs font-medium">Foto Wilayah RT {String(rt.nomor).padStart(2, "0")}</span>
+                      </div>
+                    )}
+                    <div className="absolute top-3 right-3 bg-primary text-primary-foreground text-xs font-bold px-2.5 py-1 rounded-md shadow-sm">
+                      RT {String(rt.nomor).padStart(2, "0")}
+                    </div>
+                  </div>
+                  <CardContent className="p-4 flex-1 flex flex-col">
+                    <div className="mb-4">
+                      <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1">Ketua RT</p>
+                      <p className="font-semibold text-sm line-clamp-1 text-foreground" title={rt.ketua}>
+                        {rt.ketua}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2 mt-auto border-t pt-3">
+                      <div className="text-center group cursor-help" title={`Jumlah Kepala Keluarga: ${rt.jumlahKK}`}>
+                        <div className="flex justify-center mb-1.5 transition-transform group-hover:scale-110">
+                          <Home className="h-4 w-4 text-blue-500" />
+                        </div>
+                        <p className="text-xs font-bold text-foreground">{rt.jumlahKK}</p>
+                        <p className="text-[10px] text-muted-foreground font-medium">KK</p>
+                      </div>
+                      <div className="text-center group cursor-help" title={`Jumlah Penduduk: ${rt.jumlahJiwa}`}>
+                        <div className="flex justify-center mb-1.5 transition-transform group-hover:scale-110">
+                          <Users className="h-4 w-4 text-green-500" />
+                        </div>
+                        <p className="text-xs font-bold text-foreground">{rt.jumlahJiwa}</p>
+                        <p className="text-[10px] text-muted-foreground font-medium">Jiwa</p>
+                      </div>
+                      <div className="text-center group cursor-help" title={`Jumlah Lansia: ${rt.jumlahLansia}`}>
+                        <div className="flex justify-center mb-1.5 transition-transform group-hover:scale-110">
+                          <User className="h-4 w-4 text-orange-500" />
+                        </div>
+                        <p className="text-xs font-bold text-foreground">{rt.jumlahLansia}</p>
+                        <p className="text-[10px] text-muted-foreground font-medium">Lansia</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </CardContent>
         </Card>

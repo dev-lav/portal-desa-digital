@@ -6,6 +6,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import Beranda from "./pages/Beranda";
+import BerandaRevamp from "./pages/BerandaRevamp";
 import ProfilRW from "./pages/ProfilRW";
 import DataWarga from "./pages/DataWarga";
 import LayananSurat from "./pages/LayananSurat";
@@ -29,6 +30,7 @@ const App = () => (
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Beranda />} />
+              <Route path="/v2" element={<BerandaRevamp />} />
               <Route path="/profil" element={<ProfilRW />} />
               <Route path="/data-warga" element={<DataWarga />} />
               <Route path="/layanan-surat" element={<LayananSurat />} />
