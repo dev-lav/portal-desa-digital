@@ -12,7 +12,7 @@ export const Footer = () => {
           {rwInfo.alamatPosko} · {rwInfo.jamLayanan}
         </p>
         <p>
-          {rwInfo.kecamatan}, {rwInfo.kabupaten}
+          {rwInfo.kecamatan}, {rwInfo.kabupaten}, Jawa Timur
         </p>
         <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 font-semibold text-primary">
           <Link to="/profil" className="hover:underline">Profil & pengurus</Link>

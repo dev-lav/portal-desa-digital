@@ -5,10 +5,12 @@ import { BeritaCard } from "@/components/konten/BeritaCard";
 import { beritaList } from "@/data/mockData";
 import { formatTanggal } from "@/lib/format";
 import { cn } from "@/lib/utils";
+import { useJudulHalaman } from "@/hooks/use-judul-halaman";
 
 const BeritaDetail = () => {
   const { id } = useParams();
   const berita = beritaList.find((b) => b.id === id);
+  useJudulHalaman(berita?.judul ?? "Berita tidak ditemukan");
 
   if (!berita) {
     return (

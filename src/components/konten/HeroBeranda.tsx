@@ -104,8 +104,8 @@ export const HeroBeranda = () => (
             <br />
             jaga lingkungan.
           </h1>
-          <p className="mt-3 hidden max-w-[34ch] opacity-85 md:block md:text-lg">
-            Kabar, kegiatan, dan laporan kas RW {rwInfo.nomor} {rwInfo.desa}. Semuanya ada di sini.
+          <p className="mt-2 max-w-[38ch] text-sm opacity-85 md:mt-3 md:text-lg">
+            Kabar, kegiatan, dan kas warga RW {rwInfo.nomor} {rwInfo.desa}, Karangploso, Malang.
           </p>
           <p className="mt-4 hidden text-sm opacity-65 md:block">
             {formatTanggal(new Date(), { weekday: "long", day: "numeric", month: "long", year: "numeric" })}

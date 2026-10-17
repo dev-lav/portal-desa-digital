@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { useJudulHalaman } from "@/hooks/use-judul-halaman";
 
 interface PageHeaderProps {
   title: string;
@@ -8,6 +9,7 @@ interface PageHeaderProps {
 
 // Kepala halaman hijau tua, senada dengan hero beranda
 export const PageHeader = ({ title, subtitle, children }: PageHeaderProps) => {
+  useJudulHalaman(title);
   return (
     <div className="relative overflow-hidden bg-brand text-brand-foreground">
       <span className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 animate-putar rounded-full border-[24px] border-dashed border-success/25 motion-reduce:animate-none" />
