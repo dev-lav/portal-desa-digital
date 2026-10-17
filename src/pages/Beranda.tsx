@@ -8,10 +8,8 @@ import { UmkmCard } from "@/components/konten/UmkmCard";
 import { LembagaGrid } from "@/components/konten/LembagaGrid";
 import { kegiatanList, beritaList, laporanKasBulanan, umkmList, dataRT, statistikPenduduk } from "@/data/mockData";
 import { awalHariIni } from "@/lib/format";
-import { useJudulHalaman } from "@/hooks/use-judul-halaman";
 
 const Beranda = () => {
-  useJudulHalaman();
   const hariIni = awalHariIni();
   const agenda = kegiatanList
     .filter((k) => k.tanggal >= hariIni)

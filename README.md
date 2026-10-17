@@ -20,7 +20,7 @@ Portal digital untuk warga RW 12, Desa Ngijo. Website statis yang menyediakan in
 - **TypeScript** - Type safety
 - **Tailwind CSS** - Styling
 - **Shadcn/ui** - Komponen UI
-- **React Router (HashRouter)** - Routing untuk GitHub Pages
+- **React Router** - Routing dengan URL bersih, di-prerender saat build
 
 ## 📦 Instalasi
 
@@ -66,7 +66,10 @@ Progres dan hasil deploy bisa dilihat di tab **Actions**.
 ## 📝 Catatan Penting
 
 - **No Backend**: Aplikasi ini sepenuhnya statis, tidak ada backend atau database
-- **HashRouter**: Menggunakan HashRouter (URL berbentuk `/#/halaman`) untuk kompatibilitas dengan GitHub Pages
+- **URL bersih + prerender**: `npm run build` menjalankan `scripts/prerender.mjs` yang menulis
+  `dist/<halaman>/index.html` lengkap dengan konten dan meta SEO tiap halaman/berita, serta
+  `sitemap.xml` dan `404.html`. Daftar halaman dan meta-nya ada di `src/seo/meta.ts`.
+  Tautan lama berformat `/#/halaman` otomatis dialihkan ke `/halaman`.
 - **WhatsApp Integration**: Komunikasi dengan pengurus RW melalui link WhatsApp
 - **Privacy**: Tidak ada data pribadi yang dikumpulkan atau disimpan
 
@@ -77,7 +80,7 @@ Progres dan hasil deploy bisa dilihat di tab **Actions**.
 Hampir semua konten ada di `src/data/mockData.ts`:
 - `pengumuman` - pengumuman penting di atas beranda (isi `null` kalau tidak ada)
 - `kegiatanList` - agenda kegiatan
-- `beritaList` - berita & dokumentasi (tiap berita punya halaman `/#/kegiatan/<id>`)
+- `beritaList` - berita & dokumentasi, bisa berisi `galeri` foto atau `video` (tiap berita punya halaman `/kegiatan/<id>`)
 - `laporanKasBulanan`, `rincianPengeluaran` - laporan kas
 - `fotoHero` - foto kolase di beranda
 - `dataRT`, `pengurusRW`, `umkmList`, `lembagaList`, `rwInfo`
@@ -91,8 +94,9 @@ Warna diambil dari logo RW 12 dan diatur sebagai variabel di `src/index.css`.
 ### Menambah Halaman
 
 1. Buat component baru di `src/pages/`
-2. Import dan tambahkan route di `src/App.tsx`
+2. Import dan tambahkan route di `src/AppShell.tsx`
 3. Kalau perlu masuk menu utama, tambahkan di `src/components/navigasi.ts`
+4. Tambahkan judul & deskripsinya di `halamanTetap` pada `src/seo/meta.ts` agar ikut di-prerender dan masuk sitemap
 
 ## 📄 Lisensi
 

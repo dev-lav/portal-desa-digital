@@ -5,12 +5,11 @@ import { BeritaCard } from "@/components/konten/BeritaCard";
 import { beritaList } from "@/data/mockData";
 import { formatTanggal } from "@/lib/format";
 import { cn } from "@/lib/utils";
-import { useJudulHalaman } from "@/hooks/use-judul-halaman";
+import { urlKanonik } from "@/seo/meta";
 
 const BeritaDetail = () => {
   const { id } = useParams();
   const berita = beritaList.find((b) => b.id === id);
-  useJudulHalaman(berita?.judul ?? "Berita tidak ditemukan");
 
   if (!berita) {
     return (
@@ -29,8 +28,7 @@ const BeritaDetail = () => {
     .sort((a, b) => b.tanggal.getTime() - a.tanggal.getTime())
     .slice(0, 4);
 
-  // Pakai window.location agar tautan tetap benar di domain mana pun
-  const tautan = window.location.href;
+  const tautan = urlKanonik(`/kegiatan/${berita.id}`);
   const pesanWA = `${berita.judul}\n\n${berita.ringkasan.trim()}\n\nSelengkapnya: ${tautan}`;
 
   return (

@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import { useJudulHalaman } from "@/hooks/use-judul-halaman";
 
 const NotFound = () => {
-  useJudulHalaman("Halaman tidak ditemukan");
   return (
   <div className="container py-20 text-center">
     <p className="text-6xl font-extrabold text-primary/30">404</p>
