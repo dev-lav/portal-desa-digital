@@ -43,8 +43,28 @@ const BeritaDetail = () => {
       <p className="mt-4 text-sm text-muted-foreground">{formatTanggal(berita.tanggal, { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</p>
       <h1 className="mt-1 text-2xl font-extrabold leading-tight tracking-tight md:text-3xl">{berita.judul}</h1>
 
-      {berita.gambar && (
-        <img src={berita.gambar} alt={berita.judul} className="mt-5 w-full rounded-2xl border border-border object-cover" />
+      {berita.video ? (
+        <div className="mt-5 overflow-hidden rounded-2xl bg-black">
+          {/* playsInline: di iPhone video diputar di halaman, tidak langsung layar penuh */}
+          <video
+            src={berita.video.src}
+            poster={berita.gambar}
+            controls
+            playsInline
+            preload="metadata"
+            className="mx-auto max-h-[75svh] w-full object-contain"
+          >
+            Browser Anda tidak mendukung pemutar video.{" "}
+            <a href={berita.video.src} className="underline">
+              Unduh videonya
+            </a>
+            .
+          </video>
+        </div>
+      ) : (
+        berita.gambar && (
+          <img src={berita.gambar} alt={berita.judul} className="mt-5 w-full rounded-2xl border border-border object-cover" />
+        )
       )}
 
       {berita.galeri && berita.galeri.length > 0 && (

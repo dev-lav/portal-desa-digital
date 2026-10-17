@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FileText } from "lucide-react";
+import { FileText, Play } from "lucide-react";
 import { Berita } from "@/data/types";
 import { formatTanggal } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -18,7 +18,7 @@ export const BeritaCard = ({ berita, besar = false, className }: BeritaCardProps
       className,
     )}
   >
-    <div className={cn("w-full overflow-hidden bg-muted", besar ? "aspect-video md:aspect-[21/9]" : "aspect-[4/3]")}>
+    <div className={cn("relative w-full overflow-hidden bg-muted", besar ? "aspect-video md:aspect-[21/9]" : "aspect-[4/3]")}>
       {berita.gambar ? (
         <img
           src={berita.gambar}
@@ -30,6 +30,12 @@ export const BeritaCard = ({ berita, besar = false, className }: BeritaCardProps
         <div className="flex h-full w-full items-center justify-center text-muted-foreground">
           <FileText className="h-10 w-10" />
         </div>
+      )}
+      {berita.video && (
+        <span className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full bg-black/65 px-2.5 py-1 text-xs font-bold text-white">
+          <Play className="h-3.5 w-3.5 fill-current" />
+          {berita.video.durasi ?? "Video"}
+        </span>
       )}
     </div>
     <div className="flex flex-1 flex-col gap-1 px-3 pb-3 pt-2.5">

@@ -34,6 +34,8 @@ import lombaBakiakRemajaImg from "@/images/lomba-bakiak-remaja.jpeg";
 import lombaBakiakIbuImg from "@/images/lomba-bakiak-ibu.jpeg";
 import lombaEngklek1Img from "@/images/lomba-engklek-1.jpeg";
 import lombaEngklek2Img from "@/images/lomba-engklek-2.jpeg";
+import posterJalanSehatImg from "@/images/poster-jalan-sehat.jpeg";
+import posterTariTradisionalImg from "@/images/poster-tari-tradisional.jpeg";
 
 export const pengurusRW: PengurusRW[] = [
   { id: "1", jabatan: "Ketua RW", nama: "Ahmad Fadillah, SE., M.M.B.", kontak: "..." },
@@ -353,6 +355,24 @@ export const beritaList: Berita[] = [
     ringkasan:
       "Warga RW 12 dari anak-anak hingga dewasa mengikuti karnaval dengan busana adat dan nuansa merah putih untuk memeriahkan HUT Kemerdekaan RI ke-81.",
     gambar: karnavalWargaImg,
+  },
+  {
+    id: "12",
+    judul: "Jalan sehat warga",
+    tanggal: new Date("2026-08-17"),
+    ringkasan:
+      "Warga RW 12 mengikuti jalan sehat bersama, banyak yang tampil dengan kebaya, caping, dan selempang merah putih dalam suasana peringatan HUT Kemerdekaan RI ke-81.",
+    gambar: posterJalanSehatImg,
+    video: { src: "/videos/jalan-sehat.mp4", durasi: "0:41" },
+  },
+  {
+    id: "13",
+    judul: "Penampilan tari tradisional dan reog",
+    tanggal: new Date("2026-08-24"),
+    ringkasan:
+      "Penampilan tari tradisional dan reog menjadi bagian dari rangkaian peringatan HUT Kemerdekaan RI ke-81 di RW 12, disaksikan warga dari anak-anak hingga orang tua.",
+    gambar: posterTariTradisionalImg,
+    video: { src: "/videos/tari-tradisional-dan-reog.mp4", durasi: "0:51" },
   },
 ];
 

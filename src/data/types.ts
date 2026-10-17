@@ -86,6 +86,11 @@ export interface Berita {
   gambar?: string;
   // Foto tambahan yang tampil di halaman detail
   galeri?: string[];
+  // Video kegiatan (file di public/videos). `gambar` dipakai sebagai sampulnya.
+  video?: {
+    src: string;
+    durasi?: string;
+  };
 }
 
 export interface Lembaga {
