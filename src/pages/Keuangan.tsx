@@ -1,170 +1,84 @@
-import { DollarSign, TrendingUp, TrendingDown, Info } from "lucide-react";
+import { Info } from "lucide-react";
+import { PageHeader } from "@/components/PageHeader";
 import { SectionTitle } from "@/components/SectionTitle";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { KasRingkas } from "@/components/konten/KasRingkas";
 import { laporanKasBulanan, rincianPengeluaran } from "@/data/mockData";
+import { formatRupiah, formatTanggal } from "@/lib/format";
 
 const Keuangan = () => {
-  const formatRupiah = (amount: number) => {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      minimumFractionDigits: 0,
-    }).format(amount);
-  };
-
-  const latestKas = laporanKasBulanan[laporanKasBulanan.length - 1];
+  const kasTerakhir = laporanKasBulanan[laporanKasBulanan.length - 1];
+  const riwayat = [...laporanKasBulanan].reverse();
+  const totalRincian = rincianPengeluaran.reduce((sum, item) => sum + item.nominal, 0);
+  const terbesar = Math.max(...rincianPengeluaran.map((r) => r.nominal), 1);
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <SectionTitle
-          title="Keuangan & Iuran RW"
-          subtitle="Transparansi laporan keuangan RW 12"
-        />
+    <>
+      <PageHeader title="Kas RW" subtitle="Laporan kas RW 12 secara terbuka untuk seluruh warga." />
 
-        {/* Info Banner */}
-        <Card className="mb-8 bg-primary/5 border-primary/20">
-          <CardContent className="p-6">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <Info className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Tentang Transparansi Keuangan</h3>
-                <p className="text-sm text-muted-foreground">
-                  Data keuangan berikut adalah laporan kas RW. Transparansi keuangan penting untuk
-                  membangun kepercayaan dan akuntabilitas pengelolaan dana warga.
-                </p>
+      <div className="container">
+        {kasTerakhir && (
+          <section className="mt-8 md:max-w-xl">
+            <KasRingkas laporan={kasTerakhir} tautan={false} />
+            <p className="mt-2.5 flex items-start gap-2 text-sm text-muted-foreground">
+              <Info className="mt-0.5 h-4 w-4 flex-shrink-0" />
+              Data terakhir: {kasTerakhir.bulan}. Pertanyaan soal kas bisa disampaikan ke bendahara lewat pengurus RW.
+            </p>
+          </section>
+        )}
+
+        {rincianPengeluaran.length > 0 && (
+          <section className="mt-8">
+            <SectionTitle title="Uang kas dipakai untuk apa?" subtitle={kasTerakhir ? `Rincian pengeluaran ${kasTerakhir.bulan}` : undefined} />
+            <div className="divide-y divide-border rounded-2xl border border-border bg-card">
+              {[...rincianPengeluaran]
+                .sort((a, b) => b.nominal - a.nominal)
+                .map((item) => (
+                  <div key={item.id} className="px-4 py-3">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <div className="min-w-0">
+                        <p className="font-bold">{item.namaKegiatan}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {item.keterangan} · {formatTanggal(item.tanggal, { day: "numeric", month: "short", year: "numeric" })}
+                        </p>
+                      </div>
+                      <p className="whitespace-nowrap font-bold">{formatRupiah(item.nominal)}</p>
+                    </div>
+                    {/* Batang proporsi pengeluaran */}
+                    <div className="mt-2 h-1.5 rounded-full bg-muted">
+                      <div className="h-full rounded-full bg-primary" style={{ width: `${(item.nominal / terbesar) * 100}%` }} />
+                    </div>
+                  </div>
+                ))}
+              <div className="flex items-baseline justify-between bg-muted/60 px-4 py-3 font-extrabold">
+                <span>Total</span>
+                <span>{formatRupiah(totalRincian)}</span>
               </div>
             </div>
-          </CardContent>
-        </Card>
+          </section>
+        )}
 
-        {/* Saldo Terakhir */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center">
-                  <DollarSign className="h-6 w-6 text-success" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground mb-1">Saldo Akhir</p>
-                  <p className="text-xl font-bold text-foreground">{formatRupiah(latestKas.saldoAkhir)}</p>
-                  <p className="text-xs text-muted-foreground">{latestKas.bulan}</p>
-                </div>
+        <section className="mt-8">
+          <SectionTitle title="Riwayat per bulan" />
+          <div className="grid gap-2.5 md:grid-cols-2">
+            {riwayat.map((laporan) => (
+              <div key={laporan.bulan} className="rounded-2xl border border-border bg-card p-4">
+                <p className="mb-2 font-bold">{laporan.bulan}</p>
+                <dl className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+                  <dt className="text-muted-foreground">Saldo awal</dt>
+                  <dd className="text-right">{formatRupiah(laporan.saldoAwal)}</dd>
+                  <dt className="text-muted-foreground">Pemasukan</dt>
+                  <dd className="text-right text-success">+ {formatRupiah(laporan.pemasukan)}</dd>
+                  <dt className="text-muted-foreground">Pengeluaran</dt>
+                  <dd className="text-right text-destructive">− {formatRupiah(laporan.pengeluaran)}</dd>
+                  <dt className="border-t border-border pt-1 font-bold">Saldo akhir</dt>
+                  <dd className="border-t border-border pt-1 text-right font-bold">{formatRupiah(laporan.saldoAkhir)}</dd>
+                </dl>
               </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <TrendingUp className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground mb-1">Pemasukan</p>
-                  <p className="text-xl font-bold text-foreground">{formatRupiah(latestKas.pemasukan)}</p>
-                  <p className="text-xs text-muted-foreground">{latestKas.bulan}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-destructive/10 rounded-lg flex items-center justify-center">
-                  <TrendingDown className="h-6 w-6 text-destructive" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground mb-1">Pengeluaran</p>
-                  <p className="text-xl font-bold text-foreground">{formatRupiah(latestKas.pengeluaran)}</p>
-                  <p className="text-xs text-muted-foreground">{latestKas.bulan}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Laporan Kas Bulanan */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>Ringkasan Kas Bulanan</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-3 px-4 font-semibold text-sm">Bulan</th>
-                    <th className="text-right py-3 px-4 font-semibold text-sm">Saldo Awal</th>
-                    <th className="text-right py-3 px-4 font-semibold text-sm">Pemasukan</th>
-                    <th className="text-right py-3 px-4 font-semibold text-sm">Pengeluaran</th>
-                    <th className="text-right py-3 px-4 font-semibold text-sm">Saldo Akhir</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {laporanKasBulanan.map((laporan, idx) => (
-                    <tr key={idx} className="border-b border-border hover:bg-muted/30 transition-colors">
-                      <td className="py-3 px-4 font-medium">{laporan.bulan}</td>
-                      <td className="py-3 px-4 text-right">{formatRupiah(laporan.saldoAwal)}</td>
-                      <td className="py-3 px-4 text-right text-success">{formatRupiah(laporan.pemasukan)}</td>
-                      <td className="py-3 px-4 text-right text-destructive">{formatRupiah(laporan.pengeluaran)}</td>
-                      <td className="py-3 px-4 text-right font-semibold">{formatRupiah(laporan.saldoAkhir)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Rincian Pengeluaran */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Rincian Pengeluaran per Kegiatan</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-3 px-4 font-semibold text-sm">Tanggal</th>
-                    <th className="text-left py-3 px-4 font-semibold text-sm">Nama Kegiatan</th>
-                    <th className="text-left py-3 px-4 font-semibold text-sm">Keterangan</th>
-                    <th className="text-right py-3 px-4 font-semibold text-sm">Nominal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {rincianPengeluaran.map((item) => (
-                    <tr key={item.id} className="border-b border-border hover:bg-muted/30 transition-colors">
-                      <td className="py-3 px-4 text-sm">
-                        {item.tanggal.toLocaleDateString("id-ID", {
-                          day: "2-digit",
-                          month: "short",
-                          year: "numeric",
-                        })}
-                      </td>
-                      <td className="py-3 px-4 font-medium">{item.namaKegiatan}</td>
-                      <td className="py-3 px-4 text-sm text-muted-foreground">{item.keterangan}</td>
-                      <td className="py-3 px-4 text-right font-semibold">{formatRupiah(item.nominal)}</td>
-                    </tr>
-                  ))}
-                  <tr className="bg-muted/50 font-semibold">
-                    <td colSpan={3} className="py-3 px-4 text-right">Total Pengeluaran</td>
-                    <td className="py-3 px-4 text-right">
-                      {formatRupiah(rincianPengeluaran.reduce((sum, item) => sum + item.nominal, 0))}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </CardContent>
-        </Card>
+            ))}
+          </div>
+        </section>
       </div>
-    </div>
+    </>
   );
 };
 

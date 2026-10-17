@@ -1,15 +1,12 @@
 import { Shield } from "lucide-react";
-import { SectionTitle } from "@/components/SectionTitle";
+import { PageHeader } from "@/components/PageHeader";
 import { Card, CardContent } from "@/components/ui/card";
 
 const KebijakanPrivasi = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <SectionTitle
-          title="Kebijakan Privasi"
-          subtitle="Portal RW 12 - Desa Ngijo"
-        />
+    <>
+      <PageHeader title="Kebijakan Privasi" subtitle="Portal RW 12 - Desa Ngijo" />
+      <div className="container py-8">
 
         <div className="max-w-4xl mx-auto">
           <Card className="mb-6 bg-primary/5 border-primary/20">
@@ -106,7 +103,7 @@ const KebijakanPrivasi = () => {
           </Card>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

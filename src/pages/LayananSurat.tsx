@@ -1,19 +1,16 @@
 import { useState } from "react";
 import { FileText, Clock, CheckCircle, MessageCircle, FileSearch } from "lucide-react";
-import { SectionTitle } from "@/components/SectionTitle";
+import { PageHeader } from "@/components/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { jenisSurat, rwInfo } from "@/data/mockData";
+import { jenisSurat, waLink } from "@/data/mockData";
 
 const LayananSurat = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <SectionTitle
-          title="Layanan Surat Pengantar"
-          subtitle="Informasi cara mengurus berbagai jenis surat di RW 12"
-        />
+    <>
+      <PageHeader title="Layanan Surat Pengantar" subtitle="Informasi cara mengurus berbagai jenis surat di RW 12" />
+      <div className="container py-8">
 
         {/* Info */}
         <Card className="mb-8 bg-primary/5 border-primary/20">
@@ -74,7 +71,7 @@ const LayananSurat = () => {
                   {/* Actions */}
                   <div className="flex gap-2">
                     <a
-                      href={`https://wa.me/${rwInfo.whatsapp}?text=Halo,%20saya%20ingin%20mengajukan%20${encodeURIComponent(surat.nama)}`}
+                      href={waLink(`Halo, saya ingin mengajukan ${surat.nama}`)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1"
@@ -123,7 +120,7 @@ const LayananSurat = () => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MessageSquare, Send, Info, Copy } from "lucide-react";
-import { SectionTitle } from "@/components/SectionTitle";
+import { PageHeader } from "@/components/PageHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { rwInfo } from "@/data/mockData";
+import { waLink } from "@/data/mockData";
 
 const kategoriList = [
   "Kebersihan",
@@ -68,37 +68,19 @@ Terima kasih atas perhatiannya.`;
   };
 
   const handleSendWhatsApp = () => {
-    const encodedMessage = encodeURIComponent(messageTemplate);
-    window.open(`https://wa.me/${rwInfo.whatsapp}?text=${encodedMessage}`, "_blank");
+    window.open(waLink(messageTemplate), "_blank");
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <SectionTitle
-          title="Pengaduan & Aspirasi"
-          subtitle="Sampaikan masukan dan keluhan Anda"
-        />
-
-        {/* Info Banner */}
-        <Card className="mb-8 bg-primary/5 border-primary/20">
-          <CardContent className="p-6">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <Info className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-semibold mb-2">Cara Menyampaikan Pengaduan yang Baik</h3>
-                <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                  <li>Sampaikan dengan bahasa yang sopan dan jelas</li>
-                  <li>Sertakan informasi detail tentang masalah yang dihadapi</li>
-                  <li>Jika memungkinkan, sertakan foto atau bukti pendukung saat mengirim via WhatsApp</li>
-                  <li>Berikan kritik yang membangun untuk kemajuan bersama</li>
-                </ul>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+    <>
+      <PageHeader title="Sampaikan aduan" subtitle="Keluhan, usulan, atau aspirasi untuk pengurus RW. Pesan dikirim lewat WhatsApp." />
+      <div className="container py-8">
+        <div className="mx-auto mb-6 flex max-w-2xl items-start gap-3 rounded-2xl bg-secondary p-4 text-sm">
+          <Info className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
+          <p>
+            Tulis dengan jelas dan sopan. Kalau ada foto pendukung, lampirkan langsung di WhatsApp setelah pesan terkirim.
+          </p>
+        </div>
 
         {/* Form */}
         <div className="max-w-2xl mx-auto">
@@ -211,7 +193,7 @@ Terima kasih atas perhatiannya.`;
           </DialogContent>
         </Dialog>
       </div>
-    </div>
+    </>
   );
 };
 

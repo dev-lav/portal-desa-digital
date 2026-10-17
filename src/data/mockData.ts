@@ -9,23 +9,29 @@ import {
   UMKM,
   Berita,
   Lembaga,
+  Pengumuman,
+  FotoHero,
 } from "./types";
 import lansiaTangguhImg from "@/images/lansia-tangguh.jpeg";
 import tabunganAmalImg from "@/images/tabungan-amal-sosial.jpeg";
 import voliRW12Img from "@/images/voli-rw-12.jpeg";
 import masjidAnNurImg from "@/images/masjid-an-nur.jpeg";
 import pembukaanLansiaTangguhImg from "@/images/pembukaan-lansia-tangguh.jpeg";
-import voliAnakRutinImg from "@/images/voli-anak-rutin.png";
+import voliAnakRutinImg from "@/images/voli-anak-rutin.jpeg";
 import rt02SquareImg from "@/images/rt-02-square.jpeg";
 import rt03SquareImg from "@/images/rt-03-square.jpeg";
 import rt04SquareImg from "@/images/rt-04-square.jpeg";
 import rt05SquareImg from "@/images/rt-05-square.jpeg";
 import rt06SquareImg from "@/images/rt-06-square.jpeg";
 import kerjaBaktiLingkunganRt3Img from "@/images/kerjaBaktiLingkunganRt3Img.jpeg";
-import kerjaBaktiLingkunganRt8Img from "@/images/kerjaBaktiLingkunganRt8Img.png";
+import kerjaBaktiLingkunganRt8Img from "@/images/kerjaBaktiLingkunganRt8Img.jpeg";
 import kerjaBaktiLingkunganRt5Img from "@/images/kerjaBaktiLingkunganRt5Img.jpeg";
 import sekolahLansiaImg from "@/images/lansia-tangguh-02-2026.jpeg";
 import gotongRoyongRt2Img from "@/images/gotong-royong-rt-02.jpeg";
+import karnavalWargaImg from "@/images/karnaval-warga.jpeg";
+import lombaMewarnaiImg from "@/images/lomba-mewarnai-anak.jpeg";
+import lombaBakiakRemajaImg from "@/images/lomba-bakiak-remaja.jpeg";
+import lombaBakiakIbuImg from "@/images/lomba-bakiak-ibu.jpeg";
 
 export const pengurusRW: PengurusRW[] = [
   { id: "1", jabatan: "Ketua RW", nama: "Ahmad Fadillah, SE., M.M.B.", kontak: "..." },
@@ -336,6 +342,31 @@ export const lembagaList: Lembaga[] = [
   }
 ];
 
+// Pengumuman penting yang tampil di atas beranda. Isi dengan `null` kalau sedang tidak ada.
+// Contoh:
+// export const pengumuman: Pengumuman | null = {
+//   judul: "Kerja bakti serentak menyambut musim hujan",
+//   tanggal: new Date("2026-10-26"),
+//   waktu: "06.30 WIB",
+//   lokasi: "Kumpul di Balai RW",
+//   isi: "Seluruh warga diharapkan hadir membawa alat kebersihan.",
+// };
+export const pengumuman: Pengumuman | null = null;
+
+// Foto kolase di beranda: `utama` berganti otomatis, `samping` tetap.
+export const fotoHero: { utama: FotoHero[]; samping: [FotoHero, FotoHero] } = {
+  utama: [
+    { src: karnavalWargaImg, caption: "Karnaval warga" },
+    { src: lombaBakiakRemajaImg, caption: "Lomba bakiak" },
+    { src: sekolahLansiaImg, caption: "Sekolah Lansia Tangguh" },
+    { src: gotongRoyongRt2Img, caption: "Gotong royong RT 02" },
+  ],
+  samping: [
+    { src: lombaMewarnaiImg, caption: "Mewarnai" },
+    { src: lombaBakiakIbuImg, caption: "Bakiak ibu-ibu" },
+  ],
+};
+
 export const rwInfo = {
   nomor: "12",
   desa: "Desa Ngijo",
@@ -347,3 +378,7 @@ export const rwInfo = {
   whatsapp: "+6281255556991",
   email: "rolasunited@gmail.com",
 };
+
+// wa.me hanya menerima angka (tanpa "+" atau spasi)
+export const waLink = (text?: string, nomor: string = rwInfo.whatsapp) =>
+  `https://wa.me/${nomor.replace(/\D/g, "")}${text ? `?text=${encodeURIComponent(text)}` : ""}`;

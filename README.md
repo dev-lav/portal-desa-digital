@@ -49,64 +49,24 @@ npm run build
 
 File hasil build akan ada di folder `dist/`
 
-## 🌐 Deploy ke GitHub Pages
+## 🌐 Deploy
 
-### Opsi 1: Manual
+Situs live di **https://rolasunited.com**, di-deploy otomatis oleh GitHub Actions
+([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)) setiap ada push ke `main`.
+Tidak perlu menjalankan perintah deploy dari laptop.
 
-1. Build project:
-   ```bash
-   npm run build
-   ```
+Pengaturan yang dibutuhkan di GitHub (cukup sekali):
 
-2. Deploy folder `dist/` ke branch `gh-pages`:
-   ```bash
-   git subtree push --prefix dist origin gh-pages
-   ```
+- **Settings → Pages → Source**: `GitHub Actions`
+- **Settings → Pages → Custom domain**: `rolasunited.com` (centang *Enforce HTTPS*)
 
-3. Aktifkan GitHub Pages di repository settings, pilih branch `gh-pages`
-
-### Opsi 2: GitHub Actions (Otomatis)
-
-Buat file `.github/workflows/deploy.yml`:
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        
-    - name: Install dependencies
-      run: npm install
-      
-    - name: Build
-      run: npm run build
-      
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-```
-
-Setiap push ke branch `main` akan otomatis build dan deploy.
+Domain disimpan di pengaturan Pages, jadi repo ini tidak memerlukan file `CNAME`.
+Progres dan hasil deploy bisa dilihat di tab **Actions**.
 
 ## 📝 Catatan Penting
 
 - **No Backend**: Aplikasi ini sepenuhnya statis, tidak ada backend atau database
-- **HashRouter**: Menggunakan HashRouter untuk kompatibilitas dengan GitHub Pages
+- **HashRouter**: Menggunakan HashRouter (URL berbentuk `/#/halaman`) untuk kompatibilitas dengan GitHub Pages
 - **WhatsApp Integration**: Komunikasi dengan pengurus RW melalui link WhatsApp
 - **Privacy**: Tidak ada data pribadi yang dikumpulkan atau disimpan
 
@@ -114,19 +74,25 @@ Setiap push ke branch `main` akan otomatis build dan deploy.
 
 ### Mengubah Data
 
-Edit file di folder `src/data/`:
-- `mockData.ts` - Data dummy untuk semua konten
-- `types.ts` - Tipe data TypeScript
+Hampir semua konten ada di `src/data/mockData.ts`:
+- `pengumuman` - pengumuman penting di atas beranda (isi `null` kalau tidak ada)
+- `kegiatanList` - agenda kegiatan
+- `beritaList` - berita & dokumentasi (tiap berita punya halaman `/#/kegiatan/<id>`)
+- `laporanKasBulanan`, `rincianPengeluaran` - laporan kas
+- `fotoHero` - foto kolase di beranda
+- `dataRT`, `pengurusRW`, `umkmList`, `lembagaList`, `rwInfo`
+
+Gambar disimpan di `src/images/` lalu di-import di `mockData.ts`.
 
 ### Mengubah Warna/Theme
 
-Edit file `src/index.css` untuk mengubah color variables dan theme.
+Warna diambil dari logo RW 12 dan diatur sebagai variabel di `src/index.css`.
 
 ### Menambah Halaman
 
 1. Buat component baru di `src/pages/`
 2. Import dan tambahkan route di `src/App.tsx`
-3. Update navigation di `src/components/Navbar.tsx`
+3. Kalau perlu masuk menu utama, tambahkan di `src/components/navigasi.ts`
 
 ## 📄 Lisensi
 

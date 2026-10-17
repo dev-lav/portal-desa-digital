@@ -91,3 +91,16 @@ export interface Lembaga {
   nama: string;
   logo: string;
 }
+
+export interface Pengumuman {
+  judul: string;
+  tanggal: Date;
+  waktu?: string;
+  lokasi?: string;
+  isi?: string;
+}
+
+export interface FotoHero {
+  src: string;
+  caption: string;
+}

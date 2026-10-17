@@ -1,167 +1,91 @@
-import { Calendar, MapPin, Clock, Tag } from "lucide-react";
+import { CalendarDays, Clock, MapPin, Megaphone } from "lucide-react";
+import { PageHeader } from "@/components/PageHeader";
 import { SectionTitle } from "@/components/SectionTitle";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { kegiatanList, beritaList } from "@/data/mockData";
+import { AgendaCard, AgendaKosong } from "@/components/konten/AgendaCard";
+import { BeritaCard } from "@/components/konten/BeritaCard";
+import { kegiatanList, beritaList, pengumuman } from "@/data/mockData";
+import { awalHariIni, formatTanggal } from "@/lib/format";
 
 const Kegiatan = () => {
-  const upcomingEvents = kegiatanList
-    .filter((k) => k.tanggal >= new Date())
+  const hariIni = awalHariIni();
+  const mendatang = kegiatanList
+    .filter((k) => k.tanggal >= hariIni)
     .sort((a, b) => a.tanggal.getTime() - b.tanggal.getTime());
-
-  const pastEvents = kegiatanList
-    .filter((k) => k.tanggal < new Date())
+  const terlaksana = kegiatanList
+    .filter((k) => k.tanggal < hariIni)
     .sort((a, b) => b.tanggal.getTime() - a.tanggal.getTime());
-
-  const getTagColor = (tag: string) => {
-    const colors: Record<string, string> = {
-      Rutin: "bg-primary/10 text-primary",
-      "Kerja Bakti": "bg-success/10 text-success",
-      Posyandu: "bg-secondary/10 text-secondary",
-      Rapat: "bg-accent/10 text-accent",
-      Sosial: "bg-warning/10 text-warning",
-    };
-    return colors[tag] || "bg-muted text-muted-foreground";
-  };
+  const berita = [...beritaList].sort((a, b) => b.tanggal.getTime() - a.tanggal.getTime());
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <SectionTitle
-          title="Kegiatan & Berita RW"
-          subtitle="Informasi agenda dan dokumentasi kegiatan"
-        />
+    <>
+      <PageHeader title="Kegiatan" subtitle="Agenda, pengumuman, dan dokumentasi kegiatan warga RW 12." />
 
-        {/* Agenda Mendatang */}
-        <div className="mb-12">
-          <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-            <Calendar className="h-5 w-5 text-primary" />
-            Agenda Mendatang
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {upcomingEvents.map((event) => (
-              <Card key={event.id} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-start justify-between mb-2">
-                    <CardTitle className="text-lg">{event.nama}</CardTitle>
-                    <Badge className={getTagColor(event.tag)}>{event.tag}</Badge>
-                  </div>
-                  <p className="text-sm text-primary font-medium">
-                    {event.tanggal.toLocaleDateString("id-ID", {
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </p>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-2 text-sm">
-                      <Clock className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground">{event.waktu}</span>
-                    </div>
-                    <div className="flex items-start gap-2 text-sm">
-                      <MapPin className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground">{event.lokasi}</span>
-                    </div>
-                    {event.deskripsi && (
-                      <p className="text-sm text-muted-foreground pt-2 border-t border-border">
-                        {event.deskripsi}
-                      </p>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Kegiatan Terlaksana */}
-        {pastEvents.length > 0 && (
-          <div className="mb-12">
-            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <Tag className="h-5 w-5 text-primary" />
-              Kegiatan Terlaksana
-            </h2>
-            <div className="space-y-4">
-              {pastEvents.map((event) => (
-                <Card key={event.id}>
-                  <CardContent className="p-6">
-                    <div className="flex flex-col md:flex-row md:items-center gap-4">
-                      <div className="flex-shrink-0">
-                        <div className="w-16 h-16 bg-primary/10 rounded-lg flex flex-col items-center justify-center">
-                          <span className="text-2xl font-bold text-primary">
-                            {event.tanggal.getDate()}
-                          </span>
-                          <span className="text-xs text-muted-foreground">
-                            {event.tanggal.toLocaleDateString("id-ID", { month: "short" })}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-start gap-2 mb-1">
-                          <h3 className="font-semibold">{event.nama}</h3>
-                          <Badge className={getTagColor(event.tag)}>{event.tag}</Badge>
-                        </div>
-                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                          <span className="flex items-center gap-1">
-                            <Clock className="h-3 w-3" />
-                            {event.waktu}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <MapPin className="h-3 w-3" />
-                            {event.lokasi}
-                          </span>
-                        </div>
-                        {event.deskripsi && (
-                          <p className="text-sm text-muted-foreground mt-2">{event.deskripsi}</p>
-                        )}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+      <div className="container">
+        {pengumuman && (
+          <section className="mt-8">
+            <div className="rounded-2xl border border-border border-l-[6px] border-l-destructive bg-card p-4">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-destructive/10 px-2.5 py-0.5 text-[0.7rem] font-extrabold uppercase tracking-wider text-destructive">
+                <Megaphone className="h-3.5 w-3.5" />
+                Pengumuman
+              </span>
+              <h2 className="mb-1 mt-2 text-lg font-bold leading-snug">{pengumuman.judul}</h2>
+              {pengumuman.isi && <p className="text-muted-foreground">{pengumuman.isi}</p>}
+              <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-sm font-semibold">
+                <span className="inline-flex items-center gap-1.5">
+                  <CalendarDays className="h-4 w-4" />
+                  {formatTanggal(pengumuman.tanggal, { weekday: "long", day: "numeric", month: "long" })}
+                </span>
+                {pengumuman.waktu && (
+                  <span className="inline-flex items-center gap-1.5">
+                    <Clock className="h-4 w-4" />
+                    {pengumuman.waktu}
+                  </span>
+                )}
+                {pengumuman.lokasi && (
+                  <span className="inline-flex items-center gap-1.5">
+                    <MapPin className="h-4 w-4" />
+                    {pengumuman.lokasi}
+                  </span>
+                )}
+              </div>
             </div>
-          </div>
+          </section>
         )}
 
-        {/* Berita & Dokumentasi */}
-        <div>
-          <h2 className="text-xl font-bold mb-6">Berita & Dokumentasi</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {beritaList.map((berita) => (
-              <Card key={berita.id} className="hover:shadow-lg transition-shadow">
-                <div className="aspect-video bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden">
-                  {berita.gambar ? (
-                    <img
-                      src={berita.gambar}
-                      alt={berita.judul}
-                      className="w-full h-full object-cover transition-transform hover:scale-105 duration-500"
-                    />
-                  ) : (
-                    <Calendar className="h-12 w-12 text-primary/40" />
-                  )}
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-lg">{berita.judul}</CardTitle>
-                  <p className="text-sm text-muted-foreground">
-                    {berita.tanggal.toLocaleDateString("id-ID", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">{berita.ringkasan}</p>
-                </CardContent>
-              </Card>
+        <section className="mt-8">
+          <SectionTitle title="Agenda mendatang" />
+          {mendatang.length > 0 ? (
+            <div className="grid gap-2.5 md:grid-cols-2 lg:grid-cols-3">
+              {mendatang.map((k) => (
+                <AgendaCard key={k.id} kegiatan={k} />
+              ))}
+            </div>
+          ) : (
+            <AgendaKosong />
+          )}
+        </section>
+
+        <section className="mt-8">
+          <SectionTitle title="Dokumentasi" subtitle="Ketuk foto untuk melihat detail dan membagikannya." />
+          <div className="grid grid-cols-2 gap-2.5 md:grid-cols-3 lg:grid-cols-4">
+            {berita.map((b) => (
+              <BeritaCard key={b.id} berita={b} />
             ))}
           </div>
-        </div>
+        </section>
+
+        {terlaksana.length > 0 && (
+          <section className="mt-8">
+            <SectionTitle title="Sudah terlaksana" />
+            <div className="grid gap-2.5 md:grid-cols-2 lg:grid-cols-3">
+              {terlaksana.map((k) => (
+                <AgendaCard key={k.id} kegiatan={k} redup />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
-    </div>
+    </>
   );
 };
 

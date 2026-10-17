@@ -1,5 +1,5 @@
 import { Users, UserCheck, Briefcase, Baby } from "lucide-react";
-import { SectionTitle } from "@/components/SectionTitle";
+import { PageHeader } from "@/components/PageHeader";
 import { StatCard } from "@/components/StatCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { statistikPenduduk, dataRT } from "@/data/mockData";
@@ -8,12 +8,9 @@ const DataWarga = () => {
   const { totalKK, totalJiwa, komposisiUsia, pekerjaan } = statistikPenduduk;
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <SectionTitle
-          title="Data & Statistik Warga"
-          subtitle="Data agregat penduduk RW 12 (data dummy untuk demo)"
-        />
+    <>
+      <PageHeader title="Data & Statistik Warga" subtitle="Data agregat penduduk RW 12 (data dummy untuk demo)" />
+      <div className="container py-8">
 
         {/* Ringkasan Utama */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -138,7 +135,7 @@ const DataWarga = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </>
   );
 };
 
