@@ -4,6 +4,7 @@ import { SectionTitle } from "@/components/SectionTitle";
 import { BeritaCard } from "@/components/konten/BeritaCard";
 import { beritaList } from "@/data/mockData";
 import { formatTanggal } from "@/lib/format";
+import { cn } from "@/lib/utils";
 
 const BeritaDetail = () => {
   const { id } = useParams();
@@ -42,6 +43,20 @@ const BeritaDetail = () => {
 
       {berita.gambar && (
         <img src={berita.gambar} alt={berita.judul} className="mt-5 w-full rounded-2xl border border-border object-cover" />
+      )}
+
+      {berita.galeri && berita.galeri.length > 0 && (
+        <div className={cn("mt-2.5 grid gap-2.5", berita.galeri.length > 1 && "grid-cols-2")}>
+          {berita.galeri.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt={`${berita.judul} (foto ${i + 2})`}
+              loading="lazy"
+              className={cn("w-full rounded-2xl border border-border object-cover", berita.galeri.length > 1 && "aspect-[4/3]")}
+            />
+          ))}
+        </div>
       )}
 
       <p className="mt-5 text-lg leading-relaxed">{berita.ringkasan.trim()}</p>

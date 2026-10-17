@@ -32,6 +32,8 @@ import karnavalWargaImg from "@/images/karnaval-warga.jpeg";
 import lombaMewarnaiImg from "@/images/lomba-mewarnai-anak.jpeg";
 import lombaBakiakRemajaImg from "@/images/lomba-bakiak-remaja.jpeg";
 import lombaBakiakIbuImg from "@/images/lomba-bakiak-ibu.jpeg";
+import lombaEngklek1Img from "@/images/lomba-engklek-1.jpeg";
+import lombaEngklek2Img from "@/images/lomba-engklek-2.jpeg";
 
 export const pengurusRW: PengurusRW[] = [
   { id: "1", jabatan: "Ketua RW", nama: "Ahmad Fadillah, SE., M.M.B.", kontak: "..." },
@@ -316,6 +318,41 @@ export const beritaList: Berita[] = [
     ringkasan:
       "Gotong royong benahi lingkungan dalam memyambut Ramadhan di RT 2 RW 12 ",
     gambar: gotongRoyongRt2Img,
+  },
+  // Rangkaian lomba Agustusan (HUT RI ke-81). Tanggal perkiraan, sesuaikan bila perlu.
+  {
+    id: "8",
+    judul: "Lomba mewarnai anak-anak",
+    tanggal: new Date("2026-08-16"),
+    ringkasan:
+      "Anak-anak RW 12 mengikuti lomba mewarnai dalam rangka memeriahkan HUT Kemerdekaan RI ke-81.",
+    gambar: lombaMewarnaiImg,
+  },
+  {
+    id: "9",
+    judul: "Lomba engklek",
+    tanggal: new Date("2026-08-17"),
+    ringkasan:
+      "Permainan tradisional engklek kembali dimainkan warga RW 12, disaksikan dan disemangati warga yang berkumpul di sepanjang jalan.",
+    gambar: lombaEngklek1Img,
+    galeri: [lombaEngklek2Img],
+  },
+  {
+    id: "10",
+    judul: "Lomba bakiak",
+    tanggal: new Date("2026-08-23"),
+    ringkasan:
+      "Lomba bakiak beregu yang diikuti remaja hingga ibu-ibu RW 12. Kekompakan langkah jadi kunci, tawa penonton jadi bonus.",
+    gambar: lombaBakiakRemajaImg,
+    galeri: [lombaBakiakIbuImg],
+  },
+  {
+    id: "11",
+    judul: "Karnaval warga RW 12",
+    tanggal: new Date("2026-08-24"),
+    ringkasan:
+      "Warga RW 12 dari anak-anak hingga dewasa mengikuti karnaval dengan busana adat dan nuansa merah putih untuk memeriahkan HUT Kemerdekaan RI ke-81.",
+    gambar: karnavalWargaImg,
   },
 ];
 

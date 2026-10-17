@@ -84,6 +84,8 @@ export interface Berita {
   tanggal: Date;
   ringkasan: string;
   gambar?: string;
+  // Foto tambahan yang tampil di halaman detail
+  galeri?: string[];
 }
 
 export interface Lembaga {
