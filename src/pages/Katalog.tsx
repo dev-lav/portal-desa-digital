@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { PackageOpen, RefreshCw, Search, Tag } from "lucide-react";
+import { HandHeart, HeartHandshake, PackageOpen, RefreshCw, Search } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { BarangCard, BarangCardSkeleton } from "@/components/konten/BarangCard";
 import { useKatalog } from "@/hooks/use-katalog";
@@ -19,6 +19,7 @@ const Katalog = () => {
   const [urut, setUrut] = useState<keyof typeof urutan>("terbaru");
   const [sembunyikanTerjual, setSembunyikanTerjual] = useState(false);
 
+  const jumlahTerjual = katalog.filter((b) => b.status === "terjual").length;
   const daftarKategori = useMemo(() => ["Semua", ...new Set(katalog.map((b) => b.kategori))], [katalog]);
 
   const daftar = useMemo(() => {
@@ -39,7 +40,10 @@ const Katalog = () => {
 
   return (
     <>
-      <PageHeader title="Katalog barang" subtitle="Barang yang dijual warga RW 12. Pesan langsung ke penjualnya lewat WhatsApp.">
+      <PageHeader
+        title="Lapak amal posyandu"
+        subtitle="Barang bekas layak pakai dari warga. Seluruh hasil penjualan untuk renovasi Posyandu RW 12."
+      >
         <label className="relative mt-5 block max-w-xl">
           <span className="sr-only">Cari barang</span>
           <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
@@ -54,13 +58,29 @@ const Katalog = () => {
       </PageHeader>
 
       <div className="container">
-        <div className="no-scrollbar -mx-4 mt-5 flex gap-2 overflow-x-auto px-4 pb-1">
+        {katalog.length > 0 && (
+          <div className="mt-5 flex items-center gap-3 rounded-2xl border border-border bg-card p-3.5">
+            <HeartHandshake className="h-9 w-9 flex-shrink-0 text-primary" />
+            <div className="flex-1">
+              <p className="text-sm font-bold">
+                {jumlahTerjual} dari {katalog.length} barang sudah terjual
+              </p>
+              <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-muted">
+                <div className="h-full rounded-full bg-primary" style={{ width: `${(jumlahTerjual / katalog.length) * 100}%` }} />
+              </div>
+              <p className="mt-1 text-xs text-muted-foreground">Setiap pembelian membantu renovasi posyandu.</p>
+            </div>
+          </div>
+        )}
+
+        {/* Chip dibungkus ke baris berikutnya agar semua kategori terlihat tanpa geser */}
+        <div className="mt-4 flex flex-wrap gap-1.5 md:gap-2">
           {daftarKategori.map((k) => (
             <button
               key={k}
               onClick={() => setKategori(k)}
               className={cn(
-                "flex-shrink-0 rounded-full border border-border bg-card px-4 py-2 text-sm font-bold text-muted-foreground",
+                "rounded-full border border-border bg-card px-3 py-1.5 text-[0.8rem] font-bold text-muted-foreground md:px-4 md:py-2 md:text-sm",
                 kategori === k && "border-primary bg-primary text-primary-foreground",
               )}
             >
@@ -130,18 +150,18 @@ const Katalog = () => {
         )}
 
         <div className="mt-8 flex flex-col items-start gap-3 rounded-2xl bg-secondary p-5 md:flex-row md:items-center">
-          <Tag className="h-8 w-8 flex-shrink-0 text-primary" />
+          <HandHeart className="h-8 w-8 flex-shrink-0 text-primary" />
           <div className="flex-1">
-            <p className="font-bold">Ingin menitipkan barang untuk dijual?</p>
-            <p className="text-sm text-muted-foreground">Kirim foto, nama barang, harga, dan kondisinya ke pengurus.</p>
+            <p className="font-bold">Ingin membantu renovasi posyandu?</p>
+            <p className="text-sm text-muted-foreground">Selain membeli barang, Anda juga bisa berdonasi langsung lewat pengurus RW.</p>
           </div>
           <a
-            href={waLink("Halo, saya ingin menitipkan barang untuk dijual di Katalog RW 12")}
+            href={waLink("Halo, saya ingin berdonasi untuk renovasi Posyandu RW 12")}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-primary px-4 py-2.5 text-sm font-bold text-primary-foreground"
           >
-            Titip jual
+            Donasi
           </a>
         </div>
       </div>

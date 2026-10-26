@@ -22,10 +22,10 @@ const labelStatus: Record<StatusBarang, { teks: string; kelas: string }> = {
 const pesanBeli = (b: Barang) => {
   const isi = `*${b.nama}*\n${b.harga > 0 ? `Harga: ${formatRupiah(b.harga)}\n` : ""}${urlKanonik(`/katalog/${b.id}`)}`;
   return b.status === "dipesan"
-    ? `Halo ${b.penjual}, saya lihat barang ini di Katalog RW 12:\n\n${isi}\n\nKatanya sedang dipesan. Kalau batal, saya mau antre ya.`
+    ? `Halo ${b.penjual}, saya lihat barang ini di Lapak Amal Posyandu RW 12:\n\n${isi}\n\nKatanya sedang dipesan. Kalau batal, saya mau antre ya.`
     : b.harga > 0
-      ? `Halo ${b.penjual}, saya mau beli barang ini dari Katalog RW 12:\n\n${isi}\n\nApakah masih tersedia?`
-      : `Halo ${b.penjual}, saya tertarik dengan barang ini dari Katalog RW 12:\n\n${isi}\n\nBerapa harganya dan apakah masih tersedia?`;
+      ? `Halo ${b.penjual}, saya mau beli barang ini dari Lapak Amal Posyandu RW 12:\n\n${isi}\n\nApakah masih tersedia?`
+      : `Halo ${b.penjual}, saya tertarik dengan barang ini dari Lapak Amal Posyandu RW 12:\n\n${isi}\n\nBerapa harganya dan apakah masih tersedia?`;
 };
 
 const bagikan = async (b: Barang) => {
@@ -196,7 +196,7 @@ const KatalogDetail = () => {
           {isError ? "Periksa koneksi internet Anda, lalu muat ulang halaman." : "Mungkin tautannya salah atau barangnya sudah tidak dijual."}
         </p>
         <Link to="/katalog" className="font-bold text-primary hover:underline">
-          ← Kembali ke Katalog
+          ← Kembali ke Lapak amal
         </Link>
       </div>
     );
@@ -220,7 +220,7 @@ const KatalogDetail = () => {
     <div className="container max-w-5xl pb-24 lg:pb-0">
       <Link to="/katalog" className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:underline">
         <ArrowLeft className="h-4 w-4" />
-        Katalog
+        Lapak amal
       </Link>
 
       <div className="mt-4 grid gap-5 lg:grid-cols-2 lg:gap-8">
@@ -276,7 +276,7 @@ const KatalogDetail = () => {
               )}
             </div>
             <a
-              href={waLink(`Halo ${barang.penjual}, saya mau tanya soal ${barang.nama} di Katalog RW 12`, barang.nomorWA)}
+              href={waLink(`Halo ${barang.penjual}, saya mau tanya soal ${barang.nama} di Lapak Amal Posyandu RW 12`, barang.nomorWA)}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-primary px-3.5 py-1.5 text-sm font-bold text-primary"
@@ -285,7 +285,7 @@ const KatalogDetail = () => {
             </a>
           </div>
           <p className="mt-3 text-xs text-muted-foreground">
-            Transaksi dilakukan langsung dengan penjual. Cek barangnya dulu sebelum membayar.
+            Seluruh hasil penjualan disumbangkan untuk renovasi Posyandu RW 12. Cek barangnya dulu sebelum membayar.
           </p>
         </div>
       </div>

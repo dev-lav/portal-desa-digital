@@ -19,7 +19,7 @@ const KatalogTerbaru = () => {
 
   return (
     <section className="mt-8">
-      <SectionTitle title="Dijual warga" href="/katalog" />
+      <SectionTitle title="Lapak amal posyandu" subtitle="Hasil penjualan untuk renovasi posyandu" href="/katalog" />
       <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-1.5">
         {terbaru.map((b) => (
           <BarangCard key={b.id} barang={b} className="flex-[0_0_42%] snap-start sm:flex-[0_0_28%] lg:flex-[0_0_calc(20%-7px)]" />

@@ -51,9 +51,9 @@ const halamanTetap: Record<string, { judul: string; deskripsi: string }> = {
     deskripsi: "Daftar UMKM dan jasa milik warga RW 12 Desa Ngijo, Karangploso, Malang. Belanja di tetangga sendiri.",
   },
   "/katalog": {
-    judul: "Katalog Barang",
+    judul: "Lapak Amal Renovasi Posyandu",
     deskripsi:
-      "Barang yang dijual warga dan pengurus RW 12 Desa Ngijo, Karangploso, Malang. Lihat harga dan stoknya, lalu pesan lewat WhatsApp.",
+      "Barang bekas layak pakai dari warga RW 12 Desa Ngijo, Karangploso, Malang. Seluruh hasil penjualan untuk renovasi posyandu. Pesan lewat WhatsApp.",
   },
   "/pengaduan": {
     judul: "Sampaikan Aduan",

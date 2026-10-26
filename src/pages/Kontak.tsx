@@ -8,7 +8,7 @@ import { pengurusRW, rwInfo, waLink } from "@/data/mockData";
 const pintasan = [
   { to: "/pengaduan", icon: MessageSquare, judul: "Sampaikan aduan", desc: "Keluhan atau usulan untuk pengurus" },
   { to: "/umkm", icon: Store, judul: "UMKM warga", desc: "Belanja dan pakai jasa tetangga" },
-  { to: "/katalog", icon: ShoppingBag, judul: "Katalog barang", desc: "Barang yang dijual warga" },
+  { to: "/katalog", icon: ShoppingBag, judul: "Lapak amal posyandu", desc: "Beli barang, bantu renovasi posyandu" },
   { to: "/profil", icon: Users, judul: "Profil RW", desc: "Pengurus, daftar RT, dan lembaga" },
 ];
 
