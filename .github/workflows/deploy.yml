@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  # Build ulang tiap hari agar barang baru di spreadsheet katalog punya halaman prerender sendiri
+  schedule:
+    - cron: '0 22 * * *' # 05.00 WIB
   workflow_dispatch:
 
 permissions:

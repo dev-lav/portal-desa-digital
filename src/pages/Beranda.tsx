@@ -5,9 +5,29 @@ import { KasRingkas } from "@/components/konten/KasRingkas";
 import { BeritaCard } from "@/components/konten/BeritaCard";
 import { RtPicker } from "@/components/konten/RtPicker";
 import { UmkmCard } from "@/components/konten/UmkmCard";
+import { BarangCard } from "@/components/konten/BarangCard";
+import { useKatalog } from "@/hooks/use-katalog";
 import { LembagaGrid } from "@/components/konten/LembagaGrid";
 import { kegiatanList, beritaList, laporanKasBulanan, umkmList, dataRT, statistikPenduduk } from "@/data/mockData";
 import { awalHariIni } from "@/lib/format";
+
+// Barang terbaru yang masih dijual; disembunyikan kalau katalog kosong atau gagal dimuat
+const KatalogTerbaru = () => {
+  const { data: katalog = [] } = useKatalog();
+  const terbaru = katalog.filter((b) => b.status !== "terjual").reverse().slice(0, 8);
+  if (terbaru.length === 0) return null;
+
+  return (
+    <section className="mt-8">
+      <SectionTitle title="Dijual warga" href="/katalog" />
+      <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-2 overflow-x-auto px-4 pb-1.5">
+        {terbaru.map((b) => (
+          <BarangCard key={b.id} barang={b} className="flex-[0_0_42%] snap-start sm:flex-[0_0_28%] lg:flex-[0_0_calc(20%-7px)]" />
+        ))}
+      </div>
+    </section>
+  );
+};
 
 const Beranda = () => {
   const hariIni = awalHariIni();
@@ -71,6 +91,8 @@ const Beranda = () => {
             ))}
           </div>
         </section>
+
+        <KatalogTerbaru />
 
         <section className="mt-8">
           <SectionTitle title="Lembaga & komunitas" href="/profil" linkLabel="Profil →" />

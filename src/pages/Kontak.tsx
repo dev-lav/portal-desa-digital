@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronRight, Clock, Mail, MapPin, MessageCircle, MessageSquare, Store, Users } from "lucide-react";
+import { ChevronRight, Clock, Mail, MapPin, MessageCircle, MessageSquare, ShoppingBag, Store, Users } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionTitle } from "@/components/SectionTitle";
 import { RtPicker } from "@/components/konten/RtPicker";
@@ -8,6 +8,7 @@ import { pengurusRW, rwInfo, waLink } from "@/data/mockData";
 const pintasan = [
   { to: "/pengaduan", icon: MessageSquare, judul: "Sampaikan aduan", desc: "Keluhan atau usulan untuk pengurus" },
   { to: "/umkm", icon: Store, judul: "UMKM warga", desc: "Belanja dan pakai jasa tetangga" },
+  { to: "/katalog", icon: ShoppingBag, judul: "Katalog barang", desc: "Barang yang dijual warga" },
   { to: "/profil", icon: Users, judul: "Profil RW", desc: "Pengurus, daftar RT, dan lembaga" },
 ];
 

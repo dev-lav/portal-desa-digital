@@ -1,4 +1,6 @@
 import { beritaList } from "@/data/mockData";
+import { Barang } from "@/data/katalog";
+import { formatRupiah } from "@/lib/format";
 
 export const SITE_URL = "https://rolasunited.com";
 const NAMA_SITUS = "RW 12 Desa Ngijo";
@@ -48,6 +50,11 @@ const halamanTetap: Record<string, { judul: string; deskripsi: string }> = {
     judul: "UMKM Warga",
     deskripsi: "Daftar UMKM dan jasa milik warga RW 12 Desa Ngijo, Karangploso, Malang. Belanja di tetangga sendiri.",
   },
+  "/katalog": {
+    judul: "Katalog Barang",
+    deskripsi:
+      "Barang yang dijual warga dan pengurus RW 12 Desa Ngijo, Karangploso, Malang. Lihat harga dan stoknya, lalu pesan lewat WhatsApp.",
+  },
   "/pengaduan": {
     judul: "Sampaikan Aduan",
     deskripsi: "Sampaikan keluhan, usulan, atau aspirasi untuk pengurus RW 12 Desa Ngijo lewat WhatsApp.",
@@ -58,8 +65,9 @@ const halamanTetap: Record<string, { judul: string; deskripsi: string }> = {
   },
 };
 
-// Meta untuk sebuah path; null kalau halamannya tidak ada (404)
-export const metaHalaman = (path: string): MetaHalaman | null => {
+// Meta untuk sebuah path; null kalau halamannya tidak ada (404).
+// `katalog` berisi data dari spreadsheet; selama belum dimuat, halaman barang memakai meta katalog umum.
+export const metaHalaman = (path: string, katalog?: Barang[]): MetaHalaman | null => {
   const p = rapikanPath(path);
   const kanonik = urlKanonik(p);
 
@@ -90,6 +98,21 @@ export const metaHalaman = (path: string): MetaHalaman | null => {
     };
   }
 
+  const cocokBarang = p.match(/^\/katalog\/([^/]+)$/);
+  if (cocokBarang) {
+    if (!katalog) return { ...metaHalaman("/katalog")!, kanonik };
+    const barang = katalog.find((b) => b.id === cocokBarang[1]);
+    if (barang) {
+      return {
+        judul: `${barang.harga > 0 ? `${barang.nama} - ${formatRupiah(barang.harga)}` : barang.nama} | ${NAMA_SITUS}`,
+        deskripsi: (barang.deskripsi || halamanTetap["/katalog"].deskripsi).replace(/\s+/g, " ").slice(0, 160),
+        gambar: absolut(barang.foto[0] ?? GAMBAR_BAWAAN),
+        tipe: "website",
+        kanonik,
+      };
+    }
+  }
+
   return null;
 };
 
@@ -99,4 +122,9 @@ export const META_TIDAK_DITEMUKAN = {
 };
 
 // Semua halaman publik yang di-prerender dan masuk sitemap
-export const daftarRute = () => ["/", ...Object.keys(halamanTetap), ...beritaList.map((b) => `/kegiatan/${b.id}`)];
+export const daftarRute = (katalog: Barang[] = []) => [
+  "/",
+  ...Object.keys(halamanTetap),
+  ...beritaList.map((b) => `/kegiatan/${b.id}`),
+  ...katalog.map((b) => `/katalog/${b.id}`),
+];

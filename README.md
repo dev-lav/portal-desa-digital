@@ -98,6 +98,40 @@ Warna diambil dari logo RW 12 dan diatur sebagai variabel di `src/index.css`.
 3. Kalau perlu masuk menu utama, tambahkan di `src/components/navigasi.ts`
 4. Tambahkan judul & deskripsinya di `halamanTetap` pada `src/seo/meta.ts` agar ikut di-prerender dan masuk sitemap
 
+## Katalog barang (`/katalog`)
+
+Data barang dibaca langsung dari Google Sheets setiap kali halaman dibuka, foto disimpan di repo.
+
+1. Buat Google Sheet dengan kolom seperti `src/data/katalog-awal.csv` (bisa diimpor langsung lewat File → Impor):
+   | kolom | isi |
+   | --- | --- |
+   | `id` | alamat halaman barang, mis. `kursi-rotan` (huruf kecil, tanpa spasi). Jangan diubah setelah dibagikan |
+   | `nama` | nama barang (wajib) |
+   | `harga` | angka atau `Rp150.000`; kosong = tampil "Tanya harga" |
+   | `harga_coret` | opsional, harga sebelum diskon |
+   | `status` | `Tersedia`, `Dipesan`, atau `Terjual` (`Laku` juga dikenali) |
+   | `kategori`, `kondisi`, `deskripsi`, `lokasi` | opsional |
+   | `foto` | nama file di `src/images/katalog`, pisahkan dengan koma untuk beberapa foto. Boleh juga URL `https://` |
+   | `penjual`, `wa` | opsional; kosong = pengurus RW dan nomor WA RW |
+2. File → Bagikan → **Publikasikan ke web** → pilih sheet katalog, format **CSV** → salin tautannya.
+3. Tempel tautan itu ke `KATALOG_CSV_URL` di `src/data/katalog.ts`.
+
+Perubahan harga/status di spreadsheet tampil dalam ±5 menit tanpa deploy ulang. Barang baru juga langsung tampil;
+halaman prerender-nya (judul & foto saat dibagikan ke WA) dibuat saat build berikutnya, yang berjalan otomatis tiap hari.
+Selama `KATALOG_CSV_URL` kosong, katalog memakai `src/data/katalog-awal.csv` yang ikut di-build.
+
+### Menambah foto barang
+
+Simpan foto asli dari HP di `foto-asli/<nama-folder>/` (tidak ikut git), lalu jalankan:
+
+```bash
+python3 scripts/optimasi-foto.py foto-asli/barang-bekas
+```
+
+Foto dikecilkan ke WebP 1200px (±3 MB → ±80 KB), diputar sesuai orientasi kamera, metadatanya dibuang,
+dan disimpan ke `src/images/katalog/` dengan nama huruf kecil tanpa spasi (`Dipan b.jpg` → `dipan-b.webp`).
+Nama itulah yang ditulis di kolom `foto`. Butuh Python dengan Pillow (`pip install pillow`).
+
 ## 📄 Lisensi
 
 Portal ini dibuat untuk keperluan RW 12, Desa Ngijo.

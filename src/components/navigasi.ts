@@ -12,7 +12,7 @@ export const menuUtama: MenuItem[] = [
   { label: "Beranda", path: "/", icon: Home },
   { label: "Kegiatan", path: "/kegiatan", icon: Calendar },
   { label: "Kas RW", path: "/keuangan", icon: Wallet },
-  { label: "Kontak", path: "/kontak", icon: Users, cakupan: ["/profil", "/umkm", "/pengaduan"] },
+  { label: "Kontak", path: "/kontak", icon: Users, cakupan: ["/profil", "/umkm", "/katalog", "/pengaduan"] },
 ];
 
 export const isMenuAktif = (item: MenuItem, pathname: string) => {

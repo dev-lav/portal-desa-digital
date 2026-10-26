@@ -18,6 +18,7 @@ export const Footer = () => {
           <Link to="/profil" className="hover:underline">Profil & pengurus</Link>
           <Link to="/pengaduan" className="hover:underline">Sampaikan aduan</Link>
           <Link to="/umkm" className="hover:underline">UMKM warga</Link>
+          <Link to="/katalog" className="hover:underline">Katalog barang</Link>
           <Link to="/kebijakan-privasi" className="hover:underline">Kebijakan privasi</Link>
         </div>
         <p className="mt-6 text-xs">© {new Date().getFullYear()} RW {rwInfo.nomor} {rwInfo.desa}</p>

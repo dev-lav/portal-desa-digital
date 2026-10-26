@@ -4,6 +4,7 @@ import { StaticRouter } from "react-router-dom/server";
 import { AppShell, Penyedia } from "./AppShell";
 
 export { daftarRute, metaHalaman } from "./seo/meta";
+export { ambilKatalog } from "./data/katalog";
 
 export const render = (url: string) =>
   renderToString(

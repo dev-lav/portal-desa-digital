@@ -18,6 +18,8 @@ import BeritaDetail from "./pages/BeritaDetail";
 import Keuangan from "./pages/Keuangan";
 import Kontak from "./pages/Kontak";
 import UMKM from "./pages/UMKM";
+import Katalog from "./pages/Katalog";
+import KatalogDetail from "./pages/KatalogDetail";
 import Pengaduan from "./pages/Pengaduan";
 import KebijakanPrivasi from "./pages/KebijakanPrivasi";
 import NotFound from "./pages/NotFound";
@@ -50,6 +52,8 @@ export const AppShell = () => (
           <Route path="/kontak" element={<Kontak />} />
           <Route path="/profil" element={<ProfilRW />} />
           <Route path="/umkm" element={<UMKM />} />
+          <Route path="/katalog" element={<Katalog />} />
+          <Route path="/katalog/:id" element={<KatalogDetail />} />
           <Route path="/pengaduan" element={<Pengaduan />} />
           <Route path="/data-warga" element={<DataWarga />} />
           <Route path="/layanan-surat" element={<LayananSurat />} />

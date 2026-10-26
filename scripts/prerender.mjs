@@ -7,7 +7,7 @@ import { pathToFileURL } from "node:url";
 const DIST = path.resolve("dist");
 const SSR = path.resolve("dist-ssr");
 
-const { render, daftarRute, metaHalaman } = await import(pathToFileURL(path.join(SSR, "entry-server.js")).href);
+const { render, daftarRute, metaHalaman, ambilKatalog } = await import(pathToFileURL(path.join(SSR, "entry-server.js")).href);
 const template = await readFile(path.join(DIST, "index.html"), "utf8");
 
 const escape = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -41,9 +41,16 @@ await writeFile(
   template.replace('<meta name="robots" content="index, follow" />', '<meta name="robots" content="noindex" />'),
 );
 
-const rute = daftarRute();
+// Halaman tiap barang ikut di-prerender agar punya judul & foto sendiri saat dibagikan.
+// Kalau spreadsheet gagal diambil, build tetap jalan; halaman barang tetap bisa dibuka lewat 404.html.
+const katalog = await ambilKatalog().catch((e) => {
+  console.warn(`Prerender: katalog tidak dimuat (${e.message})`);
+  return [];
+});
+
+const rute = daftarRute(katalog);
 for (const url of rute) {
-  const meta = metaHalaman(url);
+  const meta = metaHalaman(url, katalog);
   const html = isiMeta(template, meta).replace('<div id="root"></div>', `<div id="root">${render(url)}</div>`);
   const tujuan = url === "/" ? path.join(DIST, "index.html") : path.join(DIST, url, "index.html");
   await mkdir(path.dirname(tujuan), { recursive: true });
@@ -53,7 +60,7 @@ for (const url of rute) {
 const hariIni = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${rute.map((url) => `  <url>\n    <loc>${metaHalaman(url).kanonik}</loc>\n    <lastmod>${hariIni}</lastmod>\n  </url>`).join("\n")}
+${rute.map((url) => `  <url>\n    <loc>${metaHalaman(url, katalog).kanonik}</loc>\n    <lastmod>${hariIni}</lastmod>\n  </url>`).join("\n")}
 </urlset>
 `;
 await writeFile(path.join(DIST, "sitemap.xml"), sitemap);
