@@ -7,7 +7,7 @@ import { waLink } from "@/data/mockData";
 import { cn } from "@/lib/utils";
 
 const urutan = {
-  terbaru: "Terbaru",
+  pilihan: "Pilihan",
   termurah: "Harga terendah",
   termahal: "Harga tertinggi",
 } as const;
@@ -16,7 +16,7 @@ const Katalog = () => {
   const { data: katalog = [], isPending, isError, refetch, isFetching } = useKatalog();
   const [cari, setCari] = useState("");
   const [kategori, setKategori] = useState("Semua");
-  const [urut, setUrut] = useState<keyof typeof urutan>("terbaru");
+  const [urut, setUrut] = useState<keyof typeof urutan>("pilihan");
   const [sembunyikanTerjual, setSembunyikanTerjual] = useState(false);
 
   const jumlahTerjual = katalog.filter((b) => b.status === "terjual").length;
@@ -24,8 +24,8 @@ const Katalog = () => {
 
   const daftar = useMemo(() => {
     const kata = cari.trim().toLowerCase();
-    // Baris baru di spreadsheet ditambahkan di bawah, jadi yang terbaru ada di akhir
-    const hasil = [...katalog].reverse().filter(
+    // "Pilihan" = urutan baris di spreadsheet, jadi pengurus bisa menaruh barang unggulan di atas
+    const hasil = katalog.filter(
       (b) =>
         (kategori === "Semua" || b.kategori === kategori) &&
         (!sembunyikanTerjual || b.status !== "terjual") &&

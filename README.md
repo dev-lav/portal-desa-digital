@@ -116,6 +116,9 @@ Data barang dibaca langsung dari Google Sheets setiap kali halaman dibuka, foto 
 2. File → Bagikan → **Publikasikan ke web** → pilih sheet katalog, format **CSV** → salin tautannya.
 3. Tempel tautan itu ke `KATALOG_CSV_URL` di `src/data/katalog.ts`.
 
+Urutan baris di spreadsheet = urutan di website (barang unggulan taruh paling atas; 8 teratas yang belum
+terjual juga tampil di beranda). Barang yang sudah terjual otomatis pindah ke paling bawah.
+
 Perubahan harga/status di spreadsheet tampil dalam ±5 menit tanpa deploy ulang. Barang baru juga langsung tampil;
 halaman prerender-nya (judul & foto saat dibagikan ke WA) dibuat saat build berikutnya, yang berjalan otomatis tiap hari.
 Selama `KATALOG_CSV_URL` kosong, katalog memakai `src/data/katalog-awal.csv` yang ikut di-build.
