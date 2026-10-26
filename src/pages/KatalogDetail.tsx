@@ -211,7 +211,6 @@ const KatalogDetail = () => {
     .slice(0, 5);
 
   const rincian = [
-    ["Kondisi", barang.kondisi],
     ["Kategori", barang.kategori],
     ["Lokasi", barang.lokasi],
   ].filter((r): r is [string, string] => Boolean(r[1]));
@@ -237,7 +236,12 @@ const KatalogDetail = () => {
             )}
           </div>
           <h1 className="mt-1.5 text-xl font-bold leading-snug md:text-2xl">{barang.nama}</h1>
-          <span className={cn("mt-3 inline-block rounded-full px-3 py-1 text-xs font-extrabold", status.kelas)}>{status.teks}</span>
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            <span className={cn("rounded-full px-3 py-1 text-xs font-extrabold", status.kelas)}>{status.teks}</span>
+            {barang.kondisi && (
+              <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-bold">Kondisi: {barang.kondisi}</span>
+            )}
+          </div>
 
           <div className="mt-5 hidden gap-2 lg:flex">
             <TombolBeli barang={barang} className="flex-1" />

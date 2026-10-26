@@ -9,7 +9,8 @@ import { cn } from "@/lib/utils";
 export const BarangCard = ({ barang, className }: { barang: Barang; className?: string }) => {
   const terjual = barang.status === "terjual";
   const diskon = persenDiskon(barang);
-  const info = [barang.lokasi, barang.kondisi].filter(Boolean).join(" · ");
+  // "Bekas - sudah direparasi" -> "Bekas"; keterangan lengkapnya di halaman detail
+  const kondisi = barang.kondisi?.split(" - ")[0];
 
   return (
     <Link
@@ -57,10 +58,24 @@ export const BarangCard = ({ barang, className }: { barang: Barang; className?: 
         {barang.hargaCoret && (
           <p className="text-xs text-muted-foreground line-through">{formatRupiah(barang.hargaCoret)}</p>
         )}
-        {info && (
-          <p className="mt-auto flex items-center gap-1 pt-1 text-xs text-muted-foreground">
-            <MapPin className="h-3 w-3 flex-shrink-0" />
-            <span className="truncate">{info}</span>
+        {(kondisi || barang.lokasi) && (
+          <p className="mt-auto flex items-center gap-1.5 pt-1 text-xs text-muted-foreground">
+            {kondisi && (
+              <span
+                className={cn(
+                  "flex-shrink-0 rounded border px-1.5 font-bold",
+                  /^baru/i.test(kondisi) ? "border-primary/40 text-primary" : "border-border",
+                )}
+              >
+                {kondisi}
+              </span>
+            )}
+            {barang.lokasi && (
+              <span className="flex min-w-0 items-center gap-0.5">
+                <MapPin className="h-3 w-3 flex-shrink-0" />
+                <span className="truncate">{barang.lokasi}</span>
+              </span>
+            )}
           </p>
         )}
       </div>
