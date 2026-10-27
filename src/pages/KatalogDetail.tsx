@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, ImageOff, MapPin, MessageCircle, Share2 } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, ImageOff, MapPin, MessageCircle, RefreshCw, Share2 } from "lucide-react";
 import { SectionTitle } from "@/components/SectionTitle";
 import { BarangCard } from "@/components/konten/BarangCard";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
@@ -172,7 +172,7 @@ const TombolBagikan = ({ barang }: { barang: Barang }) => (
 
 const KatalogDetail = () => {
   const { id } = useParams();
-  const { data: katalog, isPending, isError } = useKatalog();
+  const { data: katalog, isPending, isError, isFetching } = useKatalog(true, true);
   const barang = katalog?.find((b) => b.id === id);
 
   if (isPending) {
@@ -242,6 +242,12 @@ const KatalogDetail = () => {
           <h1 className="mt-1.5 text-xl font-bold leading-snug md:text-2xl">{barang.nama}</h1>
           <div className="mt-3 flex flex-wrap gap-1.5">
             <span className={cn("rounded-full px-3 py-1 text-xs font-extrabold", status.kelas)}>{status.teks}</span>
+            {isFetching && (
+              <span className="inline-flex items-center gap-1 px-1 py-1 text-xs text-muted-foreground">
+                <RefreshCw className="h-3 w-3 animate-spin" />
+                Mengecek status terbaru…
+              </span>
+            )}
             {barang.kondisi && (
               <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-bold">Kondisi: {barang.kondisi}</span>
             )}

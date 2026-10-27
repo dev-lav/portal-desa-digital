@@ -147,7 +147,8 @@ export const ambilKatalog = async (): Promise<Barang[]> => {
   const katalog = bacaKatalog(katalogAwalCsv);
   if (!STATUS_CSV_URL) return katalog;
   try {
-    const res = await fetch(STATUS_CSV_URL);
+    // no-store: lewati salinan di browser (Google menandainya boleh disimpan 5 menit)
+    const res = await fetch(STATUS_CSV_URL, { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const statusPublik = bacaStatusPublik(await res.text());
     return katalog.map((b) => {
