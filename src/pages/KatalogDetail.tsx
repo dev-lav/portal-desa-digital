@@ -5,7 +5,7 @@ import { SectionTitle } from "@/components/SectionTitle";
 import { BarangCard } from "@/components/konten/BarangCard";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
-import { Barang, StatusBarang, labelHarga, persenDiskon } from "@/data/katalog";
+import { Barang, StatusBarang, hargaDariTawaran, labelHarga, persenDiskon } from "@/data/katalog";
 import { waLink } from "@/data/mockData";
 import { useKatalog } from "@/hooks/use-katalog";
 import { formatRupiah } from "@/lib/format";
@@ -233,15 +233,20 @@ const KatalogDetail = () => {
         <Galeri barang={barang} />
 
         <div>
-          <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-            <p className="text-3xl font-extrabold tracking-tight">{labelHarga(barang)}</p>
-            {barang.hargaCoret && (
-              <>
-                <p className="text-muted-foreground line-through">{formatRupiah(barang.hargaCoret)}</p>
-                <span className="rounded bg-destructive/10 px-1.5 py-0.5 text-xs font-extrabold text-destructive">-{diskon}%</span>
-              </>
-            )}
-          </div>
+          {/* Tanpa harga patokan: nominalnya cukup tampil di kotak penawaran di bawah */}
+          {hargaDariTawaran(barang) ? (
+            <p className="text-sm font-bold text-destructive">Tanpa harga patokan · terbuka untuk penawaran</p>
+          ) : (
+            <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+              <p className="text-3xl font-extrabold tracking-tight">{labelHarga(barang)}</p>
+              {barang.hargaCoret && (
+                <>
+                  <p className="text-muted-foreground line-through">{formatRupiah(barang.hargaCoret)}</p>
+                  <span className="rounded bg-destructive/10 px-1.5 py-0.5 text-xs font-extrabold text-destructive">-{diskon}%</span>
+                </>
+              )}
+            </div>
+          )}
           <h1 className="mt-1.5 text-xl font-bold leading-snug md:text-2xl">{barang.nama}</h1>
           <div className="mt-3 flex flex-wrap gap-1.5">
             <span className={cn("rounded-full px-3 py-1 text-xs font-extrabold", status.kelas)}>{status.teks}</span>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Flame, ImageOff, MapPin } from "lucide-react";
-import { Barang, labelHarga, persenDiskon } from "@/data/katalog";
+import { Barang, hargaDariTawaran, labelHarga, persenDiskon } from "@/data/katalog";
 import { Skeleton } from "@/components/ui/skeleton";
 import { formatRupiah, formatRupiahRingkas } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -52,6 +52,16 @@ export const BarangCard = ({ barang, className }: { barang: Barang; className?: 
             {barang.penawaran.jumlah} penawar
           </span>
         )}
+        {kondisi && (
+          <span
+            className={cn(
+              "absolute bottom-2 left-2 rounded-full px-2 py-0.5 text-[0.7rem] font-bold text-white backdrop-blur-sm",
+              /^baru/i.test(kondisi) ? "bg-primary" : "bg-black/55",
+            )}
+          >
+            {kondisi}
+          </span>
+        )}
         {diskon > 0 && !terjual && (
           <span className="absolute right-0 top-0 rounded-bl-lg bg-destructive px-1.5 py-0.5 text-[0.7rem] font-extrabold text-destructive-foreground">
             -{diskon}%
@@ -60,33 +70,31 @@ export const BarangCard = ({ barang, className }: { barang: Barang; className?: 
       </div>
       <div className="flex flex-1 flex-col gap-0.5 p-2.5">
         <h3 className="line-clamp-2 text-sm leading-snug">{barang.nama}</h3>
-        <p className={cn("mt-0.5 font-extrabold", terjual && "text-muted-foreground")}>{labelHarga(barang)}</p>
+        {/* Tanpa harga patokan: tawaran tertinggi tampil merah dengan label, supaya tidak dikira harga jual */}
+        {hargaDariTawaran(barang) && (
+          <p className="mt-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-destructive">Tawaran tertinggi</p>
+        )}
+        <p
+          className={cn(
+            "mt-0.5 font-extrabold",
+            terjual && "text-muted-foreground",
+            hargaDariTawaran(barang) && "mt-0 text-destructive",
+          )}
+        >
+          {labelHarga(barang)}
+        </p>
         {barang.hargaCoret && (
           <p className="text-xs text-muted-foreground line-through">{formatRupiah(barang.hargaCoret)}</p>
         )}
-        {barang.penawaran && (
+        {barang.penawaran && !hargaDariTawaran(barang) && (
           <p className="mt-0.5 self-start whitespace-nowrap rounded bg-destructive/10 px-1.5 py-0.5 text-xs font-bold text-destructive">
             Tawaran {formatRupiahRingkas(barang.penawaran.tertinggi)}
           </p>
         )}
-        {(kondisi || barang.lokasi) && (
-          <p className="mt-auto flex items-center gap-1.5 pt-1 text-xs text-muted-foreground">
-            {kondisi && (
-              <span
-                className={cn(
-                  "flex-shrink-0 rounded border px-1.5 font-bold",
-                  /^baru/i.test(kondisi) ? "border-primary/40 text-primary" : "border-border",
-                )}
-              >
-                {kondisi}
-              </span>
-            )}
-            {barang.lokasi && (
-              <span className="flex min-w-0 items-center gap-0.5">
-                <MapPin className="h-3 w-3 flex-shrink-0" />
-                <span className="truncate">{barang.lokasi}</span>
-              </span>
-            )}
+        {barang.lokasi && (
+          <p className="mt-auto flex min-w-0 items-center gap-0.5 pt-1 text-xs text-muted-foreground">
+            <MapPin className="h-3 w-3 flex-shrink-0" />
+            <span className="truncate">{barang.lokasi}</span>
           </p>
         )}
       </div>

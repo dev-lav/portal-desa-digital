@@ -127,7 +127,11 @@ export const bacaKatalog = (csv: string): Barang[] => {
     .filter((b) => b.id && b.nama);
 };
 
-export const labelHarga = (b: Barang) => (b.harga > 0 ? formatRupiah(b.harga) : "Tanya harga");
+// Barang tanpa harga patokan yang sudah ditawar: tawaran tertinggi menjadi harga yang ditampilkan
+export const hargaDariTawaran = (b: Barang) => b.harga === 0 && Boolean(b.penawaran);
+
+export const labelHarga = (b: Barang) =>
+  b.harga > 0 ? formatRupiah(b.harga) : b.penawaran ? formatRupiah(b.penawaran.tertinggi) : "Tanya harga";
 
 // Rp450.000 -> Rp350.000 = 22
 export const persenDiskon = (b: Barang) => (b.hargaCoret ? Math.round((1 - b.harga / b.hargaCoret) * 100) : 0);
