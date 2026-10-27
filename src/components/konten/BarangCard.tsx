@@ -49,7 +49,7 @@ export const BarangCard = ({ barang, className }: { barang: Barang; className?: 
         {barang.penawaran && (
           <span className="absolute left-0 top-2 inline-flex items-center gap-0.5 rounded-r-md bg-destructive px-2 py-0.5 text-[0.7rem] font-extrabold text-destructive-foreground">
             <Flame className="h-3 w-3" />
-            Ditawar
+            {barang.penawaran.jumlah} penawar
           </span>
         )}
         {diskon > 0 && !terjual && (
@@ -65,8 +65,8 @@ export const BarangCard = ({ barang, className }: { barang: Barang; className?: 
           <p className="text-xs text-muted-foreground line-through">{formatRupiah(barang.hargaCoret)}</p>
         )}
         {barang.penawaran && (
-          <p className="text-xs font-semibold text-destructive">
-            Tawaran tertinggi {formatRupiahRingkas(barang.penawaran.tertinggi)} · {barang.penawaran.jumlah} penawar
+          <p className="mt-0.5 self-start whitespace-nowrap rounded bg-destructive/10 px-1.5 py-0.5 text-xs font-bold text-destructive">
+            Tawaran {formatRupiahRingkas(barang.penawaran.tertinggi)}
           </p>
         )}
         {(kondisi || barang.lokasi) && (
