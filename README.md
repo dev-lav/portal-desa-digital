@@ -121,8 +121,9 @@ di beranda). Barang yang sudah terjual otomatis pindah ke paling bawah.
 
 **Menghubungkan status dari spreadsheet pengurus**
 
-1. Di spreadsheet monitoring, tab **Status Publik** berisi kode & status yang diambil otomatis dari tab
-   Daftar Barang, tanpa nomor WA atau nama penawar/pembeli.
+1. Di spreadsheet monitoring, tab **Status Publik** berisi `kode`, `status`, `penawaran` (penawaran tertinggi) dan
+   `jumlah_penawaran` yang diambil otomatis dari tab Daftar Barang & Riwayat Penawaran, tanpa nomor WA atau nama
+   penawar/pembeli. Selama barang masih tersedia, penawaran tertinggi & jumlah penawar tampil di website.
 2. File → Bagikan → **Publikasikan ke web** → pilih **hanya tab Status Publik**, format **CSV** → salin tautannya.
    Jangan publikasikan tab lain atau seluruh dokumen: tab lain berisi data pribadi warga.
 3. Tempel tautan itu ke `STATUS_CSV_URL` di `src/data/katalog.ts`.

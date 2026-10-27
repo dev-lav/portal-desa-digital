@@ -1,6 +1,6 @@
 // Katalog barang dijual. Data barang ada di src/data/katalog-awal.csv dan foto di src/images/katalog;
-// hanya status yang dibaca langsung dari Google Sheets pengurus (tab "Status Publik", 2 kolom: kode & status),
-// supaya perubahan status tampil tanpa deploy ulang.
+// yang dibaca langsung dari Google Sheets pengurus hanya tab "Status Publik" (kode, status, penawaran tertinggi,
+// jumlah penawaran; tanpa nama/WA penawar), supaya perubahannya tampil tanpa deploy ulang.
 import katalogAwalCsv from "./katalog-awal.csv?raw";
 import { rwInfo } from "./mockData";
 import { formatRupiah } from "@/lib/format";
@@ -29,6 +29,8 @@ export interface Barang {
   penjual: string;
   nomorWA: string;
   lokasi?: string;
+  // Hanya ada selama barang masih tersedia dan sudah ada yang menawar
+  penawaran?: { tertinggi: number; jumlah: number };
 }
 
 // Semua foto di src/images/katalog, dicari berdasarkan nama file (tanpa membedakan huruf besar/kecil)
@@ -130,16 +132,28 @@ export const labelHarga = (b: Barang) => (b.harga > 0 ? formatRupiah(b.harga) : 
 // Rp450.000 -> Rp350.000 = 22
 export const persenDiskon = (b: Barang) => (b.hargaCoret ? Math.round((1 - b.harga / b.hargaCoret) * 100) : 0);
 
-// Tab "Status Publik": kolom kode (judul berisi "kode"/"id") dan kolom status -> Map kode -> status mentah
+// Tab "Status Publik": kolom kode (judul berisi "kode"/"id"), status, penawaran, jumlah_penawaran
 const bacaStatusPublik = (csv: string) => {
   const [kepala = [], ...isi] = bacaCsv(csv);
   const judul = kepala.map((k) => k.trim().toLowerCase());
   const iKode = Math.max(0, judul.findIndex((k) => /kode|id/.test(k)));
   const iStatus = judul.findIndex((k) => k.includes("status"));
+  const iPenawaran = judul.findIndex((k) => k.startsWith("penawaran"));
+  const iJumlah = judul.findIndex((k) => k.startsWith("jumlah"));
   return new Map(
     isi
-      .map((sel) => [sel[iKode]?.trim().toUpperCase(), sel[iStatus < 0 ? 1 : iStatus]?.trim()] as const)
-      .filter(([kode, status]) => kode && status),
+      .map((sel) => {
+        const tertinggi = iPenawaran < 0 ? 0 : bacaHarga(sel[iPenawaran]);
+        const jumlah = iJumlah < 0 ? 0 : bacaHarga(sel[iJumlah]);
+        return [
+          sel[iKode]?.trim().toUpperCase(),
+          {
+            status: sel[iStatus < 0 ? 1 : iStatus]?.trim() ?? "",
+            penawaran: tertinggi > 0 ? { tertinggi, jumlah: Math.max(jumlah, 1) } : undefined,
+          },
+        ] as const;
+      })
+      .filter(([kode, data]) => kode && data.status),
   );
 };
 
@@ -152,8 +166,11 @@ export const ambilKatalog = async (): Promise<Barang[]> => {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const statusPublik = bacaStatusPublik(await res.text());
     return katalog.map((b) => {
-      const status = b.kode && statusPublik.get(b.kode);
-      return status ? { ...b, status: bacaStatus(status) } : b;
+      const publik = b.kode && statusPublik.get(b.kode);
+      if (!publik) return b;
+      const status = bacaStatus(publik.status);
+      // Penawaran hanya ditampilkan selama barang masih bisa ditawar
+      return { ...b, status, penawaran: status === "tersedia" ? publik.penawaran : undefined };
     });
   } catch (e) {
     // Katalog tetap tampil dengan status terakhir dari repo

@@ -5,6 +5,14 @@ export const formatRupiah = (amount: number) =>
 export const formatJuta = (amount: number) =>
   `Rp${(amount / 1_000_000).toLocaleString("id-ID", { maximumFractionDigits: 2 })} jt`;
 
+// 750000 -> "Rp750 rb", 1500000 -> "Rp1,5 jt" (untuk ruang sempit seperti kartu)
+export const formatRupiahRingkas = (amount: number) =>
+  amount >= 1_000_000
+    ? `Rp${(amount / 1_000_000).toLocaleString("id-ID", { maximumFractionDigits: 1 })} jt`
+    : amount >= 1_000
+      ? `Rp${(amount / 1_000).toLocaleString("id-ID", { maximumFractionDigits: 0 })} rb`
+      : formatRupiah(amount);
+
 export const formatTanggal = (date: Date, options: Intl.DateTimeFormatOptions = { day: "numeric", month: "long", year: "numeric" }) =>
   date.toLocaleDateString("id-ID", options);
 

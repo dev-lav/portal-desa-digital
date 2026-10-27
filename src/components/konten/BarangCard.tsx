@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { ImageOff, MapPin } from "lucide-react";
+import { Flame, ImageOff, MapPin } from "lucide-react";
 import { Barang, labelHarga, persenDiskon } from "@/data/katalog";
 import { Skeleton } from "@/components/ui/skeleton";
-import { formatRupiah } from "@/lib/format";
+import { formatRupiah, formatRupiahRingkas } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 // Kartu produk ala marketplace: foto persegi, nama 2 baris, harga tebal
@@ -46,6 +46,12 @@ export const BarangCard = ({ barang, className }: { barang: Barang; className?: 
             Dipesan
           </span>
         )}
+        {barang.penawaran && (
+          <span className="absolute left-0 top-2 inline-flex items-center gap-0.5 rounded-r-md bg-destructive px-2 py-0.5 text-[0.7rem] font-extrabold text-destructive-foreground">
+            <Flame className="h-3 w-3" />
+            Ditawar
+          </span>
+        )}
         {diskon > 0 && !terjual && (
           <span className="absolute right-0 top-0 rounded-bl-lg bg-destructive px-1.5 py-0.5 text-[0.7rem] font-extrabold text-destructive-foreground">
             -{diskon}%
@@ -57,6 +63,11 @@ export const BarangCard = ({ barang, className }: { barang: Barang; className?: 
         <p className={cn("mt-0.5 font-extrabold", terjual && "text-muted-foreground")}>{labelHarga(barang)}</p>
         {barang.hargaCoret && (
           <p className="text-xs text-muted-foreground line-through">{formatRupiah(barang.hargaCoret)}</p>
+        )}
+        {barang.penawaran && (
+          <p className="text-xs font-semibold text-destructive">
+            Tawaran tertinggi {formatRupiahRingkas(barang.penawaran.tertinggi)} · {barang.penawaran.jumlah} penawar
+          </p>
         )}
         {(kondisi || barang.lokasi) && (
           <p className="mt-auto flex items-center gap-1.5 pt-1 text-xs text-muted-foreground">

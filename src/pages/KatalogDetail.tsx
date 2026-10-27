@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ChevronLeft, ChevronRight, ImageOff, MapPin, MessageCircle, RefreshCw, Share2 } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Flame, ImageOff, MapPin, MessageCircle, RefreshCw, Share2 } from "lucide-react";
 import { SectionTitle } from "@/components/SectionTitle";
 import { BarangCard } from "@/components/konten/BarangCard";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
@@ -24,6 +24,9 @@ const namaBerkode = (b: Barang) => (b.kode ? `[${b.kode}] ${b.nama}` : b.nama);
 // Pesan WhatsApp yang sudah terisi saat pembeli menekan tombol beli
 const pesanBeli = (b: Barang) => {
   const isi = `*${namaBerkode(b)}*\n${b.harga > 0 ? `Harga: ${formatRupiah(b.harga)}\n` : ""}${urlKanonik(`/katalog/${b.id}`)}`;
+  if (b.penawaran) {
+    return `Halo ${b.penjual}, saya mau menawar barang ini dari Lapak Amal Posyandu RW 12:\n\n${isi}\nTawaran tertinggi saat ini: ${formatRupiah(b.penawaran.tertinggi)}\n\nTawaran saya: Rp`;
+  }
   return b.status === "dipesan"
     ? `Halo ${b.penjual}, saya lihat barang ini di Lapak Amal Posyandu RW 12:\n\n${isi}\n\nKatanya sedang dipesan. Kalau batal, saya mau antre ya.`
     : b.harga > 0
@@ -156,7 +159,7 @@ const TombolBeli = ({ barang, className }: { barang: Barang; className?: string 
       )}
     >
       <MessageCircle className="h-5 w-5" />
-      {barang.status === "dipesan" ? "Tanya ketersediaan" : "Beli via WhatsApp"}
+      {barang.penawaran ? "Tawar lebih tinggi" : barang.status === "dipesan" ? "Tanya ketersediaan" : "Beli via WhatsApp"}
     </a>
   );
 
@@ -252,6 +255,20 @@ const KatalogDetail = () => {
               <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-bold">Kondisi: {barang.kondisi}</span>
             )}
           </div>
+
+          {barang.penawaran && (
+            <div className="mt-4 rounded-2xl border border-destructive/30 bg-destructive/5 p-4">
+              <p className="flex items-center gap-1.5 text-sm font-bold text-destructive">
+                <Flame className="h-4 w-4" />
+                Penawaran tertinggi saat ini
+              </p>
+              <p className="mt-0.5 text-2xl font-extrabold">{formatRupiah(barang.penawaran.tertinggi)}</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Dari {barang.penawaran.jumlah} penawaran. Mau menawar lebih tinggi? Kirim tawaranmu lewat WhatsApp, pengurus
+                akan mengonfirmasi penawar yang terpilih.
+              </p>
+            </div>
+          )}
 
           <div className="mt-5 hidden gap-2 lg:flex">
             <TombolBeli barang={barang} className="flex-1" />

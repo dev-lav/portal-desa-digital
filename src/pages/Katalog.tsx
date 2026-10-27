@@ -18,8 +18,10 @@ const Katalog = () => {
   const [kategori, setKategori] = useState("Semua");
   const [urut, setUrut] = useState<keyof typeof urutan>("pilihan");
   const [sembunyikanTerjual, setSembunyikanTerjual] = useState(false);
+  const [hanyaDitawar, setHanyaDitawar] = useState(false);
 
   const jumlahTerjual = katalog.filter((b) => b.status === "terjual").length;
+  const jumlahDitawar = katalog.filter((b) => b.penawaran).length;
   const daftarKategori = useMemo(() => ["Semua", ...new Set(katalog.map((b) => b.kategori))], [katalog]);
 
   const daftar = useMemo(() => {
@@ -29,6 +31,7 @@ const Katalog = () => {
       (b) =>
         (kategori === "Semua" || b.kategori === kategori) &&
         (!sembunyikanTerjual || b.status !== "terjual") &&
+        (!hanyaDitawar || b.penawaran) &&
         (!kata || `${b.nama} ${b.deskripsi} ${b.kategori}`.toLowerCase().includes(kata)),
     );
     // Barang tanpa harga ("Tanya harga") ditaruh setelah yang berharga
@@ -36,7 +39,7 @@ const Katalog = () => {
     if (urut === "termahal") hasil.sort((a, b) => b.harga - a.harga);
     // Yang sudah terjual selalu di belakang
     return hasil.sort((a, b) => Number(a.status === "terjual") - Number(b.status === "terjual"));
-  }, [katalog, cari, kategori, urut, sembunyikanTerjual]);
+  }, [katalog, cari, kategori, urut, sembunyikanTerjual, hanyaDitawar]);
 
   return (
     <>
@@ -91,7 +94,18 @@ const Katalog = () => {
 
         <div className="mt-3 flex flex-wrap items-center justify-between gap-x-4 gap-y-2 text-sm">
           <p className="text-muted-foreground">{isPending ? "Memuat barang…" : `${daftar.length} barang`}</p>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+            {jumlahDitawar > 0 && (
+              <label className="flex cursor-pointer items-center gap-1.5 font-semibold text-destructive">
+                <input
+                  type="checkbox"
+                  checked={hanyaDitawar}
+                  onChange={(e) => setHanyaDitawar(e.target.checked)}
+                  className="h-4 w-4 accent-[hsl(var(--destructive))]"
+                />
+                Sedang ditawar ({jumlahDitawar})
+              </label>
+            )}
             <label className="flex cursor-pointer items-center gap-1.5 font-semibold">
               <input
                 type="checkbox"
