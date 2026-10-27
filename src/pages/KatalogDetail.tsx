@@ -18,9 +18,12 @@ const labelStatus: Record<StatusBarang, { teks: string; kelas: string }> = {
   terjual: { teks: "Sudah terjual", kelas: "bg-muted text-muted-foreground" },
 };
 
+// "[RW12-01] Sepeda": kode membantu pengurus mencatat penawaran di file monitoring
+const namaBerkode = (b: Barang) => (b.kode ? `[${b.kode}] ${b.nama}` : b.nama);
+
 // Pesan WhatsApp yang sudah terisi saat pembeli menekan tombol beli
 const pesanBeli = (b: Barang) => {
-  const isi = `*${b.nama}*\n${b.harga > 0 ? `Harga: ${formatRupiah(b.harga)}\n` : ""}${urlKanonik(`/katalog/${b.id}`)}`;
+  const isi = `*${namaBerkode(b)}*\n${b.harga > 0 ? `Harga: ${formatRupiah(b.harga)}\n` : ""}${urlKanonik(`/katalog/${b.id}`)}`;
   return b.status === "dipesan"
     ? `Halo ${b.penjual}, saya lihat barang ini di Lapak Amal Posyandu RW 12:\n\n${isi}\n\nKatanya sedang dipesan. Kalau batal, saya mau antre ya.`
     : b.harga > 0
@@ -211,6 +214,7 @@ const KatalogDetail = () => {
     .slice(0, 5);
 
   const rincian = [
+    ["Kode", barang.kode],
     ["Kategori", barang.kategori],
     ["Lokasi", barang.lokasi],
   ].filter((r): r is [string, string] => Boolean(r[1]));
@@ -280,7 +284,7 @@ const KatalogDetail = () => {
               )}
             </div>
             <a
-              href={waLink(`Halo ${barang.penjual}, saya mau tanya soal ${barang.nama} di Lapak Amal Posyandu RW 12`, barang.nomorWA)}
+              href={waLink(`Halo ${barang.penjual}, saya mau tanya soal ${namaBerkode(barang)} di Lapak Amal Posyandu RW 12`, barang.nomorWA)}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-primary px-3.5 py-1.5 text-sm font-bold text-primary"

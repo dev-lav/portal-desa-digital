@@ -100,28 +100,36 @@ Warna diambil dari logo RW 12 dan diatur sebagai variabel di `src/index.css`.
 
 ## Katalog barang (`/katalog`)
 
-Data barang dibaca langsung dari Google Sheets setiap kali halaman dibuka, foto disimpan di repo.
+Data barang (nama, harga, foto, deskripsi) ada di `src/data/katalog-awal.csv`, foto di `src/images/katalog/`.
+Hanya **status** yang dibaca langsung dari Google Sheets monitoring pengurus, jadi perubahan status tampil
+dalam ±5 menit tanpa deploy ulang.
 
-1. Buat Google Sheet dengan kolom seperti `src/data/katalog-awal.csv` (bisa diimpor langsung lewat File → Impor):
-   | kolom | isi |
-   | --- | --- |
-   | `id` | alamat halaman barang, mis. `kursi-rotan` (huruf kecil, tanpa spasi). Jangan diubah setelah dibagikan |
-   | `nama` | nama barang (wajib) |
-   | `harga` | angka atau `Rp150.000`; kosong = tampil "Tanya harga" |
-   | `harga_coret` | opsional, harga sebelum diskon |
-   | `status` | `Tersedia`, `Dipesan`, atau `Terjual` (`Laku` juga dikenali) |
-   | `kategori`, `kondisi`, `deskripsi`, `lokasi` | opsional |
-   | `foto` | nama file di `src/images/katalog`, pisahkan dengan koma untuk beberapa foto. Boleh juga URL `https://` |
-   | `penjual`, `wa` | opsional; kosong = pengurus RW dan nomor WA RW |
-2. File → Bagikan → **Publikasikan ke web** → pilih sheet katalog, format **CSV** → salin tautannya.
-3. Tempel tautan itu ke `KATALOG_CSV_URL` di `src/data/katalog.ts`.
+| kolom CSV | isi |
+| --- | --- |
+| `id` | alamat halaman barang, mis. `kursi-rotan` (huruf kecil, tanpa spasi). Jangan diubah setelah dibagikan |
+| `kode` | ID di file monitoring pengurus, mis. `RW12-01`; penghubung status dari spreadsheet |
+| `nama` | nama barang (wajib) |
+| `harga` | angka atau `Rp150.000`; kosong = tampil "Tanya harga" |
+| `harga_coret` | opsional, harga sebelum diskon |
+| `status` | status cadangan saat spreadsheet belum terhubung/gagal dimuat |
+| `kategori`, `kondisi`, `deskripsi`, `lokasi` | opsional |
+| `foto` | nama file di `src/images/katalog`, pisahkan dengan koma untuk beberapa foto |
+| `penjual`, `wa` | opsional; kosong = pengurus RW dan nomor WA RW |
 
-Urutan baris di spreadsheet = urutan di website (barang unggulan taruh paling atas; 8 teratas yang belum
-terjual juga tampil di beranda). Barang yang sudah terjual otomatis pindah ke paling bawah.
+Urutan baris = urutan di website (barang unggulan taruh paling atas; 8 teratas yang belum terjual juga tampil
+di beranda). Barang yang sudah terjual otomatis pindah ke paling bawah.
 
-Perubahan harga/status di spreadsheet tampil dalam ±5 menit tanpa deploy ulang. Barang baru juga langsung tampil;
-halaman prerender-nya (judul & foto saat dibagikan ke WA) dibuat saat build berikutnya, yang berjalan otomatis tiap hari.
-Selama `KATALOG_CSV_URL` kosong, katalog memakai `src/data/katalog-awal.csv` yang ikut di-build.
+**Menghubungkan status dari spreadsheet pengurus**
+
+1. Di spreadsheet monitoring, tab **Status Publik** berisi kode & status yang diambil otomatis dari tab
+   Daftar Barang, tanpa nomor WA atau nama penawar/pembeli.
+2. File → Bagikan → **Publikasikan ke web** → pilih **hanya tab Status Publik**, format **CSV** → salin tautannya.
+   Jangan publikasikan tab lain atau seluruh dokumen: tab lain berisi data pribadi warga.
+3. Tempel tautan itu ke `STATUS_CSV_URL` di `src/data/katalog.ts`.
+
+Status pengurus dikenali begini: Sold Out / Sudah Diambil → terjual; Menunggu Pembayaran → dipesan;
+Tersedia / Penawaran Masuk / Dibatalkan → tersedia. Kalau spreadsheet gagal dimuat, website memakai kolom
+`status` di CSV repo. Barang baru tetap ditambahkan lewat CSV repo dengan kode yang sama seperti di spreadsheet.
 
 ### Menambah foto barang
 
