@@ -1,6 +1,6 @@
-import { CalendarX, MessageCircle } from "lucide-react";
+import { CalendarX, MessageCircle, Repeat } from "lucide-react";
 import { Kegiatan } from "@/data/types";
-import { waLink } from "@/data/mockData";
+import { waLink } from "@/data/konten";
 import { formatTanggal } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
@@ -31,7 +31,15 @@ export const AgendaCard = ({ kegiatan, redup = false }: { kegiatan: Kegiatan; re
       <small className="text-[0.7rem] font-bold uppercase opacity-80">{formatTanggal(kegiatan.tanggal, { month: "short" })}</small>
     </div>
     <div className="min-w-0 flex-1 px-3.5 py-3">
-      <TagLabel tag={kegiatan.tag} />
+      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <TagLabel tag={kegiatan.tag} />
+        {kegiatan.ulang && (
+          <span className="inline-flex items-center gap-1 text-xs font-semibold text-muted-foreground">
+            <Repeat className="h-3.5 w-3.5" />
+            {kegiatan.ulang}
+          </span>
+        )}
+      </div>
       <h3 className="mb-1 mt-1.5 font-bold leading-snug">{kegiatan.nama}</h3>
       <p className="text-sm text-muted-foreground">
         {kegiatan.waktu} · {kegiatan.lokasi}

@@ -2,7 +2,7 @@
 // yang dibaca langsung dari Google Sheets pengurus hanya tab "Status Publik" (kode, status, penawaran tertinggi,
 // jumlah penawaran; tanpa nama/WA penawar), supaya perubahannya tampil tanpa deploy ulang.
 import katalogAwalCsv from "./katalog-awal.csv?raw";
-import { rwInfo } from "./mockData";
+import { rwInfo } from "./konten";
 import { formatRupiah } from "@/lib/format";
 
 // Tautan CSV tab "Status Publik" (File → Bagikan → Publikasikan ke web → pilih tab itu → CSV).

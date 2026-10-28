@@ -1,4 +1,4 @@
-import { beritaList } from "@/data/mockData";
+import { beritaList } from "@/data/konten";
 import { Barang } from "@/data/katalog";
 import { formatRupiah } from "@/lib/format";
 

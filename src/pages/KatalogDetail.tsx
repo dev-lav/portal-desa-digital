@@ -6,7 +6,7 @@ import { BarangCard } from "@/components/konten/BarangCard";
 import { Carousel, CarouselApi, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Barang, StatusBarang, hargaDariTawaran, labelHarga, persenDiskon } from "@/data/katalog";
-import { waLink } from "@/data/mockData";
+import { waLink } from "@/data/konten";
 import { useKatalog } from "@/hooks/use-katalog";
 import { formatRupiah } from "@/lib/format";
 import { cn } from "@/lib/utils";

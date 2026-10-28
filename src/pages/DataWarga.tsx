@@ -2,7 +2,7 @@ import { Users, UserCheck, Briefcase, Baby } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { StatCard } from "@/components/StatCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { statistikPenduduk, dataRT } from "@/data/mockData";
+import { statistikPenduduk, dataRT } from "@/data/konten";
 
 const DataWarga = () => {
   const { totalKK, totalJiwa, komposisiUsia, pekerjaan } = statistikPenduduk;

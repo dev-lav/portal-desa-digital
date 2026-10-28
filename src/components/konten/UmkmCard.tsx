@@ -1,6 +1,6 @@
 import { MessageCircle } from "lucide-react";
 import { UMKM } from "@/data/types";
-import { waLink } from "@/data/mockData";
+import { waLink } from "@/data/konten";
 import { padRT } from "@/lib/format";
 import { cn } from "@/lib/utils";
 

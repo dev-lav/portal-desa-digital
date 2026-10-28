@@ -2,7 +2,7 @@ import { Info } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionTitle } from "@/components/SectionTitle";
 import { KasRingkas } from "@/components/konten/KasRingkas";
-import { laporanKasBulanan, rincianPengeluaran } from "@/data/mockData";
+import { laporanKasBulanan, rincianPengeluaran } from "@/data/konten";
 import { formatRupiah, formatTanggal } from "@/lib/format";
 
 const Keuangan = () => {

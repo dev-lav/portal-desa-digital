@@ -42,6 +42,9 @@ export interface JenisSurat {
   estimasiProses: string;
 }
 
+export const kategoriKegiatan = ["Olahraga", "Keagamaan", "Sosial", "Lainnya"] as const;
+export type KategoriKegiatan = (typeof kategoriKegiatan)[number];
+
 export interface Kegiatan {
   id: string;
   nama: string;
@@ -49,7 +52,22 @@ export interface Kegiatan {
   waktu: string;
   lokasi: string;
   tag: "Rutin" | "Kerja Bakti" | "Posyandu" | "Rapat" | "Sosial";
+  kategori: KategoriKegiatan; // untuk filter di halaman Kegiatan
+  ilustrasi?: string; // gambar siluet di kartu agenda utama; kalau kosong dipakai ikon kategori
   deskripsi?: string;
+  // Diisi otomatis untuk jadwal yang berasal dari KegiatanRutin, mis. "Setiap Sabtu"
+  ulang?: string;
+  aturan?: { rrule: string; libur: Date[] }; // untuk "Simpan ke kalender"
+}
+
+// Kegiatan berulang: cukup tulis polanya, tanggal terdekat dihitung otomatis (lihat src/lib/jadwal.ts)
+export interface KegiatanRutin extends Omit<Kegiatan, "tanggal" | "ulang" | "aturan"> {
+  pola:
+    | { jenis: "mingguan"; hari: number[] } // 0 = Minggu, 1 = Senin, ... 6 = Sabtu
+    | { jenis: "selang"; tiapHari: number; keterangan: string }; // mis. Ahad Pon = tiap 35 hari sejak `mulai`
+  mulai: Date;
+  sampai: Date;
+  libur?: Date[]; // tanggal yang dilewati
 }
 
 export interface LaporanKas {

@@ -3,7 +3,7 @@ import { ChevronRight, Clock, Mail, MapPin, MessageCircle, MessageSquare, Shoppi
 import { PageHeader } from "@/components/PageHeader";
 import { SectionTitle } from "@/components/SectionTitle";
 import { RtPicker } from "@/components/konten/RtPicker";
-import { pengurusRW, rwInfo, waLink } from "@/data/mockData";
+import { pengurusRW, rwInfo, waLink } from "@/data/konten";
 
 const pintasan = [
   { to: "/pengaduan", icon: MessageSquare, judul: "Sampaikan aduan", desc: "Keluhan atau usulan untuk pengurus" },

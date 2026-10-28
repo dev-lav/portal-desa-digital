@@ -4,6 +4,7 @@ import {
   StatistikPenduduk,
   JenisSurat,
   Kegiatan,
+  KegiatanRutin,
   LaporanKas,
   RincianPengeluaran,
   UMKM,
@@ -110,34 +111,34 @@ export const jenisSurat: JenisSurat[] = [
   },
 ];
 
-export const kegiatanList: Kegiatan[] = [
+// Kegiatan sekali jalan (rapat, kerja bakti, dll.)
+export const kegiatanList: Kegiatan[] = [];
+
+// Kegiatan berulang: tanggal terdekatnya muncul otomatis di agenda sampai tanggal `sampai`
+export const kegiatanRutin: KegiatanRutin[] = [
   {
-    id: "1",
-    nama: "Latihan Voli Anak",
-    tanggal: new Date("2025-12-14"),
-    waktu: "07.00 - 09.00 WIB",
+    id: "rutin-taekwondo",
+    nama: "Latihan Beladiri Taekwondo",
+    pola: { jenis: "mingguan", hari: [0] },
+    mulai: new Date("2026-11-01"),
+    sampai: new Date("2026-12-31"),
+    waktu: "07.00 WIB - selesai",
     lokasi: "Lapangan Voli RW 12",
     tag: "Rutin",
-    deskripsi: "Latihan rutin voli khusus anak-anak",
+    kategori: "Olahraga",
   },
   {
-    id: "2",
-    nama: "Latihan Voli Dewasa",
-    tanggal: new Date("2025-12-13"),
-    waktu: "15.00 - 17.00 WIB",
-    lokasi: "Lapangan Voli RW 12",
-    tag: "Rutin",
-    deskripsi: "Latihan rutin voli khusus dewasa",
-  },
-  {
-    id: "3",
+    id: "rutin-khodmil",
     nama: "Rutinan Khodmil Qur'an",
-    tanggal: new Date("2025-12-07"),
+    // 7 Des 2025 jatuh pada Ahad Pon; Ahad Pon berulang tiap 35 hari (7 hari x 5 pasaran)
+    pola: { jenis: "selang", tiapHari: 35, keterangan: "Tiap Ahad Pon" },
+    mulai: new Date("2025-12-07"),
+    sampai: new Date("2026-12-31"),
     waktu: "04.00 - 10.00 WIB",
     lokasi: "Masjid An Nur RW 12",
     tag: "Rutin",
-    deskripsi: "Rutinan khodmil Qur'an Ahad Pon",
-  }
+    kategori: "Keagamaan",
+  },
 ];
 
 export const laporanKasBulanan: LaporanKas[] = [

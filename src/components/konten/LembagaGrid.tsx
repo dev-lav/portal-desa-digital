@@ -1,4 +1,4 @@
-import { lembagaList } from "@/data/mockData";
+import { lembagaList } from "@/data/konten";
 
 export const LembagaGrid = () => (
   <div className="grid grid-cols-4 gap-2.5 md:grid-cols-[repeat(4,120px)]">

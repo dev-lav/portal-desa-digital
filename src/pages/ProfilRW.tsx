@@ -1,7 +1,7 @@
 import { PageHeader } from "@/components/PageHeader";
 import { SectionTitle } from "@/components/SectionTitle";
 import { LembagaGrid } from "@/components/konten/LembagaGrid";
-import { pengurusRW, dataRT, rwInfo, statistikPenduduk } from "@/data/mockData";
+import { pengurusRW, dataRT, rwInfo, statistikPenduduk } from "@/data/konten";
 import { padRT } from "@/lib/format";
 
 const ProfilRW = () => {

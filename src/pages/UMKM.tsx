@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Store } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { UmkmCard } from "@/components/konten/UmkmCard";
-import { umkmList, waLink } from "@/data/mockData";
+import { umkmList, waLink } from "@/data/konten";
 import { cn } from "@/lib/utils";
 
 const UMKM = () => {

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { rwInfo } from "@/data/mockData";
+import { rwInfo } from "@/data/konten";
 
 export const Footer = () => {
   return (

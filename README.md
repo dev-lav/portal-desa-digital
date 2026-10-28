@@ -77,15 +77,16 @@ Progres dan hasil deploy bisa dilihat di tab **Actions**.
 
 ### Mengubah Data
 
-Hampir semua konten ada di `src/data/mockData.ts`:
+Hampir semua konten ada di `src/data/konten.ts`:
 - `pengumuman` - pengumuman penting di atas beranda (isi `null` kalau tidak ada)
-- `kegiatanList` - agenda kegiatan
+- `kegiatanList` - agenda kegiatan sekali jalan
+- `kegiatanRutin` - kegiatan berulang (mingguan atau tiap N hari, mis. Ahad Pon), jadwal terdekatnya muncul otomatis sampai tanggal `sampai`
 - `beritaList` - berita & dokumentasi, bisa berisi `galeri` foto atau `video` (tiap berita punya halaman `/kegiatan/<id>`)
 - `laporanKasBulanan`, `rincianPengeluaran` - laporan kas
 - `fotoHero` - foto kolase di beranda
 - `dataRT`, `pengurusRW`, `umkmList`, `lembagaList`, `rwInfo`
 
-Gambar disimpan di `src/images/` lalu di-import di `mockData.ts`.
+Gambar disimpan di `src/images/` lalu di-import di `konten.ts`.
 
 ### Mengubah Warna/Theme
 

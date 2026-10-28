@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
 import logoImg from "@/images/logo-rw12.png";
-import { rwInfo, waLink } from "@/data/mockData";
+import { rwInfo, waLink } from "@/data/konten";
 import { cn } from "@/lib/utils";
 import { menuUtama, isMenuAktif } from "./navigasi";
 

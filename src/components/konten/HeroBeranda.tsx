@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, ChevronRight, Megaphone } from "lucide-react";
-import { fotoHero, pengumuman, rwInfo } from "@/data/mockData";
+import { fotoHero, pengumuman, rwInfo } from "@/data/konten";
 import { formatTanggal } from "@/lib/format";
 import { cn } from "@/lib/utils";
 

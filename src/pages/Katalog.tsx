@@ -3,7 +3,7 @@ import { HandHeart, HeartHandshake, PackageOpen, RefreshCw, Search } from "lucid
 import { PageHeader } from "@/components/PageHeader";
 import { BarangCard, BarangCardSkeleton } from "@/components/konten/BarangCard";
 import { useKatalog } from "@/hooks/use-katalog";
-import { waLink } from "@/data/mockData";
+import { waLink } from "@/data/konten";
 import { cn } from "@/lib/utils";
 
 const urutan = {

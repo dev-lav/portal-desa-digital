@@ -2,15 +2,15 @@ import { CalendarDays, Clock, MapPin, Megaphone } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { SectionTitle } from "@/components/SectionTitle";
 import { AgendaCard, AgendaKosong } from "@/components/konten/AgendaCard";
+import { AgendaDaftar } from "@/components/konten/AgendaDaftar";
 import { BeritaCard } from "@/components/konten/BeritaCard";
-import { kegiatanList, beritaList, pengumuman } from "@/data/mockData";
+import { kegiatanList, kegiatanRutin, beritaList, pengumuman } from "@/data/konten";
 import { awalHariIni, formatTanggal } from "@/lib/format";
+import { agendaMendatang } from "@/lib/jadwal";
 
 const Kegiatan = () => {
   const hariIni = awalHariIni();
-  const mendatang = kegiatanList
-    .filter((k) => k.tanggal >= hariIni)
-    .sort((a, b) => a.tanggal.getTime() - b.tanggal.getTime());
+  const mendatang = agendaMendatang(kegiatanList, kegiatanRutin, hariIni, 366);
   const terlaksana = kegiatanList
     .filter((k) => k.tanggal < hariIni)
     .sort((a, b) => b.tanggal.getTime() - a.tanggal.getTime());
@@ -55,11 +55,7 @@ const Kegiatan = () => {
         <section className="mt-8">
           <SectionTitle title="Agenda mendatang" />
           {mendatang.length > 0 ? (
-            <div className="grid gap-2.5 md:grid-cols-2 lg:grid-cols-3">
-              {mendatang.map((k) => (
-                <AgendaCard key={k.id} kegiatan={k} />
-              ))}
-            </div>
+            <AgendaDaftar agenda={mendatang} />
           ) : (
             <AgendaKosong />
           )}

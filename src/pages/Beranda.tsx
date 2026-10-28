@@ -1,6 +1,7 @@
 import { SectionTitle } from "@/components/SectionTitle";
 import { HeroBeranda } from "@/components/konten/HeroBeranda";
-import { AgendaCard, AgendaKosong } from "@/components/konten/AgendaCard";
+import { AgendaKosong } from "@/components/konten/AgendaCard";
+import { AgendaSorotan } from "@/components/konten/AgendaSorotan";
 import { KasRingkas } from "@/components/konten/KasRingkas";
 import { BeritaCard } from "@/components/konten/BeritaCard";
 import { RtPicker } from "@/components/konten/RtPicker";
@@ -8,8 +9,9 @@ import { UmkmCard } from "@/components/konten/UmkmCard";
 import { BarangCard } from "@/components/konten/BarangCard";
 import { useKatalog } from "@/hooks/use-katalog";
 import { LembagaGrid } from "@/components/konten/LembagaGrid";
-import { kegiatanList, beritaList, laporanKasBulanan, umkmList, dataRT, statistikPenduduk } from "@/data/mockData";
+import { kegiatanList, kegiatanRutin, beritaList, laporanKasBulanan, umkmList, dataRT, statistikPenduduk } from "@/data/konten";
 import { awalHariIni } from "@/lib/format";
+import { agendaMendatang } from "@/lib/jadwal";
 
 // Barang teratas di spreadsheet yang masih dijual; disembunyikan kalau katalog kosong atau gagal dimuat
 const KatalogPilihan = () => {
@@ -31,10 +33,7 @@ const KatalogPilihan = () => {
 
 const Beranda = () => {
   const hariIni = awalHariIni();
-  const agenda = kegiatanList
-    .filter((k) => k.tanggal >= hariIni)
-    .sort((a, b) => a.tanggal.getTime() - b.tanggal.getTime())
-    .slice(0, 3);
+  const agenda = agendaMendatang(kegiatanList, kegiatanRutin, hariIni).slice(0, 3);
 
   const [utama, ...lainnya] = [...beritaList].sort((a, b) => b.tanggal.getTime() - a.tanggal.getTime()).slice(0, 5);
   const kasTerakhir = laporanKasBulanan[laporanKasBulanan.length - 1];
@@ -44,27 +43,12 @@ const Beranda = () => {
       <HeroBeranda />
 
       <div className="container">
-        <div className="md:grid md:grid-cols-[1.4fr_1fr] md:items-start md:gap-6">
-          <section className="mt-8">
-            <SectionTitle title="Agenda terdekat" href="/kegiatan" />
-            {agenda.length > 0 ? (
-              <div className="grid gap-2.5">
-                {agenda.map((k) => (
-                  <AgendaCard key={k.id} kegiatan={k} />
-                ))}
-              </div>
-            ) : (
-              <AgendaKosong />
-            )}
-          </section>
+        <section className="mt-8">
+          <SectionTitle title="Agenda terdekat" href="/kegiatan" />
+          {agenda.length > 0 ? <AgendaSorotan agenda={agenda} /> : <AgendaKosong />}
+        </section>
 
-          {kasTerakhir && (
-            <section className="mt-8">
-              <SectionTitle title="Kas RW" />
-              <KasRingkas laporan={kasTerakhir} />
-            </section>
-          )}
-        </div>
+        <KatalogPilihan />
 
         {utama && (
           <section className="mt-8">
@@ -75,6 +59,13 @@ const Beranda = () => {
                 <BeritaCard key={b.id} berita={b} />
               ))}
             </div>
+          </section>
+        )}
+
+        {kasTerakhir && (
+          <section className="mt-8">
+            <SectionTitle title="Kas RW" />
+            <KasRingkas laporan={kasTerakhir} melebar />
           </section>
         )}
 
@@ -92,7 +83,6 @@ const Beranda = () => {
           </div>
         </section>
 
-        <KatalogPilihan />
 
         <section className="mt-8">
           <SectionTitle title="Lembaga & komunitas" href="/profil" linkLabel="Profil →" />

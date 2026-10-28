@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MessageCircle } from "lucide-react";
-import { dataRT, waLink } from "@/data/mockData";
+import { dataRT, waLink } from "@/data/konten";
 import { padRT } from "@/lib/format";
 import { cn } from "@/lib/utils";
 

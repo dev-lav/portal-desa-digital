@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Share2 } from "lucide-react";
 import { SectionTitle } from "@/components/SectionTitle";
 import { BeritaCard } from "@/components/konten/BeritaCard";
-import { beritaList } from "@/data/mockData";
+import { beritaList } from "@/data/konten";
 import { formatTanggal } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { urlKanonik } from "@/seo/meta";
