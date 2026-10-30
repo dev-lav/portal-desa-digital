@@ -112,6 +112,7 @@ dalam ±5 menit tanpa deploy ulang.
 | `nama` | nama barang (wajib) |
 | `harga` | angka atau `Rp150.000`; kosong = tampil "Tanya harga" |
 | `harga_coret` | opsional, harga sebelum diskon |
+| `harga_pas` | `ya` = tidak bisa ditawar (penawaran tidak ditampilkan) dan pesan WA menanyakan jumlah |
 | `status` | status cadangan saat spreadsheet belum terhubung/gagal dimuat |
 | `kategori`, `kondisi`, `deskripsi`, `lokasi` | opsional |
 | `foto` | nama file di `src/images/katalog`, pisahkan dengan koma untuk beberapa foto |

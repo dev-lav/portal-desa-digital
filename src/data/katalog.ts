@@ -21,6 +21,8 @@ export interface Barang {
   harga: number;
   // Harga sebelum diskon, ditampilkan dicoret
   hargaCoret?: number;
+  // Tidak bisa ditawar; pesan WA langsung menanyakan jumlah (barang berstok banyak)
+  hargaPas: boolean;
   status: StatusBarang;
   kategori: string;
   kondisi?: string;
@@ -111,6 +113,7 @@ export const bacaKatalog = (csv: string): Barang[] => {
         nama: r.nama ?? "",
         harga,
         hargaCoret: hargaCoret > harga ? hargaCoret : undefined,
+        hargaPas: /^(ya|y|true|1)$/i.test(r.harga_pas ?? ""),
         status: bacaStatus(r.status),
         kategori: r.kategori || "Lainnya",
         kondisi: r.kondisi || undefined,
@@ -174,7 +177,7 @@ export const ambilKatalog = async (): Promise<Barang[]> => {
       if (!publik) return b;
       const status = bacaStatus(publik.status);
       // Penawaran hanya ditampilkan selama barang masih bisa ditawar
-      return { ...b, status, penawaran: status === "tersedia" ? publik.penawaran : undefined };
+      return { ...b, status, penawaran: status === "tersedia" && !b.hargaPas ? publik.penawaran : undefined };
     });
   } catch (e) {
     // Katalog tetap tampil dengan status terakhir dari repo

@@ -56,7 +56,7 @@ export const BarangCard = ({ barang, className }: { barang: Barang; className?: 
           <span
             className={cn(
               "absolute bottom-2 left-2 rounded-full px-2 py-0.5 text-[0.7rem] font-bold text-white backdrop-blur-sm",
-              /^baru/i.test(kondisi) ? "bg-primary" : "bg-black/55",
+              /^baru/i.test(kondisi) ? "bg-primary" : /^koleksi/i.test(kondisi) ? "bg-accent text-accent-foreground" : "bg-black/55",
             )}
           >
             {kondisi}
@@ -89,6 +89,11 @@ export const BarangCard = ({ barang, className }: { barang: Barang; className?: 
         {barang.penawaran && !hargaDariTawaran(barang) && (
           <p className="mt-0.5 self-start whitespace-nowrap rounded bg-destructive/10 px-1.5 py-0.5 text-xs font-bold text-destructive">
             Tawaran {formatRupiahRingkas(barang.penawaran.tertinggi)}
+          </p>
+        )}
+        {barang.hargaPas && (
+          <p className="mt-0.5 self-start whitespace-nowrap rounded bg-secondary px-1.5 py-0.5 text-xs font-bold text-primary">
+            Harga pas
           </p>
         )}
         {barang.lokasi && (

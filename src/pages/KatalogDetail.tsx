@@ -27,6 +27,9 @@ const pesanBeli = (b: Barang) => {
   if (b.penawaran) {
     return `Halo ${b.penjual}, saya mau menawar barang ini dari Lapak Amal Posyandu RW 12:\n\n${isi}\nTawaran tertinggi saat ini: ${formatRupiah(b.penawaran.tertinggi)}\n\nTawaran saya: Rp`;
   }
+  if (b.hargaPas && b.status === "tersedia") {
+    return `Halo ${b.penjual}, saya mau beli barang ini dari Lapak Amal Posyandu RW 12:\n\n${isi}\n\nJumlah: `;
+  }
   return b.status === "dipesan"
     ? `Halo ${b.penjual}, saya lihat barang ini di Lapak Amal Posyandu RW 12:\n\n${isi}\n\nKatanya sedang dipesan. Kalau batal, saya mau antre ya.`
     : b.harga > 0
@@ -239,6 +242,9 @@ const KatalogDetail = () => {
           ) : (
             <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
               <p className="text-3xl font-extrabold tracking-tight">{labelHarga(barang)}</p>
+              {barang.hargaPas && (
+                <span className="rounded bg-secondary px-1.5 py-0.5 text-xs font-bold text-primary">Harga pas</span>
+              )}
               {barang.hargaCoret && (
                 <>
                   <p className="text-muted-foreground line-through">{formatRupiah(barang.hargaCoret)}</p>
