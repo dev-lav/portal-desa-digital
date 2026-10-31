@@ -21,8 +21,10 @@ export interface Barang {
   harga: number;
   // Harga sebelum diskon, ditampilkan dicoret
   hargaCoret?: number;
-  // Tidak bisa ditawar; pesan WA langsung menanyakan jumlah (barang berstok banyak)
+  // Tidak bisa ditawar
   hargaPas: boolean;
+  // Lebih dari satu unit; pesan WA langsung menanyakan jumlah
+  stokBanyak: boolean;
   status: StatusBarang;
   kategori: string;
   kondisi?: string;
@@ -114,6 +116,7 @@ export const bacaKatalog = (csv: string): Barang[] => {
         harga,
         hargaCoret: hargaCoret > harga ? hargaCoret : undefined,
         hargaPas: /^(ya|y|true|1)$/i.test(r.harga_pas ?? ""),
+        stokBanyak: /^(ya|y|true|1)$/i.test(r.stok_banyak ?? ""),
         status: bacaStatus(r.status),
         kategori: r.kategori || "Lainnya",
         kondisi: r.kondisi || undefined,

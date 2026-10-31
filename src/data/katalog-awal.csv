@@ -1,46 +1,50 @@
-id,kode,nama,harga,harga_coret,harga_pas,status,kategori,kondisi,deskripsi,foto,penjual,wa,lokasi
-sepeda-listrik,RW12-04,Sepeda Listrik U-WINFLY,,,,Tersedia,Kendaraan,Bekas - tanpa baterai,"Sepeda listrik merek U-WINFLY, harga barunya Rp5,4 juta. Dijual tanpa baterai.
+id,kode,nama,harga,harga_coret,harga_pas,stok_banyak,status,kategori,kondisi,deskripsi,foto,penjual,wa,lokasi
+sepeda-listrik,RW12-04,Sepeda Listrik U-WINFLY,,,,,Tersedia,Kendaraan,Bekas - tanpa baterai,"Sepeda listrik merek U-WINFLY, harga barunya Rp5,4 juta. Dijual tanpa baterai.
 Baterai bisa dibeli di toko sepeda listrik Karangploso, Rp1,2 juta dapat 4 baterai.",sepeda-listrik.webp,,,
-dipan,RW12-03,Dipan Kayu Ukir,1500000,,,Tersedia,Perabot,Bekas,Dipan kayu dengan sandaran ukir motif pemandangan pantai. Harga masih bisa nego.,"dipan.webp, dipan-b.webp, dipan-c.webp",,,
-lemari-sudut,RW12-02,Lemari Sudut Kayu,1500000,,,Tersedia,Perabot,Bekas,Lemari pajangan sudut dari kayu dengan pintu kaca dan ukiran di bagian atas.,"lemari-sudut.webp, lemari-sudut-b.webp",,,
-lemari-hias,RW12-05,Lemari Hias Kayu,750000,,,Tersedia,Perabot,Bekas,Lemari hias kayu dengan pintu kaca dan rak di dalamnya.,lemari-kayu.webp,,,
-meja-rias,RW12-06,Meja Rias Kayu,750000,,,Tersedia,Perabot,Bekas,Meja rias kayu dengan cermin tinggi dan laci.,meja-rias.webp,,,
-kursi-sofa,RW12-38,Kursi Sofa,,,,Tersedia,Perabot,Bekas,"Kursi sofa satu dudukan, kulit sintetis krem dengan sandaran tangan hitam. Ada noda kecil di dudukan.
+dipan,RW12-03,Dipan Kayu Ukir,1500000,,,,Tersedia,Perabot,Bekas,Dipan kayu dengan sandaran ukir motif pemandangan pantai. Harga masih bisa nego.,"dipan.webp, dipan-b.webp, dipan-c.webp",,,
+lemari-sudut,RW12-02,Lemari Sudut Kayu,1500000,,,,Tersedia,Perabot,Bekas,Lemari pajangan sudut dari kayu dengan pintu kaca dan ukiran di bagian atas.,"lemari-sudut.webp, lemari-sudut-b.webp",,,
+lemari-hias,RW12-05,Lemari Hias Kayu,750000,,,,Tersedia,Perabot,Bekas,Lemari hias kayu dengan pintu kaca dan rak di dalamnya.,lemari-kayu.webp,,,
+meja-rias,RW12-06,Meja Rias Kayu,750000,,,,Tersedia,Perabot,Bekas,Meja rias kayu dengan cermin tinggi dan laci.,meja-rias.webp,,,
+kursi-sofa,RW12-38,Kursi Sofa,,,,,Tersedia,Perabot,Bekas,"Kursi sofa satu dudukan, kulit sintetis krem dengan sandaran tangan hitam. Ada noda kecil di dudukan.
 Harga nego di tempat.","kursi-sofa-1.webp, kursi-sofa-2.webp",,,
-penghisap-air,RW12-07,Mesin Penghisap Air + Selang,1000000,,,Tersedia,Perkakas,Baru,Mesin pompa air bensin lengkap dengan selang gulung.,"penghisap-air.webp, penghisap-air-b.webp, penghisap-air-c.webp, penghisap-air-d.webp",,,
-sepeda-bmx,RW12-08,Sepeda BMX,750000,,,Tersedia,Kendaraan,Bekas,"Sepeda lipat Noris edisi Batman, rem cakram depan-belakang.","sepeda-bmx.webp, sepeda-bmx-2.webp",,,
-sepeda,RW12-01,Sepeda,500000,,,Tersedia,Kendaraan,Bekas,Sepeda dengan keranjang depan.,sepeda.webp,,,
-ice-box,RW12-09,Ice Box,250000,,,Tersedia,Rumah tangga,Bekas,Kotak pendingin untuk minuman dan makanan.,ice-box-dingin.webp,,,
-stick-game,RW12-10,Stick Game Ryunix G80,250000,,,Tersedia,Elektronik,Baru,Stik game Ryunix G80 lengkap dengan kotaknya.,"joy-stick-ps.webp, joy-stick-ps-b.webp",,,
-pompa-air,RW12-11,Pompa Air Listrik,500000,,,Tersedia,Elektronik,Bekas,,pompa-air.webp,,,
-tv,RW12-12,TV Tabung,100000,,,Tersedia,Elektronik,Bekas,,tv.webp,,,
-hp-android,RW12-13,4 HP Android (Mati),,,,Tersedia,Elektronik,Bekas - mati,"Empat HP Android dalam kondisi mati, salah satunya Samsung warna pink. Harga nego di tempat.",hp-android.webp,,,
-eco-enzim,RW12-34,Eco Enzim Pisang,25000,,ya,Tersedia,Produk Lansia,Baru,"Cairan eco enzim hasil fermentasi kulit pisang. Olahan Kebun Gizi Lansia RW 12. Setelah diencerkan bisa dipakai untuk cairan pel, pembersih, atau pupuk tanaman. Hanya untuk pemakaian luar.
+penghisap-air,RW12-07,Mesin Penghisap Air + Selang,1000000,,,,Tersedia,Perkakas,Baru,Mesin pompa air bensin lengkap dengan selang gulung.,"penghisap-air.webp, penghisap-air-b.webp, penghisap-air-c.webp, penghisap-air-d.webp",,,
+sepeda-bmx,RW12-08,Sepeda BMX,750000,,,,Tersedia,Kendaraan,Bekas,"Sepeda lipat Noris edisi Batman, rem cakram depan-belakang.","sepeda-bmx.webp, sepeda-bmx-2.webp",,,
+sepeda,RW12-01,Sepeda,500000,,,,Tersedia,Kendaraan,Bekas,Sepeda dengan keranjang depan.,sepeda.webp,,,
+ice-box,RW12-09,Ice Box,250000,,,,Tersedia,Rumah tangga,Bekas,Kotak pendingin untuk minuman dan makanan.,ice-box-dingin.webp,,,
+stick-game,RW12-10,Stick Game Ryunix G80,250000,,,,Tersedia,Elektronik,Baru,Stik game Ryunix G80 lengkap dengan kotaknya.,"joy-stick-ps.webp, joy-stick-ps-b.webp",,,
+pompa-air,RW12-11,Pompa Air Listrik,500000,,,,Tersedia,Elektronik,Bekas,,pompa-air.webp,,,
+tv,RW12-12,TV Tabung,100000,,,,Tersedia,Elektronik,Bekas,,tv.webp,,,
+hp-android,RW12-13,4 HP Android (Mati),,,,,Tersedia,Elektronik,Bekas - mati,"Empat HP Android dalam kondisi mati, salah satunya Samsung warna pink. Harga nego di tempat.",hp-android.webp,,,
+eco-enzim,RW12-34,Eco Enzim Pisang,25000,,ya,ya,Tersedia,Produk Lansia,Baru,"Cairan eco enzim hasil fermentasi kulit pisang. Olahan Kebun Gizi Lansia RW 12. Setelah diencerkan bisa dipakai untuk cairan pel, pembersih, atau pupuk tanaman. Hanya untuk pemakaian luar.
 Harga per satuan (botol atau pouch). Stok banyak.","eco-enzim.webp, manfaat-eco-enzim.webp",,,
-sabun-eco-enzim,RW12-35,Sabun Cair Eco Enzim,30000,,ya,Tersedia,Produk Lansia,Baru,"Sabun cair dengan campuran eco enzim. Olahan Kebun Gizi Lansia RW 12.
+sabun-eco-enzim,RW12-35,Sabun Cair Eco Enzim,30000,,ya,ya,Tersedia,Produk Lansia,Baru,"Sabun cair dengan campuran eco enzim. Olahan Kebun Gizi Lansia RW 12.
 Harga per satuan (botol atau pouch). Stok banyak.",sabun-eco-enzim.webp,,,
-bantal-eco-enzim,RW12-36,Bantal Eco Enzim,25000,,ya,Tersedia,Produk Lansia,Baru,"Bantal kecil berisi eco enzim (bantal tipis di bawah router pada foto; router tidak dijual). Olahan Kebun Gizi Lansia RW 12.
+bantal-eco-enzim,RW12-36,Bantal Eco Enzim,25000,,ya,ya,Tersedia,Produk Lansia,Baru,"Bantal kecil berisi eco enzim (bantal tipis di bawah router pada foto; router tidak dijual). Olahan Kebun Gizi Lansia RW 12.
 Harga per satuan. Stok banyak.","bantal-eco-enzim.webp, manfaat-bantal-eco-enzim.webp",,,
-kulit-telur,RW12-37,Kulit Telur Halus,10000,,ya,Tersedia,Produk Lansia,Baru,"Kulit telur yang sudah dihaluskan untuk campuran media tanam dan pupuk organik. Olahan Kebun Gizi Lansia RW 12.
+kulit-telur,RW12-37,Kulit Telur Halus,10000,,ya,ya,Tersedia,Produk Lansia,Baru,"Kulit telur yang sudah dihaluskan untuk campuran media tanam dan pupuk organik. Olahan Kebun Gizi Lansia RW 12.
 Harga per bungkus. Stok banyak.","kulit-telur.webp, manfaat-kulit-telur.webp",,,
-set-teh-biru,RW12-14,Set Teh Keramik Biru,,,,Tersedia,Keramik,Koleksi,"Teko, tempat gula, tempat susu, dan cangkir dengan tatakan bermotif biru.","set-keramik-1.webp, set-keramik-2.webp",,,
-set-teh-apel,RW12-15,Set Teh Keramik Motif Buah (Tutup Apel),,,,Tersedia,Keramik,Koleksi,Teko dan cangkir dengan tatakan bermotif buah. Tutup teko berbentuk apel merah.,"20261025-203034.webp, 20261025-203045.webp, 20261025-203050.webp, set-keramik-3.webp",,,
-set-teh-stroberi,RW12-16,Set Teh Keramik Motif Stroberi,,,,Tersedia,Keramik,Koleksi,Teko dan cangkir dengan tatakan bermotif stroberi.,"set-keramik-5.webp, set-keramik-5a.webp, set-keramik-3a.webp, 20261025-203056.webp",,,
-cangkir-bertutup,RW12-17,Cangkir Keramik Bertutup (6 pcs),,,,Tersedia,Keramik,Koleksi,Enam cangkir keramik dengan tutup bermotif buah.,"set-keramik-4.webp, set-keramik-6.webp",,,
-guci-keramik,RW12-18,Guci Keramik Biru Putih,,,,Tersedia,Keramik,Koleksi,Sepasang guci keramik bermotif biru putih dan satu vas kecil.,"keramik.webp, keramik-b.webp",,,
-vas-bunga,RW12-19,Vas Bunga Keramik (Sepasang),,,,Tersedia,Keramik,Koleksi,Sepasang vas bunga keramik bergambar.,"vas-bunga-keramik.webp, vas-bunga-b.webp",,,
-sleeping-bag,RW12-20,Sleeping Bag Eiger,50000,,,Terjual,Rumah tangga,Bekas - sudah dipermak,"Sleeping bag merek Eiger, kondisi bagus. Ada sedikit robek, tapi sudah dipermak.
+set-teh-biru,RW12-14,Set Teh Keramik Biru,,,,,Tersedia,Keramik,Koleksi,"Teko, tempat gula, tempat susu, dan cangkir dengan tatakan bermotif biru.","set-keramik-1.webp, set-keramik-2.webp",,,
+set-teh-apel,RW12-15,Set Teh Keramik Motif Buah (Tutup Apel),,,,,Tersedia,Keramik,Koleksi,Teko dan cangkir dengan tatakan bermotif buah. Tutup teko berbentuk apel merah.,"20261025-203034.webp, 20261025-203045.webp, 20261025-203050.webp, set-keramik-3.webp",,,
+set-teh-stroberi,RW12-16,Set Teh Keramik Motif Stroberi,,,,,Tersedia,Keramik,Koleksi,Teko dan cangkir dengan tatakan bermotif stroberi.,"set-keramik-5.webp, set-keramik-5a.webp, set-keramik-3a.webp, 20261025-203056.webp",,,
+cangkir-bertutup,RW12-17,Cangkir Keramik Bertutup (6 pcs),,,,,Tersedia,Keramik,Koleksi,Enam cangkir keramik dengan tutup bermotif buah.,"set-keramik-4.webp, set-keramik-6.webp",,,
+guci-keramik,RW12-18,Guci Keramik Biru Putih,,,,,Tersedia,Keramik,Koleksi,Sepasang guci keramik bermotif biru putih dan satu vas kecil.,"keramik.webp, keramik-b.webp",,,
+vas-bunga,RW12-19,Vas Bunga Keramik (Sepasang),,,,,Tersedia,Keramik,Koleksi,Sepasang vas bunga keramik bergambar.,"vas-bunga-keramik.webp, vas-bunga-b.webp",,,
+buku-asmujiono,RW12-39,Buku Asmujiono: Pengibar Merah Putih di Puncak Everest,50000,,ya,,Tersedia,Buku,Koleksi pribadi,"Karya Fadli Zon. Kisah Asmujiono, orang Indonesia pertama yang mencapai puncak Everest, mantan Kopassus dan asli putra Malang.
+Buku koleksi pribadi.",buku-asmujiono.webp,,,
+buku-si-cacing,RW12-40,Buku Si Cacing dan Kotoran Kesayangannya,50000,,ya,,Tersedia,Buku,Koleksi pribadi,"Karya Ajahn Brahm, buku best seller berisi 108 cerita. Menurut pemiliknya, salah satu buku spiritual terbaik: menghibur dan penuh nilai kemanusiaan.
+Buku koleksi pribadi.",buku-si-cacing.webp,,,
+sleeping-bag,RW12-20,Sleeping Bag Eiger,50000,,,,Terjual,Rumah tangga,Bekas - sudah dipermak,"Sleeping bag merek Eiger, kondisi bagus. Ada sedikit robek, tapi sudah dipermak.
 Pernah dibawa mendaki Gunung Kilimanjaro, Tanzania, Afrika.",sleeping-bag.webp,,,
-boneka,RW12-21,Boneka,,,,Tersedia,Mainan,Bekas,Boneka besar masih dalam plastik.,"boneka.webp, boneka-b.webp",,,
-boneka-beruang-cokelat,RW12-22,Boneka Beruang Cokelat,,,,Tersedia,Mainan,Bekas,Boneka beruang cokelat dengan hiasan hati merah di kaki. Masih dibungkus plastik.,boneka-baru-01.webp,,,
-boneka-beruang-pink-polkadot,RW12-23,Boneka Beruang Pink Baju Polkadot,,,,Tersedia,Mainan,Bekas,Boneka beruang pink memakai baju polkadot. Masih dibungkus plastik.,boneka-baru-02.webp,,,
-boneka-beruang-pink,RW12-24,Boneka Beruang Pink,,,,Tersedia,Mainan,Bekas,Boneka beruang pink muda. Masih dibungkus plastik.,boneka-baru-03.webp,,,
-boneka-tikus,RW12-25,Boneka Tikus Abu-abu,,,,Tersedia,Mainan,Bekas,Boneka tikus berbulu abu-abu. Masih dibungkus plastik.,boneka-baru-04.webp,,,
-boneka-beruang-ungu,RW12-26,Boneka Beruang Ungu,,,,Tersedia,Mainan,Bekas,Boneka beruang ungu dengan telapak pink. Masih dibungkus plastik.,boneka-baru-05.webp,,,
-boneka-kelinci-wortel,RW12-27,Boneka Kelinci Bawa Wortel,,,,Tersedia,Mainan,Bekas,Boneka kelinci krem memeluk wortel. Masih dibungkus plastik.,boneka-baru-06.webp,,,
-boneka-kelinci-putih,RW12-28,Boneka Kelinci Putih,,,,Tersedia,Mainan,Bekas,Boneka kelinci putih dengan dasi kupu-kupu merah. Masih dibungkus plastik.,boneka-baru-07.webp,,,
-boneka-anak-perempuan,RW12-29,Boneka Anak Perempuan,,,,Tersedia,Mainan,Bekas,Boneka kain anak perempuan dengan baju pink. Masih dibungkus plastik.,boneka-baru-08.webp,,,
-boneka-lebah,RW12-30,Boneka Lebah,,,,Tersedia,Mainan,Bekas,Boneka lebah kuning-hitam. Masih dibungkus plastik.,boneka-baru-09.webp,,,
-boneka-angsa,RW12-31,Boneka Angsa,,,,Tersedia,Mainan,Bekas,Boneka angsa putih-pink. Masih dibungkus plastik.,boneka-baru-10.webp,,,
-topi-kelinci,RW12-32,Topi Boneka Kelinci,,,,Tersedia,Mainan,Bekas,Topi boneka kelinci dengan telinga panjang. Masih dibungkus plastik.,boneka-baru-11.webp,,,
-boneka-lumba-lumba,RW12-33,Boneka Lumba-lumba Pink,,,,Tersedia,Mainan,Bekas,Boneka lumba-lumba pink. Masih dibungkus plastik.,boneka-baru-12.webp,,,
+boneka,RW12-21,Boneka,,,,,Tersedia,Mainan,Bekas,Boneka besar masih dalam plastik.,"boneka.webp, boneka-b.webp",,,
+boneka-beruang-cokelat,RW12-22,Boneka Beruang Cokelat,,,,,Tersedia,Mainan,Bekas,Boneka beruang cokelat dengan hiasan hati merah di kaki. Masih dibungkus plastik.,boneka-baru-01.webp,,,
+boneka-beruang-pink-polkadot,RW12-23,Boneka Beruang Pink Baju Polkadot,,,,,Tersedia,Mainan,Bekas,Boneka beruang pink memakai baju polkadot. Masih dibungkus plastik.,boneka-baru-02.webp,,,
+boneka-beruang-pink,RW12-24,Boneka Beruang Pink,,,,,Tersedia,Mainan,Bekas,Boneka beruang pink muda. Masih dibungkus plastik.,boneka-baru-03.webp,,,
+boneka-tikus,RW12-25,Boneka Tikus Abu-abu,,,,,Tersedia,Mainan,Bekas,Boneka tikus berbulu abu-abu. Masih dibungkus plastik.,boneka-baru-04.webp,,,
+boneka-beruang-ungu,RW12-26,Boneka Beruang Ungu,,,,,Tersedia,Mainan,Bekas,Boneka beruang ungu dengan telapak pink. Masih dibungkus plastik.,boneka-baru-05.webp,,,
+boneka-kelinci-wortel,RW12-27,Boneka Kelinci Bawa Wortel,,,,,Tersedia,Mainan,Bekas,Boneka kelinci krem memeluk wortel. Masih dibungkus plastik.,boneka-baru-06.webp,,,
+boneka-kelinci-putih,RW12-28,Boneka Kelinci Putih,,,,,Tersedia,Mainan,Bekas,Boneka kelinci putih dengan dasi kupu-kupu merah. Masih dibungkus plastik.,boneka-baru-07.webp,,,
+boneka-anak-perempuan,RW12-29,Boneka Anak Perempuan,,,,,Tersedia,Mainan,Bekas,Boneka kain anak perempuan dengan baju pink. Masih dibungkus plastik.,boneka-baru-08.webp,,,
+boneka-lebah,RW12-30,Boneka Lebah,,,,,Tersedia,Mainan,Bekas,Boneka lebah kuning-hitam. Masih dibungkus plastik.,boneka-baru-09.webp,,,
+boneka-angsa,RW12-31,Boneka Angsa,,,,,Tersedia,Mainan,Bekas,Boneka angsa putih-pink. Masih dibungkus plastik.,boneka-baru-10.webp,,,
+topi-kelinci,RW12-32,Topi Boneka Kelinci,,,,,Tersedia,Mainan,Bekas,Topi boneka kelinci dengan telinga panjang. Masih dibungkus plastik.,boneka-baru-11.webp,,,
+boneka-lumba-lumba,RW12-33,Boneka Lumba-lumba Pink,,,,,Tersedia,Mainan,Bekas,Boneka lumba-lumba pink. Masih dibungkus plastik.,boneka-baru-12.webp,,,
