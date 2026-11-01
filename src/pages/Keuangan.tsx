@@ -17,8 +17,8 @@ const Keuangan = () => {
 
       <div className="container">
         {kasTerakhir && (
-          <section className="mt-8 md:max-w-xl">
-            <KasRingkas laporan={kasTerakhir} tautan={false} />
+          <section className="mt-8">
+            <KasRingkas laporan={kasTerakhir} tautan={false} melebar />
             <p className="mt-2.5 flex items-start gap-2 text-sm text-muted-foreground">
               <Info className="mt-0.5 h-4 w-4 flex-shrink-0" />
               Data terakhir: {kasTerakhir.bulan}. Pertanyaan soal kas bisa disampaikan ke bendahara lewat pengurus RW.

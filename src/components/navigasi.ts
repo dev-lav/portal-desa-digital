@@ -1,4 +1,4 @@
-import { Home, Calendar, Wallet, Users, LucideIcon } from "lucide-react";
+import { Home, Calendar, Users, LucideIcon } from "lucide-react";
 
 export interface MenuItem {
   label: string;
@@ -11,7 +11,8 @@ export interface MenuItem {
 export const menuUtama: MenuItem[] = [
   { label: "Beranda", path: "/", icon: Home },
   { label: "Kegiatan", path: "/kegiatan", icon: Calendar },
-  { label: "Kas RW", path: "/keuangan", icon: Wallet },
+  // Kas RW disembunyikan sementara, belum siap ditampilkan
+  // { label: "Kas RW", path: "/keuangan", icon: Wallet },
   { label: "Kontak", path: "/kontak", icon: Users, cakupan: ["/profil", "/umkm", "/katalog", "/pengaduan"] },
 ];
 

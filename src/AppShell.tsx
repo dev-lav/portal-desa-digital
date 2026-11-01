@@ -15,7 +15,7 @@ import DataWarga from "./pages/DataWarga";
 import LayananSurat from "./pages/LayananSurat";
 import Kegiatan from "./pages/Kegiatan";
 import BeritaDetail from "./pages/BeritaDetail";
-import Keuangan from "./pages/Keuangan";
+// import Keuangan from "./pages/Keuangan"; // disembunyikan sementara
 import Kontak from "./pages/Kontak";
 import UMKM from "./pages/UMKM";
 import Katalog from "./pages/Katalog";
@@ -48,7 +48,7 @@ export const AppShell = () => (
           <Route path="/" element={<Beranda />} />
           <Route path="/kegiatan" element={<Kegiatan />} />
           <Route path="/kegiatan/:id" element={<BeritaDetail />} />
-          <Route path="/keuangan" element={<Keuangan />} />
+          {/* <Route path="/keuangan" element={<Keuangan />} /> */}
           <Route path="/kontak" element={<Kontak />} />
           <Route path="/profil" element={<ProfilRW />} />
           <Route path="/umkm" element={<UMKM />} />
