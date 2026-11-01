@@ -17,6 +17,9 @@ import lansiaTangguhImg from "@/images/lansia-tangguh.jpeg";
 import tabunganAmalImg from "@/images/tabungan-amal-sosial.jpeg";
 import voliRW12Img from "@/images/voli-rw-12.jpeg";
 import masjidAnNurImg from "@/images/masjid-an-nur.jpeg";
+import rollasProductionsImg from "@/images/rollas-productions.webp";
+import taekwondoRolasImg from "@/images/taekwondo-rolas.webp";
+import sanggarSeniGendesrolasImg from "@/images/sanggar-seni-gendesrolas.webp";
 import pembukaanLansiaTangguhImg from "@/images/pembukaan-lansia-tangguh.jpeg";
 import voliAnakRutinImg from "@/images/voli-anak-rutin.jpeg";
 import rt02SquareImg from "@/images/rt-02-square.jpeg";
@@ -24,6 +27,7 @@ import rt03SquareImg from "@/images/rt-03-square.jpeg";
 import rt04SquareImg from "@/images/rt-04-square.jpeg";
 import rt05SquareImg from "@/images/rt-05-square.jpeg";
 import rt06SquareImg from "@/images/rt-06-square.jpeg";
+import rt08SquareImg from "@/images/rt-08-square.jpeg";
 import kerjaBaktiLingkunganRt3Img from "@/images/kerjaBaktiLingkunganRt3Img.jpeg";
 import kerjaBaktiLingkunganRt8Img from "@/images/kerjaBaktiLingkunganRt8Img.jpeg";
 import kerjaBaktiLingkunganRt5Img from "@/images/kerjaBaktiLingkunganRt5Img.jpeg";
@@ -63,7 +67,7 @@ export const dataRT: RTInfo[] = [
   { nomor: 5, ketua: "Eko Suyono", kontak: kontakRT(5), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt05SquareImg },
   { nomor: 6, ketua: "Akhmad Mawardi", kontak: kontakRT(6), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt06SquareImg },
   { nomor: 7, ketua: "Hadi Nurwanto", kontak: kontakRT(7), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
-  { nomor: 8, ketua: "Eko Mudjiono", kontak: kontakRT(8), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 8, ketua: "Eko Mudjiono", kontak: kontakRT(8), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt08SquareImg },
 ];
 
 export const statistikPenduduk: StatistikPenduduk = {
@@ -401,7 +405,22 @@ export const lembagaList: Lembaga[] = [
     id: "4",
     nama: "Masjid An-Nur",
     logo: masjidAnNurImg,
-  }
+  },
+  {
+    id: "5",
+    nama: "Rollas Productions",
+    logo: rollasProductionsImg,
+  },
+  {
+    id: "6",
+    nama: "Club Taekwondo Rolas",
+    logo: taekwondoRolasImg,
+  },
+  {
+    id: "7",
+    nama: "Sanggar Seni Gendesrolas",
+    logo: sanggarSeniGendesrolasImg,
+  },
 ];
 
 // Pengumuman penting yang tampil di atas beranda. Isi dengan `null` kalau sedang tidak ada.
