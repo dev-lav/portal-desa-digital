@@ -143,51 +143,45 @@ export const kegiatanRutin: KegiatanRutin[] = [
 
 export const laporanKasBulanan: LaporanKas[] = [
   { bulan: "November 2025", saldoAwal: 23839917, pemasukan: 16166000, pengeluaran: 18008000, saldoAkhir: 21997917 },
+  { bulan: "Oktober 2026", saldoAwal: 6139500, pemasukan: 27513500, pengeluaran: 17209000, saldoAkhir: 16444000 },
 ];
 
 export const rincianPengeluaran: RincianPengeluaran[] = [
   {
     id: "1",
     namaKegiatan: "KAS RW",
-    tanggal: new Date("2025-11-30"),
+    tanggal: new Date("2026-10-31"),
     keterangan: "Bulanan",
-    nominal: 465000,
+    nominal: 2800000,
   },
   {
     id: "2",
     namaKegiatan: "Keamanan",
-    tanggal: new Date("2025-11-30"),
+    tanggal: new Date("2026-10-31"),
     keterangan: "Bulanan",
-    nominal: 6850000,
+    nominal: 3726000,
   },
   {
     id: "3",
     namaKegiatan: "Pengambilan Sampah",
-    tanggal: new Date("2025-11-30"),
+    tanggal: new Date("2026-10-31"),
     keterangan: "Bulanan",
-    nominal: 3550000,
+    nominal: 3354000,
   },
   {
     id: "4",
     namaKegiatan: "TPS ‐ GPA",
-    tanggal: new Date("2025-11-30"),
+    tanggal: new Date("2026-10-31"),
     keterangan: "Bulanan",
     nominal: 6075000,
   },
   {
     id: "5",
     namaKegiatan: "Iuran Makam",
-    tanggal: new Date("2025-11-30"),
+    tanggal: new Date("2026-10-31"),
     keterangan: "Bulanan",
-    nominal: 418000,
+    nominal: 1254000,
   },
-  {
-    id: "6",
-    namaKegiatan: "Pemuda dan Olahraga",
-    tanggal: new Date("2025-11-30"),
-    keterangan: "Bulanan",
-    nominal: 650000,
-  }
 ];
 
 export const umkmList: UMKM[] = [
