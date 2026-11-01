@@ -45,15 +45,25 @@ export const pengurusRW: PengurusRW[] = [
   { id: "4", jabatan: "Bendahara", nama: "Khairul Saleh", kontak: "..." },
 ];
 
+// Nomor ketua RT tidak disimpan di repo: diisi saat build dari VITE_KONTAK_RT
+// (format "1:+62812...,2:+62813..."; lokal lewat .env.local, di GitHub lewat Secrets)
+const nomorRT = Object.fromEntries(
+  (import.meta.env.VITE_KONTAK_RT ?? "")
+    .split(",")
+    .map((p: string) => p.trim().split(":"))
+    .filter((p: string[]) => p.length === 2),
+) as Record<string, string>;
+const kontakRT = (nomor: number) => nomorRT[nomor] ?? "-";
+
 export const dataRT: RTInfo[] = [
-  { nomor: 1, ketua: "Febri Tunggal", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
-  { nomor: 2, ketua: "Fathur Rohim", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt02SquareImg },
-  { nomor: 3, ketua: "Farris Adi Putra", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt03SquareImg },
-  { nomor: 4, ketua: "Rudy Widiarto(Pak Ghocir)", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt04SquareImg },
-  { nomor: 5, ketua: "Eko Suyono", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt05SquareImg },
-  { nomor: 6, ketua: "Akhmad Mawardi", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt06SquareImg },
-  { nomor: 7, ketua: "Hadi Nurwanto", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
-  { nomor: 8, ketua: "Eko Mudjiono", kontak: "-", jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 1, ketua: "Febri Tunggal", kontak: kontakRT(1), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 2, ketua: "Fathur Rohim", kontak: kontakRT(2), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt02SquareImg },
+  { nomor: 3, ketua: "Farris Adi Putra", kontak: kontakRT(3), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt03SquareImg },
+  { nomor: 4, ketua: "Rudy Widiarto(Pak Ghocir)", kontak: kontakRT(4), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt04SquareImg },
+  { nomor: 5, ketua: "Eko Suyono", kontak: kontakRT(5), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt05SquareImg },
+  { nomor: 6, ketua: "Akhmad Mawardi", kontak: kontakRT(6), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt06SquareImg },
+  { nomor: 7, ketua: "Hadi Nurwanto", kontak: kontakRT(7), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 8, ketua: "Eko Mudjiono", kontak: kontakRT(8), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
 ];
 
 export const statistikPenduduk: StatistikPenduduk = {

@@ -36,6 +36,8 @@ jobs:
         
       - name: Build
         run: npm run build
+        env:
+          VITE_KONTAK_RT: ${{ secrets.VITE_KONTAK_RT }}
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
