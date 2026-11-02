@@ -27,6 +27,7 @@ import rt03SquareImg from "@/images/rt-03-square.jpeg";
 import rt04SquareImg from "@/images/rt-04-square.jpeg";
 import rt05SquareImg from "@/images/rt-05-square.jpeg";
 import rt06SquareImg from "@/images/rt-06-square.jpeg";
+import rt07SquareImg from "@/images/rt-07-square.jpeg";
 import rt08SquareImg from "@/images/rt-08-square.jpeg";
 import kerjaBaktiLingkunganRt3Img from "@/images/kerjaBaktiLingkunganRt3Img.jpeg";
 import kerjaBaktiLingkunganRt8Img from "@/images/kerjaBaktiLingkunganRt8Img.jpeg";
@@ -66,7 +67,7 @@ export const dataRT: RTInfo[] = [
   { nomor: 4, ketua: "Rudy Widiarto(Pak Ghocir)", kontak: kontakRT(4), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt04SquareImg },
   { nomor: 5, ketua: "Eko Suyono", kontak: kontakRT(5), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt05SquareImg },
   { nomor: 6, ketua: "Akhmad Mawardi", kontak: kontakRT(6), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt06SquareImg },
-  { nomor: 7, ketua: "Hadi Nurwanto", kontak: kontakRT(7), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0 },
+  { nomor: 7, ketua: "Hadi Nurwanto", kontak: kontakRT(7), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt07SquareImg },
   { nomor: 8, ketua: "Eko Mudjiono", kontak: kontakRT(8), jumlahKK: 0, jumlahJiwa: 0, jumlahLansia: 0, foto: rt08SquareImg },
 ];
 
