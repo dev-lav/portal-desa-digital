@@ -7,12 +7,13 @@ import { AgendaKosong } from "@/components/konten/AgendaCard";
 import { AgendaSorotan } from "@/components/konten/AgendaSorotan";
 import { BeritaCard } from "@/components/konten/BeritaCard";
 import { RtPicker } from "@/components/konten/RtPicker";
+import { KasRingkas } from "@/components/konten/KasRingkas";
 import { UmkmCard } from "@/components/konten/UmkmCard";
 import { BarangCard } from "@/components/konten/BarangCard";
 import { ModalPosterPosyandu } from "@/components/konten/LaporanPosyanduCard";
 import { useKatalog } from "@/hooks/use-katalog";
 import { LembagaGrid } from "@/components/konten/LembagaGrid";
-import { kegiatanList, kegiatanRutin, beritaList, umkmList, dataRT, statistikPenduduk, laporanPosyandu } from "@/data/konten";
+import { kegiatanList, kegiatanRutin, beritaList, laporanKasBulanan, umkmList, dataRT, statistikPenduduk, laporanPosyandu } from "@/data/konten";
 import { awalHariIni, formatRupiah } from "@/lib/format";
 import { agendaMendatang } from "@/lib/jadwal";
 
@@ -159,6 +160,7 @@ const Beranda = () => {
   const hariIni = awalHariIni();
   const agenda = agendaMendatang(kegiatanList, kegiatanRutin, hariIni).slice(0, 3);
 
+  const kasTerakhir = laporanKasBulanan[laporanKasBulanan.length - 1];
   const [utama, ...lainnya] = [...beritaList].sort((a, b) => b.tanggal.getTime() - a.tanggal.getTime()).slice(0, 5);
 
   return (
@@ -193,6 +195,13 @@ const Beranda = () => {
                 <BeritaCard key={b.id} berita={b} />
               ))}
             </div>
+          </section>
+        )}
+
+        {kasTerakhir && (
+          <section className="mt-8">
+            <SectionTitle title="Kas RW" />
+            <KasRingkas laporan={kasTerakhir} melebar />
           </section>
         )}
 

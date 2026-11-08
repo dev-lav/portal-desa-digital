@@ -34,6 +34,10 @@ const halamanTetap: Record<string, { judul: string; deskripsi: string }> = {
     deskripsi:
       "Agenda, pengumuman, serta foto dan video dokumentasi kegiatan warga RW 12 Desa Ngijo, Karangploso, Malang.",
   },
+  "/keuangan": {
+    judul: "Kas RW",
+    deskripsi: "Laporan kas RW 12 Desa Ngijo: saldo, pemasukan, pengeluaran, dan rinciannya, terbuka untuk seluruh warga.",
+  },
   "/kontak": {
     judul: "Kontak Pengurus & Ketua RT",
     deskripsi: "Hubungi pengurus RW 12 dan ketua RT di Desa Ngijo, Karangploso, Malang lewat WhatsApp atau email.",
