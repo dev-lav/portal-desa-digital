@@ -94,6 +94,12 @@ export interface UMKM {
   rt: number;
   nomorWA: string;
   deskripsi?: string;
+  alamat?: string;
+  jamBuka?: string;
+  rating?: number | null;
+  gmapsUrl?: string;
+  lat?: number | null;
+  lng?: number | null;
 }
 
 export interface Berita {

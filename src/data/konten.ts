@@ -14,6 +14,7 @@ import {
   FotoHero,
   LaporanPosyandu,
 } from "./types";
+import { umkmTambahan } from "./umkm-tambahan";
 import laporanPosyanduImg from "@/images/laporan-revitalisasi-posyandu.webp";
 import sertifikatSalimahImg from "@/images/sertifikat-anak-hebat-salimah.webp";
 import lansiaTangguhImg from "@/images/lansia-tangguh.jpeg";
@@ -214,78 +215,7 @@ export const rincianPengeluaran: RincianPengeluaran[] = [
 ];
 
 export const umkmList: UMKM[] = [
-  {
-    id: "1",
-    namaUsaha: "Nasdo Ayaje",
-    jenisUsaha: "Makanan & Minuman",
-    pemilik: "-",
-    rt: 0,
-    nomorWA: "+6282257869294",
-    deskripsi: "Ayam Geprek, Ayam Katsu. Buka jam 8 pagi - 8 malam. Free delivery minimal 2 porsi",
-  },
-  {
-    id: "2",
-    namaUsaha: "Hadhila Laundry",
-    jenisUsaha: "Jasa Laundry",
-    pemilik: "Hadhila",
-    rt: 3,
-    nomorWA: "+6285282365820",
-    deskripsi: "Solusi tumpukan cucian Anda. Free ambil antar untuk daerah Karangploso",
-  },
-  {
-    id: "3",
-    namaUsaha: "Bakoelan Mama",
-    jenisUsaha: "Makanan & Minuman",
-    pemilik: "Lailatul Illa F.J",
-    rt: 4,
-    nomorWA: "+6285649007151",
-    deskripsi: "Aneka Olahan Frozen Food Homemade",
-  },
-  // {
-  //   id: "4",
-  //   namaUsaha: "Les Privat Cerdas",
-  //   jenisUsaha: "Jasa Les",
-  //   pemilik: "Ibu Dina",
-  //   rt: 4,
-  //   nomorWA: "081234560004",
-  //   deskripsi: "Les matematika, bahasa Inggris, dan IPA untuk SD-SMP",
-  // },
-  // {
-  //   id: "5",
-  //   namaUsaha: "Toko Kelontong Berkah",
-  //   jenisUsaha: "Toko Kelontong",
-  //   pemilik: "Bapak Hasan",
-  //   rt: 5,
-  //   nomorWA: "081234560005",
-  //   deskripsi: "Kebutuhan sehari-hari, pulsa, dan gas LPG",
-  // },
-  // {
-  //   id: "6",
-  //   namaUsaha: "Catering Ibu Yuni",
-  //   jenisUsaha: "Makanan & Minuman",
-  //   pemilik: "Ibu Yuni",
-  //   rt: 2,
-  //   nomorWA: "081234560006",
-  //   deskripsi: "Nasi kotak, tumpeng, dan snack untuk acara",
-  // },
-  // {
-  //   id: "7",
-  //   namaUsaha: "Sablon Kaos Express",
-  //   jenisUsaha: "Jasa Sablon",
-  //   pemilik: "Bapak Rudi",
-  //   rt: 3,
-  //   nomorWA: "081234560007",
-  //   deskripsi: "Sablon kaos, mug, dan totebag untuk event",
-  // },
-  // {
-  //   id: "8",
-  //   namaUsaha: "Salon Cantik Jelita",
-  //   jenisUsaha: "Salon",
-  //   pemilik: "Ibu Fitri",
-  //   rt: 1,
-  //   nomorWA: "081234560008",
-  //   deskripsi: "Potong rambut, creambath, dan treatment wajah",
-  // },
+  ...umkmTambahan,
 ];
 
 export const beritaList: Berita[] = [
