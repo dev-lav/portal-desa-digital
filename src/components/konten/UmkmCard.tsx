@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { MessageCircle, MapPin, Star, Clock } from "lucide-react";
 import { UMKM } from "@/data/types";
-import { slugUmkm, waLink } from "@/data/konten";
+import { linkPeta, slugUmkm, waLink } from "@/data/konten";
 import { padRT } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
@@ -60,9 +60,9 @@ export const UmkmCard = ({ umkm, className }: { umkm: UMKM; className?: string }
           </a>
         )}
 
-        {umkm.gmapsUrl && (
+        {linkPeta(umkm) && (
           <a
-            href={umkm.gmapsUrl}
+            href={linkPeta(umkm)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground hover:underline"

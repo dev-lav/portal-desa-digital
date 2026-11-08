@@ -218,6 +218,13 @@ export const umkmList: UMKM[] = [
   ...umkmTambahan,
 ];
 
+// Tautan Google Maps yang langsung menaruh pin di lokasi usaha. Format ?api=1&query=lat,lng
+// lebih andal daripada URL panjang hasil salinan (/maps/place/.../data=...) yang di ponsel kadang hanya membuka peta.
+export const linkPeta = (u: UMKM) =>
+  u.lat != null && u.lng != null
+    ? `https://www.google.com/maps/search/?api=1&query=${u.lat},${u.lng}`
+    : u.gmapsUrl;
+
 // "Warung Yú Min" -> "warung-yu-min"; dipakai sebagai alamat halaman /umkm/<slug>
 export const slugUmkm = (u: UMKM) =>
   u.namaUsaha

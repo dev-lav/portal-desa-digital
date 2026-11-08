@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Clock, MapPin, MessageCircle, Star } from "lucide-react";
 import { SectionTitle } from "@/components/SectionTitle";
 import { UmkmCard } from "@/components/konten/UmkmCard";
-import { slugUmkm, umkmList, waLink } from "@/data/konten";
+import { linkPeta, slugUmkm, umkmList, waLink } from "@/data/konten";
 import { padRT } from "@/lib/format";
 
 const UmkmDetail = () => {
@@ -67,9 +67,9 @@ const UmkmDetail = () => {
             Chat via WhatsApp
           </a>
         )}
-        {usaha.gmapsUrl && (
+        {linkPeta(usaha) && (
           <a
-            href={usaha.gmapsUrl}
+            href={linkPeta(usaha)}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 font-bold text-foreground hover:bg-secondary"
