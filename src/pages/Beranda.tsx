@@ -210,11 +210,11 @@ const Beranda = () => {
           <RtPicker awal={3} />
         </section>
 
-        <section className="mt-8">
+        <section className="mt-10">
           <SectionTitle title="Belanja di tetangga" href="/umkm" />
-          <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-2.5 overflow-x-auto px-4 pb-1.5">
+          <div className="no-scrollbar -mx-4 mt-1 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2.5">
             {umkmList.map((u) => (
-              <UmkmCard key={u.id} umkm={u} className="flex-[0_0_78%] snap-start md:flex-[0_0_calc(33.33%-7px)]" />
+              <UmkmCard key={u.id} umkm={u} className="flex-[0_0_82%] sm:flex-[0_0_310px] md:flex-[0_0_320px] snap-start" />
             ))}
           </div>
         </section>

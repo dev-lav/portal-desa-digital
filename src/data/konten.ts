@@ -218,12 +218,15 @@ export const umkmList: UMKM[] = [
   ...umkmTambahan,
 ];
 
-// Tautan Google Maps yang langsung menaruh pin di lokasi usaha. Format ?api=1&query=lat,lng
-// lebih andal daripada URL panjang hasil salinan (/maps/place/.../data=...) yang di ponsel kadang hanya membuka peta.
-export const linkPeta = (u: UMKM) =>
-  u.lat != null && u.lng != null
+// Tautan Google Maps ke profil usaha (nama, foto, ulasan). CID adalah bagian hex kedua pada "!1s0x..:0x.." di
+// tautan salinan Google Maps. Kalau tidak ada, jatuh ke pin koordinat, lalu ke tautan asli.
+export const linkPeta = (u: UMKM) => {
+  const hex = u.gmapsUrl?.match(/!1s0x[0-9a-f]+:(0x[0-9a-f]+)/i)?.[1];
+  if (hex) return `https://www.google.com/maps?cid=${BigInt(hex).toString()}`;
+  return u.lat != null && u.lng != null
     ? `https://www.google.com/maps/search/?api=1&query=${u.lat},${u.lng}`
     : u.gmapsUrl;
+};
 
 // "Warung Yú Min" -> "warung-yu-min"; dipakai sebagai alamat halaman /umkm/<slug>
 export const slugUmkm = (u: UMKM) =>
