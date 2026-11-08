@@ -32,6 +32,11 @@ const isiMeta = (html, meta) => {
   h = gantiAtribut(h, '<meta name="twitter:title"', "content", meta.judul);
   h = gantiAtribut(h, '<meta name="twitter:description"', "content", meta.deskripsi);
   h = gantiAtribut(h, '<meta name="twitter:image"', "content", meta.gambar);
+  if (meta.jsonLd) {
+    // "<" di dalam JSON diberi escape agar tidak menutup tag <script>
+    const json = JSON.stringify(meta.jsonLd).replace(/</g, "\\u003c");
+    h = h.replace("</head>", () => `  <meta property="article:published_time" content="${meta.tanggal}" />\n  <script type="application/ld+json" id="ld-halaman">${json}</script>\n</head>`);
+  }
   return h;
 };
 
@@ -60,7 +65,7 @@ for (const url of rute) {
 const hariIni = new Date().toISOString().slice(0, 10);
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${rute.map((url) => `  <url>\n    <loc>${metaHalaman(url, katalog).kanonik}</loc>\n    <lastmod>${hariIni}</lastmod>\n  </url>`).join("\n")}
+${rute.map((url) => `  <url>\n    <loc>${metaHalaman(url, katalog).kanonik}</loc>\n    <lastmod>${metaHalaman(url, katalog).tanggal ?? hariIni}</lastmod>\n  </url>`).join("\n")}
 </urlset>
 `;
 await writeFile(path.join(DIST, "sitemap.xml"), sitemap);

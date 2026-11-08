@@ -45,6 +45,8 @@ import lombaEngklek1Img from "@/images/lomba-engklek-1.jpeg";
 import lombaEngklek2Img from "@/images/lomba-engklek-2.jpeg";
 import posterJalanSehatImg from "@/images/poster-jalan-sehat.jpeg";
 import posterTariTradisionalImg from "@/images/poster-tari-tradisional.jpeg";
+import latihanTaekwondoImg from "@/images/latihan-taekwondo.jpeg";
+import posterLatihanTaekwondoImg from "@/images/poster-latihan-taekwondo.jpeg";
 
 export const pengurusRW: PengurusRW[] = [
   { id: "1", jabatan: "Ketua RW", nama: "Ahmad Fadillah, SE., M.M.B.", kontak: "..." },
@@ -412,6 +414,23 @@ export const beritaList: Berita[] = [
     ringkasan:
       "Salimah Nurfaizah Ramadhani dari RT 5 menerima sertifikat Anak Hebat RW 12 kategori Pendonasi Barang atas donasinya di Lapak Amal RW 12 untuk revitalisasi Posyandu Permata 12.",
     gambar: sertifikatSalimahImg,
+  },
+  {
+    id: "latihan-taekwondo-foto",
+    judul: "Latihan taekwondo anak-anak RW 12",
+    tanggal: new Date("2026-11-08"),
+    ringkasan:
+      "Anak-anak Club Taekwondo Rolas berfoto bersama dua pelatih setelah latihan rutin tiap Ahad pagi di Lapangan Voli RW 12 Desa Ngijo, Karangploso, Malang.",
+    gambar: latihanTaekwondoImg,
+  },
+  {
+    id: "latihan-taekwondo-video",
+    judul: "Video latihan taekwondo RW 12",
+    tanggal: new Date("2026-11-08"),
+    ringkasan:
+      "Video semangat anak-anak dan pelatih Club Taekwondo Rolas saat latihan rutin di Lapangan Voli RW 12 Desa Ngijo, Karangploso, Malang.",
+    gambar: posterLatihanTaekwondoImg,
+    video: { src: "/videos/latihan-taekwondo.mp4", durasi: "0:09" },
   },
 ];
 

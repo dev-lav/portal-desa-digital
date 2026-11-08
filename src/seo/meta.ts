@@ -1,4 +1,5 @@
 import { beritaList } from "@/data/konten";
+import type { Berita } from "@/data/types";
 import { Barang } from "@/data/katalog";
 import { formatRupiah } from "@/lib/format";
 
@@ -15,7 +16,53 @@ export interface MetaHalaman {
   gambar: string; // URL absolut
   tipe: "website" | "article";
   kanonik: string; // URL absolut
+  tanggal?: string; // YYYY-MM-DD, untuk berita: tanggal terbit dan lastmod sitemap
+  jsonLd?: Record<string, unknown>; // data terstruktur (NewsArticle, VideoObject) untuk halaman berita
 }
+
+const ORGANISASI_ID = `${SITE_URL}/#organisasi`;
+
+// Deskripsi mesin pencari ditampilkan sekitar 160 karakter; potong di batas kata
+const potongDeskripsi = (teks: string, maks = 160) => {
+  const rapi = teks.replace(/\s+/g, " ").trim();
+  if (rapi.length <= maks) return rapi;
+  return `${rapi.slice(0, maks - 1).replace(/\s+\S*$/, "")}…`;
+};
+
+// "0:09" -> "PT0M9S", "1:05" -> "PT1M5S"
+const durasiIso = (durasi?: string) => {
+  const cocok = durasi?.match(/^(\d+):(\d{2})$/);
+  return cocok ? `PT${Number(cocok[1])}M${Number(cocok[2])}S` : undefined;
+};
+
+const jsonLdBerita = (berita: Berita, kanonik: string, deskripsi: string, gambar: string) => {
+  const tanggal = berita.tanggal.toISOString().slice(0, 10);
+  const artikel = {
+    "@type": "NewsArticle",
+    "@id": `${kanonik}#artikel`,
+    headline: berita.judul.slice(0, 110),
+    description: deskripsi,
+    image: [gambar],
+    datePublished: tanggal,
+    dateModified: tanggal,
+    inLanguage: "id-ID",
+    mainEntityOfPage: kanonik,
+    author: { "@id": ORGANISASI_ID },
+    publisher: { "@id": ORGANISASI_ID },
+  };
+  const video = berita.video && {
+    "@type": "VideoObject",
+    "@id": `${kanonik}#video`,
+    name: berita.judul,
+    description: deskripsi,
+    thumbnailUrl: [gambar],
+    uploadDate: tanggal,
+    duration: durasiIso(berita.video.durasi),
+    contentUrl: absolut(berita.video.src),
+    inLanguage: "id-ID",
+  };
+  return { "@context": "https://schema.org", "@graph": video ? [artikel, video] : [artikel] };
+};
 
 // "/kegiatan/9/" -> "/kegiatan/9"
 export const rapikanPath = (path: string) => (path.length > 1 ? path.replace(/\/+$/, "") : "/");
@@ -89,12 +136,16 @@ export const metaHalaman = (path: string, katalog?: Barang[]): MetaHalaman | nul
   const cocok = p.match(/^\/kegiatan\/([^/]+)$/);
   const berita = cocok && beritaList.find((b) => b.id === cocok[1]);
   if (berita) {
+    const deskripsi = potongDeskripsi(berita.ringkasan);
+    const gambar = absolut(berita.gambar ?? GAMBAR_BAWAAN);
     return {
       judul: `${berita.judul} | ${NAMA_SITUS}`,
-      deskripsi: berita.ringkasan.trim(),
-      gambar: absolut(berita.gambar ?? GAMBAR_BAWAAN),
+      deskripsi,
+      gambar,
       tipe: "article",
       kanonik,
+      tanggal: berita.tanggal.toISOString().slice(0, 10),
+      jsonLd: jsonLdBerita(berita, kanonik, deskripsi, gambar),
     };
   }
 

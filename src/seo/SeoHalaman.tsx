@@ -28,6 +28,20 @@ export const SeoHalaman = () => {
     setMeta('meta[property="og:description"]', "content", meta.deskripsi);
     setMeta('meta[property="og:image"]', "content", meta.gambar);
     setMeta('meta[property="og:type"]', "content", meta.tipe);
+
+    // Data terstruktur & tanggal terbit hanya ada di halaman berita; bersihkan saat pindah ke halaman lain
+    document.getElementById("ld-halaman")?.remove();
+    document.head.querySelector('meta[property="article:published_time"]')?.remove();
+    if (meta.jsonLd && meta.tanggal) {
+      const ld = document.createElement("script");
+      ld.type = "application/ld+json";
+      ld.id = "ld-halaman";
+      ld.textContent = JSON.stringify(meta.jsonLd);
+      const terbit = document.createElement("meta");
+      terbit.setAttribute("property", "article:published_time");
+      terbit.content = meta.tanggal;
+      document.head.append(terbit, ld);
+    }
   }, [pathname, katalog]);
 
   return null;
