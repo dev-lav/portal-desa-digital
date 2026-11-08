@@ -27,7 +27,10 @@ export const BeritaCard = ({ berita, besar = false, className }: BeritaCardProps
             src={berita.gambar}
             alt={berita.judul}
             loading="lazy"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className={cn(
+              "absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105",
+              berita.posisiGambar === "top" && "object-top",
+            )}
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center text-white/40">
@@ -89,7 +92,10 @@ export const BeritaCard = ({ berita, besar = false, className }: BeritaCardProps
             src={berita.gambar}
             alt={berita.judul}
             loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className={cn(
+              "h-full w-full object-cover transition-transform duration-500 group-hover:scale-105",
+              berita.posisiGambar === "top" && "object-top",
+            )}
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-muted-foreground">

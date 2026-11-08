@@ -12,7 +12,9 @@ import {
   Lembaga,
   Pengumuman,
   FotoHero,
+  LaporanPosyandu,
 } from "./types";
+import laporanPosyanduImg from "@/images/laporan-revitalisasi-posyandu.webp";
 import lansiaTangguhImg from "@/images/lansia-tangguh.jpeg";
 import tabunganAmalImg from "@/images/tabungan-amal-sosial.jpeg";
 import voliRW12Img from "@/images/voli-rw-12.jpeg";
@@ -384,7 +386,60 @@ export const beritaList: Berita[] = [
     gambar: posterTariTradisionalImg,
     video: { src: "/videos/tari-tradisional-dan-reog.mp4", durasi: "0:51" },
   },
+  {
+    id: "revitalisasi-posyandu-permata-12",
+    judul: "Laporan Pendanaan & Rencana Revitalisasi Posyandu Permata 12",
+    tanggal: new Date("2026-11-02"),
+    ringkasan:
+      "Transparansi dana revitalisasi Posyandu Permata 12 RW 12 Desa Ngijo: total pemasukan Rp11.875.000, pengeluaran Rp1.500.000, saldo dana saat ini Rp10.375.000, serta rekap penawaran barang amal Rp4.390.000 untuk pelaksanaan revitalisasi tahap pertama.",
+    gambar: laporanPosyanduImg,
+    posisiGambar: "top",
+  },
 ];
+
+export const laporanPosyandu: LaporanPosyandu = {
+  idBerita: "revitalisasi-posyandu-permata-12",
+  namaPosyandu: "Posyandu Permata 12",
+  tanggalUpdate: new Date("2026-11-02"),
+  poster: laporanPosyanduImg,
+  ringkasanDana: {
+    totalPemasukan: 11875000,
+    totalPengeluaran: 1500000,
+    saldoDana: 10375000,
+  },
+  rincianPemasukan: [
+    { keterangan: "Penjualan mobil sampah donasi RT 1–5", nominal: 5000000 },
+    { keterangan: "Hadiah lomba kebersihan antar-RW", nominal: 750000 },
+    { keterangan: "Sumbangan panitia Ngijo Haritege", nominal: 1000000 },
+    { keterangan: "Iuran PKK RT 5", nominal: 195000 },
+    { keterangan: "Pendapatan penjualan barang bekas", nominal: 4930000 },
+  ],
+  rincianPengeluaran: [
+    { keterangan: "Reparasi perabot sumbangan warga untuk dijual ulang", nominal: 1200000 },
+    { keterangan: "Perbaikan mesin pompa air sumbangan warga", nominal: 300000 },
+  ],
+  rekapPenawaran: {
+    jumlahBarang: 16,
+    totalPenawaran: 4390000,
+    contohBarang: [
+      { nama: "Sepeda Listrik U-WINFLY", nominal: 1500000 },
+      { nama: "Lemari kaca hias", nominal: 500000 },
+      { nama: "Dipan kayu ukir", nominal: 500000 },
+      { nama: "Lemari kayu sudut", nominal: 500000 },
+      { nama: "Meja rias kayu", nominal: 500000 },
+      { nama: "Pompa air listrik", nominal: 300000 },
+    ],
+    catatan: "Data lengkap tersimpan dalam rekap panitia.",
+  },
+  rencanaTahapPertama: [
+    "Membongkar pos satpam",
+    "Meratakan semua lantai agar sama tinggi",
+    "Menyambung atap pada bagian pos satpam yang dibongkar",
+    "Memasang pagar kawat sementara dengan menggunakan pagar besi yang sudah ada",
+  ],
+  catatanPelaksanaan: "Pelaksanaan revitalisasi dilakukan secara bertahap sesuai dana yang tersedia.",
+  ucapanTerimaKasih: "Dari warga, oleh warga, untuk Posyandu Permata 12 yang lebih aman, nyaman, dan layak.",
+};
 
 export const lembagaList: Lembaga[] = [
   {

@@ -2,7 +2,8 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Share2 } from "lucide-react";
 import { SectionTitle } from "@/components/SectionTitle";
 import { BeritaCard } from "@/components/konten/BeritaCard";
-import { beritaList } from "@/data/konten";
+import { LaporanPosyanduCard } from "@/components/konten/LaporanPosyanduCard";
+import { beritaList, laporanPosyandu } from "@/data/konten";
 import { formatTanggal } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { urlKanonik } from "@/seo/meta";
@@ -80,6 +81,15 @@ const BeritaDetail = () => {
       )}
 
       <p className="mt-5 text-lg leading-relaxed">{berita.ringkasan.trim()}</p>
+
+      {berita.id === laporanPosyandu.idBerita && (
+        <LaporanPosyanduCard
+          terbukaPenuh
+          tampilTombolPoster={false}
+          tampilTautanKatalog
+          className="mt-6"
+        />
+      )}
 
       <a
         href={`https://wa.me/?text=${encodeURIComponent(pesanWA)}`}

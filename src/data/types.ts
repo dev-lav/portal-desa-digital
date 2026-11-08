@@ -102,6 +102,7 @@ export interface Berita {
   tanggal: Date;
   ringkasan: string;
   gambar?: string;
+  posisiGambar?: "top" | "center";
   // Foto tambahan yang tampil di halaman detail
   galeri?: string[];
   // Video kegiatan (file di public/videos). `gambar` dipakai sebagai sampulnya.
@@ -109,6 +110,29 @@ export interface Berita {
     src: string;
     durasi?: string;
   };
+}
+
+export interface LaporanPosyandu {
+  idBerita: string;
+  namaPosyandu: string;
+  tanggalUpdate: Date;
+  poster: string;
+  ringkasanDana: {
+    totalPemasukan: number;
+    totalPengeluaran: number;
+    saldoDana: number;
+  };
+  rincianPemasukan: { keterangan: string; nominal: number }[];
+  rincianPengeluaran: { keterangan: string; nominal: number }[];
+  rekapPenawaran: {
+    jumlahBarang: number;
+    totalPenawaran: number;
+    contohBarang: { nama: string; nominal: number }[];
+    catatan: string;
+  };
+  rencanaTahapPertama: string[];
+  catatanPelaksanaan: string;
+  ucapanTerimaKasih: string;
 }
 
 export interface Lembaga {
