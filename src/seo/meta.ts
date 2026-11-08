@@ -47,6 +47,7 @@ const jsonLdBerita = (berita: Berita, kanonik: string, deskripsi: string, gambar
     dateModified: tanggal,
     inLanguage: "id-ID",
     mainEntityOfPage: kanonik,
+    articleSection: "Kegiatan Warga",
     author: { "@id": ORGANISASI_ID },
     publisher: { "@id": ORGANISASI_ID },
   };
@@ -104,6 +105,79 @@ const jsonLdItemListUmkm = (kanonik: string) => ({
   mainEntityOfPage: kanonik,
 });
 
+const jsonLdKegiatan = (kanonik: string) => {
+  const itemListDokumentasi = {
+    "@type": "ItemList",
+    "@id": `${kanonik}#dokumentasi`,
+    name: "Dokumentasi Kegiatan Warga RW 12",
+    description: "Kabar dan dokumentasi foto/video kegiatan warga RW 12 Permata Regency 1, Desa Ngijo, Karangploso, Malang.",
+    url: kanonik,
+    numberOfItems: beritaList.length,
+    itemListElement: beritaList.map((b, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: b.judul,
+      url: `${SITE_URL}/kegiatan/${b.id}/`,
+      description: potongDeskripsi(b.ringkasan),
+    })),
+  };
+
+  const eventTaekwondo = {
+    "@type": "Event",
+    "@id": `${kanonik}#rutin-taekwondo`,
+    name: "Latihan Beladiri Taekwondo RW 12",
+    description: "Latihan rutin beladiri Taekwondo anak-anak dan remaja warga RW 12 Permata Regency 1.",
+    startDate: "2026-11-01T07:00:00+07:00",
+    eventSchedule: {
+      "@type": "Schedule",
+      repeatFrequency: "P1W",
+      byDay: "https://schema.org/Sunday",
+      startTime: "07:00:00",
+    },
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+    location: {
+      "@type": "Place",
+      name: "Lapangan Voli RW 12",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Perumahan Permata Regency 1",
+        addressLocality: "Desa Ngijo, Karangploso",
+        addressRegion: "Malang, Jawa Timur",
+        addressCountry: "ID",
+      },
+    },
+    organizer: { "@id": ORGANISASI_ID },
+  };
+
+  const eventKhodmil = {
+    "@type": "Event",
+    "@id": `${kanonik}#rutin-khodmil`,
+    name: "Rutinan Khodmil Qur'an RW 12",
+    description: "Kegiatan rutin Khodmil Qur'an tiap Ahad Pon warga RW 12 Permata Regency 1.",
+    startDate: "2025-12-07T04:00:00+07:00",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    eventStatus: "https://schema.org/EventScheduled",
+    location: {
+      "@type": "Place",
+      name: "Masjid An Nur RW 12",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Perumahan Permata Regency 1",
+        addressLocality: "Desa Ngijo, Karangploso",
+        addressRegion: "Malang, Jawa Timur",
+        addressCountry: "ID",
+      },
+    },
+    organizer: { "@id": ORGANISASI_ID },
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [itemListDokumentasi, eventTaekwondo, eventKhodmil],
+  };
+};
+
 // "/kegiatan/9/" -> "/kegiatan/9"
 export const rapikanPath = (path: string) => (path.length > 1 ? path.replace(/\/+$/, "") : "/");
 
@@ -117,9 +191,9 @@ const absolut = (url: string) => (url.startsWith("http") || url.startsWith("data
 
 const halamanTetap: Record<string, { judul: string; deskripsi: string }> = {
   "/kegiatan": {
-    judul: "Kegiatan Warga",
+    judul: "Kegiatan, Agenda & Pengumuman Warga Permata Regency 1, RW 12 Ngijo",
     deskripsi:
-      "Agenda, pengumuman, serta foto dan video dokumentasi kegiatan warga RW 12 Desa Ngijo, Karangploso, Malang.",
+      "Agenda rutin, jadwal posyandu, latihan taekwondo, voli, kerja bakti, pengumuman, dan dokumentasi foto/video kegiatan warga RW 12 Permata Regency 1, Desa Ngijo, Karangploso, Malang.",
   },
   "/keuangan": {
     judul: "Kas RW",
@@ -171,7 +245,12 @@ export const metaHalaman = (path: string, katalog?: Barang[]): MetaHalaman | nul
       gambar: absolut(GAMBAR_BAWAAN),
       tipe: "website",
       kanonik,
-      jsonLd: p === "/umkm" ? jsonLdItemListUmkm(kanonik) : undefined,
+      jsonLd:
+        p === "/umkm"
+          ? jsonLdItemListUmkm(kanonik)
+          : p === "/kegiatan"
+            ? jsonLdKegiatan(kanonik)
+            : undefined,
     };
   }
 

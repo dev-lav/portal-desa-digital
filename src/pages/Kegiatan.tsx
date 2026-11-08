@@ -18,7 +18,10 @@ const Kegiatan = () => {
 
   return (
     <>
-      <PageHeader title="Kegiatan" subtitle="Agenda, pengumuman, dan dokumentasi kegiatan warga RW 12." />
+      <PageHeader
+        title="Kegiatan & Agenda Warga"
+        subtitle="Agenda rutin, pengumuman, jadwal posyandu, dan dokumentasi kegiatan warga RW 12 Permata Regency 1, Desa Ngijo."
+      />
 
       <div className="container">
         {pengumuman && (
