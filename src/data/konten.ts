@@ -15,6 +15,7 @@ import {
   LaporanPosyandu,
 } from "./types";
 import laporanPosyanduImg from "@/images/laporan-revitalisasi-posyandu.webp";
+import sertifikatSalimahImg from "@/images/sertifikat-anak-hebat-salimah.webp";
 import lansiaTangguhImg from "@/images/lansia-tangguh.jpeg";
 import tabunganAmalImg from "@/images/tabungan-amal-sosial.jpeg";
 import voliRW12Img from "@/images/voli-rw-12.jpeg";
@@ -160,7 +161,16 @@ export const kegiatanRutin: KegiatanRutin[] = [
 
 export const laporanKasBulanan: LaporanKas[] = [
   { bulan: "November 2025", saldoAwal: 23839917, pemasukan: 16166000, pengeluaran: 18008000, saldoAkhir: 21997917 },
-  { bulan: "Oktober 2026", saldoAwal: 6139500, pemasukan: 27513500, pengeluaran: 17209000, saldoAkhir: 16444000 },
+  { bulan: "Januari 2026", saldoAwal: 12708000, pemasukan: 19945000, pengeluaran: 14005000, saldoAkhir: 18648000 },
+  { bulan: "Februari 2026", saldoAwal: 18648000, pemasukan: 14438500, pengeluaran: 15607000, saldoAkhir: 17479500 },
+  { bulan: "Maret 2026", saldoAwal: 17479500, pemasukan: 15636000, pengeluaran: 22608000, saldoAkhir: 10507500 },
+  { bulan: "April 2026", saldoAwal: 10507500, pemasukan: 20219000, pengeluaran: 19444000, saldoAkhir: 11282500 },
+  { bulan: "Mei 2026", saldoAwal: 11282500, pemasukan: 13978000, pengeluaran: 15162500, saldoAkhir: 10098000 },
+  { bulan: "Juni 2026", saldoAwal: 10098000, pemasukan: 14088500, pengeluaran: 16456000, saldoAkhir: 7730500 },
+  { bulan: "Juli 2026", saldoAwal: 7730500, pemasukan: 20140000, pengeluaran: 16013000, saldoAkhir: 11857500 },
+  { bulan: "Agustus 2026", saldoAwal: 11857500, pemasukan: 16938500, pengeluaran: 16926500, saldoAkhir: 11869500 },
+  { bulan: "September 2026", saldoAwal: 11869500, pemasukan: 13899000, pengeluaran: 19629000, saldoAkhir: 6139500 },
+  { bulan: "Oktober 2026", saldoAwal: 6139500, pemasukan: 20763500, pengeluaran: 17209000, saldoAkhir: 9694000 },
 ];
 
 export const rincianPengeluaran: RincianPengeluaran[] = [
@@ -394,6 +404,14 @@ export const beritaList: Berita[] = [
       "Transparansi dana revitalisasi Posyandu Permata 12 RW 12 Desa Ngijo: total pemasukan Rp11.875.000, pengeluaran Rp1.500.000, saldo dana saat ini Rp10.375.000, serta rekap penawaran barang amal Rp4.390.000 untuk pelaksanaan revitalisasi tahap pertama.",
     gambar: laporanPosyanduImg,
     posisiGambar: "top",
+  },
+  {
+    id: "anak-hebat-salimah",
+    judul: "Anak Hebat RW 12: Salimah dari RT 5 berdonasi untuk Posyandu Permata 12",
+    tanggal: new Date("2026-11-08"),
+    ringkasan:
+      "Salimah Nurfaizah Ramadhani dari RT 5 menerima sertifikat Anak Hebat RW 12 kategori Pendonasi Barang atas donasinya di Lapak Amal RW 12 untuk revitalisasi Posyandu Permata 12.",
+    gambar: sertifikatSalimahImg,
   },
 ];
 
