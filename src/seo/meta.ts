@@ -85,6 +85,25 @@ const jsonLdUmkm = (u: UMKM, kanonik: string, deskripsi: string, gambar: string)
   parentOrganization: { "@id": ORGANISASI_ID },
 });
 
+const jsonLdItemListUmkm = (kanonik: string) => ({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": `${kanonik}#daftar-umkm`,
+  name: "Daftar UMKM & Kuliner Permata Regency 1",
+  description:
+    "Direktori UMKM, kuliner, laundry, toko, dan jasa lokal warga RW 12 Permata Regency 1, Desa Ngijo, Karangploso, Malang.",
+  url: kanonik,
+  numberOfItems: umkmList.length,
+  itemListElement: umkmList.map((u, idx) => ({
+    "@type": "ListItem",
+    position: idx + 1,
+    name: u.namaUsaha,
+    url: `${SITE_URL}/umkm/${slugUmkm(u)}/`,
+    ...(u.deskripsi && { description: u.deskripsi }),
+  })),
+  mainEntityOfPage: kanonik,
+});
+
 // "/kegiatan/9/" -> "/kegiatan/9"
 export const rapikanPath = (path: string) => (path.length > 1 ? path.replace(/\/+$/, "") : "/");
 
@@ -115,8 +134,9 @@ const halamanTetap: Record<string, { judul: string; deskripsi: string }> = {
     deskripsi: "Profil RW 12 Desa Ngijo, Karangploso, Malang: pengurus RW, daftar RT, serta lembaga dan komunitas warga.",
   },
   "/umkm": {
-    judul: "UMKM Warga",
-    deskripsi: "Daftar UMKM dan jasa milik warga RW 12 Desa Ngijo, Karangploso, Malang. Belanja di tetangga sendiri.",
+    judul: "UMKM & Kuliner Permata Regency 1, RW 12 Ngijo Karangploso",
+    deskripsi:
+      "Direktori UMKM, kuliner, laundry, jajanan, dan jasa warga Perumahan Permata Regency 1 (RW 12) Desa Ngijo, Karangploso, Malang. Belanja di tetangga sendiri.",
   },
   "/katalog": {
     judul: "Lapak Amal Renovasi Posyandu",
@@ -151,6 +171,7 @@ export const metaHalaman = (path: string, katalog?: Barang[]): MetaHalaman | nul
       gambar: absolut(GAMBAR_BAWAAN),
       tipe: "website",
       kanonik,
+      jsonLd: p === "/umkm" ? jsonLdItemListUmkm(kanonik) : undefined,
     };
   }
 

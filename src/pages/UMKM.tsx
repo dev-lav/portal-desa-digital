@@ -47,6 +47,11 @@ const UMKM = () => {
 
   return (
     <div className="pb-12">
+      {/* Heading H1 Semantik untuk Google Search (Visually Hidden) */}
+      <h1 className="sr-only">
+        Direktori UMKM, Kuliner, dan Layanan Warga Permata Regency 1 RW 12 Desa Ngijo, Karangploso
+      </h1>
+
       {/* FLOATING SEARCH & FILTER BAR (Sticky di bawah navbar saat di-scroll) */}
       <section className="sticky top-[var(--tinggi-header)] z-30 border-b border-border bg-background/95 py-2.5 backdrop-blur-md shadow-xs">
         <div className="container space-y-2">
