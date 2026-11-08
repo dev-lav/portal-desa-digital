@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import { MessageCircle, MapPin, Star, Clock } from "lucide-react";
 import { UMKM } from "@/data/types";
-import { waLink } from "@/data/konten";
+import { slugUmkm, waLink } from "@/data/konten";
 import { padRT } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +23,11 @@ export const UmkmCard = ({ umkm, className }: { umkm: UMKM; className?: string }
       </div>
 
       <div>
-        <h3 className="font-bold text-foreground">{umkm.namaUsaha}</h3>
+        <h3 className="font-bold text-foreground">
+          <Link to={`/umkm/${slugUmkm(umkm)}`} className="hover:text-primary hover:underline">
+            {umkm.namaUsaha}
+          </Link>
+        </h3>
         {umkm.pemilik && umkm.pemilik !== "-" && <p className="text-xs text-muted-foreground">oleh {umkm.pemilik}</p>}
       </div>
 

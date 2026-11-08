@@ -35,7 +35,7 @@ const isiMeta = (html, meta) => {
   if (meta.jsonLd) {
     // "<" di dalam JSON diberi escape agar tidak menutup tag <script>
     const json = JSON.stringify(meta.jsonLd).replace(/</g, "\\u003c");
-    h = h.replace("</head>", () => `  <meta property="article:published_time" content="${meta.tanggal}" />\n  <script type="application/ld+json" id="ld-halaman">${json}</script>\n</head>`);
+    h = h.replace("</head>", () => `  ${meta.tanggal ? `<meta property="article:published_time" content="${meta.tanggal}" />\n  ` : ""}<script type="application/ld+json" id="ld-halaman">${json}</script>\n</head>`);
   }
   return h;
 };

@@ -218,6 +218,15 @@ export const umkmList: UMKM[] = [
   ...umkmTambahan,
 ];
 
+// "Warung Yú Min" -> "warung-yu-min"; dipakai sebagai alamat halaman /umkm/<slug>
+export const slugUmkm = (u: UMKM) =>
+  u.namaUsaha
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
 export const beritaList: Berita[] = [
   {
     id: "1",

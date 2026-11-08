@@ -1,5 +1,5 @@
-import { beritaList } from "@/data/konten";
-import type { Berita } from "@/data/types";
+import { beritaList, slugUmkm, umkmList } from "@/data/konten";
+import type { Berita, UMKM } from "@/data/types";
 import { Barang } from "@/data/katalog";
 import { formatRupiah } from "@/lib/format";
 
@@ -63,6 +63,27 @@ const jsonLdBerita = (berita: Berita, kanonik: string, deskripsi: string, gambar
   };
   return { "@context": "https://schema.org", "@graph": video ? [artikel, video] : [artikel] };
 };
+
+const jsonLdUmkm = (u: UMKM, kanonik: string, deskripsi: string, gambar: string) => ({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${kanonik}#usaha`,
+  name: u.namaUsaha,
+  description: deskripsi,
+  url: kanonik,
+  image: gambar,
+  ...(u.nomorWA && { telephone: u.nomorWA }),
+  ...(u.gmapsUrl && { hasMap: u.gmapsUrl }),
+  address: {
+    "@type": "PostalAddress",
+    ...(u.alamat && { streetAddress: u.alamat.replace(/,\s*Ngijo.*$/i, "") }),
+    addressLocality: "Ngijo, Karangploso",
+    addressRegion: "Jawa Timur",
+    addressCountry: "ID",
+  },
+  ...(u.lat != null && u.lng != null && { geo: { "@type": "GeoCoordinates", latitude: u.lat, longitude: u.lng } }),
+  parentOrganization: { "@id": ORGANISASI_ID },
+});
 
 // "/kegiatan/9/" -> "/kegiatan/9"
 export const rapikanPath = (path: string) => (path.length > 1 ? path.replace(/\/+$/, "") : "/");
@@ -149,6 +170,23 @@ export const metaHalaman = (path: string, katalog?: Barang[]): MetaHalaman | nul
     };
   }
 
+  const cocokUmkm = p.match(/^\/umkm\/([^/]+)$/);
+  const usaha = cocokUmkm && umkmList.find((u) => slugUmkm(u) === cocokUmkm[1]);
+  if (usaha) {
+    const deskripsi = potongDeskripsi(
+      usaha.deskripsi || `${usaha.jenisUsaha} milik warga RW 12 Desa Ngijo, Karangploso, Malang.`,
+    );
+    const gambar = absolut(GAMBAR_BAWAAN);
+    return {
+      judul: `${usaha.namaUsaha} - ${usaha.jenisUsaha} di Ngijo, Karangploso | ${NAMA_SITUS}`,
+      deskripsi,
+      gambar,
+      tipe: "website",
+      kanonik,
+      jsonLd: jsonLdUmkm(usaha, kanonik, deskripsi, gambar),
+    };
+  }
+
   const cocokBarang = p.match(/^\/katalog\/([^/]+)$/);
   if (cocokBarang) {
     if (!katalog) return { ...metaHalaman("/katalog")!, kanonik };
@@ -177,5 +215,6 @@ export const daftarRute = (katalog: Barang[] = []) => [
   "/",
   ...Object.keys(halamanTetap),
   ...beritaList.map((b) => `/kegiatan/${b.id}`),
+  ...umkmList.map((u) => `/umkm/${slugUmkm(u)}`),
   ...katalog.map((b) => `/katalog/${b.id}`),
 ];
