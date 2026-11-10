@@ -48,6 +48,10 @@ import posterJalanSehatImg from "@/images/poster-jalan-sehat.jpeg";
 import posterTariTradisionalImg from "@/images/poster-tari-tradisional.jpeg";
 import latihanTaekwondoImg from "@/images/latihan-taekwondo.jpeg";
 import posterLatihanTaekwondoImg from "@/images/poster-latihan-taekwondo.jpeg";
+import turnamenVoliImg from "@/images/turnamen-voli-ngijo-cup.jpeg";
+import juara3VoliImg from "@/images/juara-3-voli-ngijo-cup.jpeg";
+import lombaKebersihanImg from "@/images/lomba-kebersihan-lingkungan.jpeg";
+import posterLatihanSanggarTariImg from "@/images/poster-latihan-sanggar-tari.jpeg";
 
 export const pengurusRW: PengurusRW[] = [
   { id: "1", jabatan: "Ketua RW", nama: "Ahmad Fadillah, SE., M.M.B.", kontak: "..." },
@@ -380,6 +384,42 @@ export const beritaList: Berita[] = [
       "Video semangat anak-anak dan pelatih Club Taekwondo Rolas saat latihan rutin di Lapangan Voli RW 12 Desa Ngijo, Karangploso, Malang.",
     gambar: posterLatihanTaekwondoImg,
     video: { src: "/videos/latihan-taekwondo.mp4", durasi: "0:09" },
+  },
+  // Tanggal turnamen & penyerahan hadiah voli/kebersihan adalah perkiraan (Agustus 2026), sesuaikan bila perlu.
+  {
+    id: "turnamen-voli-ngijo-cup",
+    judul: "Turnamen bola voli Desa Ngijo Cup 2026",
+    tanggal: new Date("2026-08-22"),
+    ringkasan:
+      "Tim bola voli RW 12 berfoto bersama sebelum bertanding di Turnamen Bola Voli Desa Ngijo Cup 2026, bagian dari rangkaian peringatan HUT Kemerdekaan RI ke-81.",
+    gambar: turnamenVoliImg,
+    posisiGambar: "center",
+  },
+  {
+    id: "juara-3-voli-ngijo-cup",
+    judul: "RW 12 juara 3 lomba bola voli Desa Ngijo",
+    tanggal: new Date("2026-08-23"),
+    ringkasan:
+      "Tim bola voli RW 12 meraih Juara 3 Lomba Bola Voli HUT RI ke-81 Desa Ngijo Tahun 2026. Piagam dan hadiah pembinaan diterima langsung oleh perwakilan tim.",
+    gambar: juara3VoliImg,
+  },
+  {
+    id: "lomba-kebersihan-lingkungan",
+    judul: "Penyerahan hadiah lomba kebersihan lingkungan Desa Ngijo",
+    tanggal: new Date("2026-08-23"),
+    ringkasan:
+      "Penyerahan piala dan hadiah Lomba Kebersihan Lingkungan HUT RI ke-81 Desa Ngijo Tahun 2026 kepada para juara di atas panggung.",
+    gambar: lombaKebersihanImg,
+    posisiGambar: "top",
+  },
+  {
+    id: "latihan-sanggar-tari-video",
+    judul: "Video latihan Sanggar Seni Gendesrolas",
+    tanggal: new Date("2026-11-09"),
+    ringkasan:
+      "Anak-anak dan pelatih Sanggar Seni Gendesrolas berlatih tari bersama di RW 12 Desa Ngijo, Karangploso, Malang.",
+    gambar: posterLatihanSanggarTariImg,
+    video: { src: "/videos/latihan-sanggar-tari.mp4", durasi: "0:50" },
   },
 ];
 
